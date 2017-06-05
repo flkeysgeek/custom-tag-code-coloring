@@ -1,6 +1,6 @@
 # DW-CC-2017-code-coloring-pref
 
-### Notable code view cursor and highlighting (optional) ###
+## Notable code view cursor and highlighting ###
 
 ![](http://i.imgur.com/Do9WrSb.gif)
 
@@ -29,21 +29,21 @@
 
 ## Restore Dreamweaver Code Coloring Pref (Under Review)  
 
-![](http://i.imgur.com/nY82Yfu.png)
-![](http://i.imgur.com/FLNhj8P.png)
+![CC 2015.1 screenshot](http://i.imgur.com/3QKBcIv.png)
+![CC 2015.1 screenshot](http://i.imgur.com/6DGRxH0.png)
 
 ## Installation
 
 ### Notable Code View Cursor...
-Currently available as small snippet of css for DW CC 2017.1 (build 9583)  
+Currently available as small css/less snippet for DW CC 2017.1 (build 9583)  
 
 1. Download [notable css/less snippet](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/blob/master/notable.zip)
   
 2. Create custom theme as explained by Adobe: [Customize code themes](https://helpx.adobe.com/dreamweaver/using/customize-code-coloring.html)  
-...good instructions -- no need visit reference links
+good instructions -- no need visit reference links
 
-3. under section: ***Edit selectors in the main.less file***
-...simply add css/less from file downloaded above to bottom of main.less
+3. under section: ***Edit selectors in the main.less file***  
+simply add downloaded `notable css/less snippet` to bottom of main.less
 
 ### Code Coloring Preference... 
 
