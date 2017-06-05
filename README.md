@@ -1,11 +1,10 @@
-# DW-CC-2017-code-coloring-pref
+# Notable code view cursor
+When code view does ***NOT*** have focus, cursor or selection as one of the below following
 
-## Notable code view cursor and highlighting ###
+default 9 second blink . . .  code view selection
+![](http://i.imgur.com/Do9WrSb.gif) . . . ![](http://i.imgur.com/OzB4wvr.png)
 
-![](http://i.imgur.com/Do9WrSb.gif)
-
-***...when design view has focus*** -- **easy to see associated cursor in code view...**
-***...when design view has focus*** -- **easy to see associated cursor in code view...**
+***...when design view has focus*** -- **code view shows associated notable  cursor...**
 ![design view has focus](http://i.imgur.com/uR4CWfn.png)  
 
 **...no tail when code view has focus...** 
@@ -27,7 +26,7 @@
 **...current selection notable in dialog windows -- e.g. find and replace...** 
 ![](http://i.imgur.com/fN2BGnO.png)
 
-## Restore Dreamweaver Code Coloring Pref (Under Review)  
+# Restore Dreamweaver Code Coloring Pref (Under Review)  
 
 ![CC 2015.1 screenshot](http://i.imgur.com/3QKBcIv.png)
 ![CC 2015.1 screenshot](http://i.imgur.com/6DGRxH0.png)
