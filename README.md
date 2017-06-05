@@ -1,7 +1,8 @@
 # Notable code view cursor
 When code view does ***NOT*** have focus, cursor or selection as one of the below following
 
-default 9 second blink . . .  code view selection
+default 9 second blink . . .  code view selection  
+
 ![](http://i.imgur.com/Do9WrSb.gif) . . . ![](http://i.imgur.com/OzB4wvr.png)
 
 ***...when design view has focus*** -- **code view shows associated notable  cursor...**
