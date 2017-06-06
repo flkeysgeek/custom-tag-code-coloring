@@ -1,18 +1,22 @@
-# Notable code view cursor and selections
-When code view does ***NOT*** have focus, selection -or- cursor shows as follows:
+# Notable Code View selection or cursor for Dreamweaver CC 2017.1 themes 
 
-selection . . . . . . . . . . . . . . . . cursor -- blinks for 9 seconds (default)  
+Make current selection or cursor highly visible (notable) in Code View.
+
+***...When code view does NOT have focus*** -- **selection -or- cursor shows as follows:**
+
+selection . . . . . . . . . . . . . . . . . . . . . . . .  cursor -- blinks for 9 seconds (default)  
 
 ![](http://i.imgur.com/OzB4wvr.png). . . ![](http://i.imgur.com/Do9WrSb.gif) 
-**note:** Above arrows are hidden when selection starts in first column. Below arrows hidden for multi-line selections or selection ends in last column. The purpose is to make a small design view selections Notable. 
+- Above arrows are hidden when selection starts in first column
+- Below arrows hidden for multi-line selections or selection ends in last column. 
 
-***...when design view has focus*** -- **code view shows associated notable  cursor...**
+***...when DESIGN view has focus*** -- **code view shows associated notable  cursor...**
 ![design view has focus](http://i.imgur.com/uR4CWfn.png)  
 
-**...no tail when code view has focus...** 
+***...when CODE view HAS focus*** -- **cursor wider, taller, brighter (no tail)...**  
 ![code view has focus](http://i.imgur.com/Eyvv7Qm.png)
 
-**...one or more tags selected -- highlighting *NOT* hidden when design has focus...**
+***...one or more tags selected*** -- **highlighting *NOT* hidden when design has focus...**
 ![](http://i.imgur.com/2lurRGy.png)
 ![](http://i.imgur.com/WP9xyxt.png)
 
@@ -28,11 +32,10 @@ selection . . . . . . . . . . . . . . . . cursor -- blinks for 9 seconds (defaul
 **...current selection notable in dialog windows -- e.g. find and replace...** 
 ![](http://i.imgur.com/fN2BGnO.png)
 
-Exceptions: Notable cursor shows when `find` dialog box open but no cursor appears when either replace dialog is open.
-## exceptions ##
+Notable cursor shows when `find` dialog box open but no cursor appears when either replace dialog is open ... hoping to solve in next release
 
-
-# Restore Dreamweaver Code Coloring Pref (Under Review) #  
+# Restore Dreamweaver Code Coloring Pref #  
+currently under review / development
 
 ![CC 2015.1 screenshot](http://i.imgur.com/3QKBcIv.png)
 ![CC 2015.1 screenshot](http://i.imgur.com/6DGRxH0.png)
