@@ -1,4 +1,4 @@
-# Notable Code View selection or cursor for Dreamweaver CC 2017.1 themes 
+# Notable Code View selection or cursor 
 
 Make current selection or cursor highly visible (notable) in Code View.
 
@@ -6,9 +6,14 @@ Make current selection or cursor highly visible (notable) in Code View.
 
 selection . . . . . . . . . . . . . . . . . . . . . . . .  cursor -- blinks for 9 seconds (default)  
 
-![](http://i.imgur.com/OzB4wvr.png). . . ![](http://i.imgur.com/Do9WrSb.gif) 
+![](http://i.imgur.com/OzB4wvr.png). . . ![](http://i.imgur.com/Do9WrSb.gif)  
+
 - Above arrows are hidden when selection starts in first column
-- Below arrows hidden for multi-line selections or selection ends in last column. 
+- Below arrows hidden for multi-line selections or selection ends in last column.
+  
+**Light themes show as follows:**  
+![](http://i.imgur.com/zSy4llI.png)  
+ 
 ---------------------------------------------------------------------------
 ***...when DESIGN view has focus*** -- **code view shows associated notable  cursor...**
 ![design view has focus](http://i.imgur.com/uR4CWfn.png)  
@@ -53,9 +58,11 @@ good instructions -- no need visit reference links
 3. under section: ***Edit selectors in the main.less file***  
 simply add downloaded `notable css/less snippet` to bottom of main.less
 
-...coming... included as part of Code Coloring DW Extension 
+notable.less has a list of background colors used to determine if the theme is light or dark. You will need to add yours if different from any of the BG of the Adobe released BG colors.   
+  
+Dreamweaver Extension is coming as alternate method for installing. 
 
 ### Code Coloring Preference... 
 
 - under review / development -- expected beta release July 2017
-- plan to release as Dreamweaver Extension 
+ 
