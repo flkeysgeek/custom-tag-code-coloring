@@ -9,7 +9,7 @@ selection . . . . . . . . . . . . . . . . . . . . . . . .  cursor -- blinks for 
 ![](http://i.imgur.com/OzB4wvr.png). . . ![](http://i.imgur.com/Do9WrSb.gif) 
 - Above arrows are hidden when selection starts in first column
 - Below arrows hidden for multi-line selections or selection ends in last column. 
-
+---------------------------------------------------------------------------
 ***...when DESIGN view has focus*** -- **code view shows associated notable  cursor...**
 ![design view has focus](http://i.imgur.com/uR4CWfn.png)  
 
@@ -53,7 +53,7 @@ good instructions -- no need visit reference links
 3. under section: ***Edit selectors in the main.less file***  
 simply add downloaded `notable css/less snippet` to bottom of main.less
 
-coming... included as part of Code Coloring DW Extension 
+...coming... included as part of Code Coloring DW Extension 
 
 ### Code Coloring Preference... 
 
