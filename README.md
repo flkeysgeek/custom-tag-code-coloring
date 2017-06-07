@@ -1,4 +1,4 @@
-# Notable Code View selection or cursor 
+# Notable Code View Cursor and selected text / tags 
 
 Make current selection or cursor highly visible (notable) in Code View.
 
