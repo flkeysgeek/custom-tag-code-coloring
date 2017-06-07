@@ -50,7 +50,7 @@ currently under review / development
 ### Notable Code View Cursor...
 Currently available as small css/less snippet for DW CC 2017.1 (build 9583)  
 
-1. Download [notable.css snippet](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/blob/master/notable.less) or [notable.zip](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/blob/master/notable.zip)
+1. Download [notable.css snippet](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/blob/master/notable.less) --or-- [notable.zip](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/blob/master/notable.zip)
   
 2. Create custom theme as explained by Adobe: [Customize code themes](https://helpx.adobe.com/dreamweaver/using/customize-code-coloring.html)  
 good instructions -- no need visit reference links
