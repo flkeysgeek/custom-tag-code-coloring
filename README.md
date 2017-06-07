@@ -1,10 +1,10 @@
-# Notable Code View Cursor and selected text / tags 
+# Notable Code View Cursor / selected text / tag(s) 
 
 Make current selection or cursor highly visible (notable) in Code View.
 
 ***...When code view does NOT have focus*** -- **selection -or- cursor shows as follows:**
 
-selection . . . . . . . . . . . . . . . . . . . . . . . .  cursor -- blinks for 9 seconds (default)  
+selection (does not blink) . . . . . . . . . . . . . . . . cursor -- blinks for 9 seconds (default)  
 
 ![](http://i.imgur.com/OzB4wvr.png). . . ![](http://i.imgur.com/Do9WrSb.gif)  
 
