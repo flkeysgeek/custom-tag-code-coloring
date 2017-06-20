@@ -4,7 +4,7 @@ Adobe Dreamweaver CC 2017 lost the ability to define custom tag Code Coloring.
  
 ![](http://i.imgur.com/ofEBslS.png)
 
-The included xml.js restores that feature as shown below:
+The included xml.js restores that feature as shown below:  
 ![](http://i.imgur.com/UDrZsS6.png) 
 ![](http://i.imgur.com/RJg4zVx.png)
 
@@ -28,7 +28,6 @@ The tag colors are defined by adding css of the following form to a custom theme
 **Dreamweaver extension with screens similar to CC 2015 Code Coloring...**
 
 ![CC 2015.1 screenshot](http://i.imgur.com/3QKBcIv.png)  
-
 ![CC 2015.1 screenshot](http://i.imgur.com/6DGRxH0.png)
 
 # Notable Code View Cursor and current selection 
