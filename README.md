@@ -27,8 +27,8 @@ The tag colors are defined by adding css of the following form to a custom theme
 
 **Dreamweaver extension with screens similar to CC 2015 Code Coloring...**
 
-![CC 2015.1 screenshot](http://i.imgur.com/3QKBcIv.png)
-  
+![CC 2015.1 screenshot](http://i.imgur.com/3QKBcIv.png)  
+
 ![CC 2015.1 screenshot](http://i.imgur.com/6DGRxH0.png)
 
 # Notable Code View Cursor and current selection 
