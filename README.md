@@ -85,7 +85,7 @@ Dreamweaver extension with GUI screen for setting colors/sizes by theme.
 
 - Custom Tag Code Coloring requires small update to xml.js installed under 
 "...\Program Files\Adobe\Adobe Dreamweaver CC 2017\"
-- download [xml.js.zip](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/blob/master/src/xml.js%20(custom-tag-colors).2017-06-20%20beta.zip) - open and copy "www" into "Adobe Adobe Dreamweaver CC 2017" 
+- download [xml.js.zip](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/src/xml.js%20(custom-tag-colors).2017-06-20%20beta.zip) - open and copy "www" into "Adobe Adobe Dreamweaver CC 2017" 
 - close and reopen Dreamweaver
 
     
