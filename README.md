@@ -2,6 +2,7 @@
 
 Adobe Dreamweaver CC 2017 uses the brackets / CodeMirror framework.
 An unintended consequence was the loss of custom tag Code Coloring. 
+ 
 ![](http://i.imgur.com/ofEBslS.png)
 
 The included xml.js restores that feature as shown below:
