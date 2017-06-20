@@ -1,7 +1,6 @@
 # Dreamweaver Custom Tag Code Coloring (CC 2017)  
 
-Adobe Dreamweaver CC 2017 uses the brackets / CodeMirror framework.
-An unintended consequence was the loss of custom tag Code Coloring. 
+Adobe Dreamweaver CC 2017 lost the ability to define custom tag Code Coloring. 
  
 ![](http://i.imgur.com/ofEBslS.png)
 
