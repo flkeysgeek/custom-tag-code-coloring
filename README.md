@@ -28,6 +28,7 @@ The tag colors are defined by adding css of the following form to a custom theme
 **Dreamweaver extension with screens similar to CC 2015 Code Coloring...**
 
 ![CC 2015.1 screenshot](http://i.imgur.com/3QKBcIv.png)
+  
 ![CC 2015.1 screenshot](http://i.imgur.com/6DGRxH0.png)
 
 # Notable Code View Cursor and current selection 
@@ -83,7 +84,7 @@ Dreamweaver extension with GUI screen for setting colors/sizes by theme.
 
 ### Dreamweaver code update
 
-Custom Tag Code Coloring requires updated to xml.js 
+Custom Tag Code Coloring requires updated xml.js 
 
 - download [xml.js.zip](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/src/xml.js%20(custom-tag-colors).2017-06-20%20beta.zip)
 
