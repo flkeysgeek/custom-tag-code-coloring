@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* just-jane-tag-colors: silly colors used for development */
+span.cm-m-xml.cm-tag.cm-tag-body {
+      color: red;
+}
+span.cm-m-xml.cm-tag.cm-tag-h1 {
+  color: hotpink;
+}
+span.cm-m-xml.cm-tag.cm-tag-form {
+  color: orange;
+}
+span.cm-m-xml.cm-tag.cm-tag-input {
+  color: #0BF90E;
+}
