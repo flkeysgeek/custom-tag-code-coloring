@@ -65,8 +65,8 @@ Dreamweaver extension with GUI screen for setting colors/sizes by theme.
 - both require a custom Dreamweaver theme
 
 
-1. Download [notable.css snippet](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/blob/master/notable.less) --or-- [notable.zip](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/blob/master/notable.zip)  
-...update pending with sample custom tag code coloring css...
+1. Download [notable.css snippet](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/notable.less) --or-- [notable.zip](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/notable.zip)  
+ . . . update pending with sample custom tag code coloring css . . .
   
 2. From DW menu: edit > preferences > Interface (left panel category)
 
@@ -87,12 +87,12 @@ An updated xml.js must be installed -- it adds the additional cm-tag-<...> class
 
 - download [xml.js.zip](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/src/xml.js%20(custom-tag-colors).2017-06-20%20beta.zip)
 - open and copy "www" into...    
-On Windows: %appdata%\Adobe\Dreamweaver CC 2017  
-On Mac: ~/Library/Application Support/Adobe/Dreamweaver CC 2017
+...windows: %appdata%\Adobe\Dreamweaver CC 2017\  
+...On Mac: ~/Library/Application Support/Adobe/Dreamweaver CC 2017/
 - close and reopen Dreamweaver
 
-**caution:** DW releases after 2017.5, DO NOT use updated xml.js unless installed 
-matches [xml.js](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/src/xml.js%20(Adobie%20CC%202017.2%2B%20release).zip) (Adobe installed version for CC 2017.2 and 2017.5)
+**caution:** DW releases after 2017.5, DO NOT use updated xml.js unless the installed 
+xml.js matches [xml.js](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/src/xml.js%20(Adobie%20CC%202017.2%2B%20release).zip) (Adobe installed version for CC 2017.2 and 2017.5)
     
 # *Coming Soon!!* #
 
