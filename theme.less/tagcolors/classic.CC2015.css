@@ -1,0 +1,37 @@
+/* classic */
+.cm-m-xml.cm-tag {
+  color: #000099;
+  background: #ffffff;
+}
+.cm-m-xml.cm-tag.cm-tag-a {
+  color: #060;
+}
+.cm-m-xml.cm-tag.cm-tag-form {
+  color: #F90;
+  background: #2D3639;
+}
+.cm-m-xml.cm-tag.cm-tag-button,
+.cm-m-xml.cm-tag.cm-tag-input,
+.cm-m-xml.cm-tag.cm-tag-textarea {
+  color: #F90;
+}
+.cm-m-xml.cm-tag.cm-tag-img {
+  color: #909;
+}
+.cm-m-xml.cm-tag.cm-tag-script {
+  color: #900;
+}
+.cm-m-xml.cm-tag.cm-tag-style {
+  color: #909;
+}
+.cm-m-xml.cm-tag.cm-tag-table,
+.cm-m-xml.cm-tag.cm-tag-thead,
+.cm-m-xml.cm-tag.cm-tag-tbody,
+.cm-m-xml.cm-tag.cm-tag-th,
+.cm-m-xml.cm-tag.cm-tag-tbody,
+.cm-m-xml.cm-tag.cm-tag-tr,
+.cm-m-xml.cm-tag.cm-tag-td {
+  color: #099;
+}
+
+/*# sourceMappingURL=classic.CC2015.css.map */
