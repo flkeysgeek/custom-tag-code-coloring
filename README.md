@@ -72,7 +72,7 @@ Dreamweaver extension with GUI screen for setting colors/sizes by theme.
 
 3. Select or Create new "Color Theme" -- click Apply if new or not selected
 
-4. click on pencil icon to edit theme to open main.less in Dreamweaver  
+4. click on pencil icon to open and edit the selected theme in Dreamweaver  
 
 5. At bottom of file: Add css for custom tag colors and/or Notable Code View cursors
 
@@ -81,9 +81,9 @@ Dreamweaver extension with GUI screen for setting colors/sizes by theme.
 - good instructions -- no need visit reference links
 - Customize code colors for mixed code files (should get done by default)
 
-### Dreamweaver code update
+### Custom Tag Colors requires Dreamweaver code update  
 
-Custom Tag Code Coloring requires updated xml.js 
+An updated xml.js must be installed -- it adds the additional cm-tag-<...> class.   
 
 - download [xml.js.zip](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/src/xml.js%20(custom-tag-colors).2017-06-20%20beta.zip)
 - open and copy "www" into...    
@@ -91,7 +91,8 @@ On Windows: %appdata%\Adobe\Dreamweaver CC 2017
 On Mac: ~/Library/Application Support/Adobe/Dreamweaver CC 2017
 - close and reopen Dreamweaver
 
-Adobe 2017.2 & 2017.5 installation [xml.js](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/src/xml.js%20(Adobie%20CC%202017.2%2B%20release).zip) 
+**caution:** DW releases after 2017.5, DO NOT use updated xml.js unless installed 
+matches [xml.js](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/src/xml.js%20(Adobie%20CC%202017.2%2B%20release).zip) (Adobe installed version for CC 2017.2 and 2017.5)
     
 # *Coming Soon!!* #
 
