@@ -62,7 +62,7 @@ Dreamweaver extension with GUI screen for setting colors/sizes by theme.
 
 - Custom Tag Code Coloring and Notable Code View Cursors are implemented via css styles
 - They can be installed separately by selectively adding css to custom theme
-- both require a custom Dreamweaver theme
+- both require a custom Dreamweaver theme -- create or select as follows
 
 
 1. Download [notable.css snippet](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/notable.less) --or-- [notable.zip](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/notable.zip)  
@@ -100,9 +100,12 @@ xml.js matches [xml.js](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-p
 - automatically updates selected theme main.less files
 - updates xml.js when necessary
 
-### access to shared tag color repository 
+### tag color repository 
 
 1. Default tag colors from CC 2015
 2. Get tag colors shared by other designers
 3. Share your tag colors with other Designers 
- 
+
+### feedback encouraged
+
+![](http://i.imgur.com/AklRbrW.jpg) flKeysGeek@gmail.com  
