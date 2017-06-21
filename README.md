@@ -94,17 +94,19 @@ An updated xml.js must be installed -- it adds the additional cm-tag-<...> class
 **caution:** DW releases after 2017.5, DO NOT use updated xml.js unless the installed 
 xml.js matches [xml.js](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/src/xml.js%20(Adobie%20CC%202017.2%2B%20release).zip) (Adobe installed version for CC 2017.2 and 2017.5)
     
-# *Coming Soon!!* #
+# *Dreamweaver Extension Coming Soon!!* #
 
+- GUI screen for setting colors/sizes by theme
 - select tag colors via color picker
 - automatically updates selected theme main.less files
 - updates xml.js when necessary
+- access to tag color repository 
 
 ### tag color repository 
 
-1. Default tag colors from CC 2015
-2. Get tag colors shared by other designers
-3. Share your tag colors with other Designers 
+1. default tag colors from CC 2015
+2. tag colors shared by other designers
+3. share your tag colors with other Designers 
 
 ### feedback encouraged
 
