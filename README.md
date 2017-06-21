@@ -94,7 +94,7 @@ An updated xml.js must be installed -- it adds the additional cm-tag-<...> class
 **caution:** DW releases after 2017.5, DO NOT use updated xml.js unless the installed 
 xml.js matches [xml.js](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/src/xml.js%20(Adobie%20CC%202017.2%2B%20release).zip) (Adobe installed version for CC 2017.2 and 2017.5)
     
-# *Dreamweaver Extension Coming Soon!!* #
+# *Coming Soon -- Dreamweaver extension !!* #
 
 - GUI screen for setting colors/sizes by theme
 - select tag colors via color picker
@@ -110,4 +110,8 @@ xml.js matches [xml.js](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-p
 
 ### feedback encouraged
 
-![](http://i.imgur.com/AklRbrW.jpg) flKeysGeek@gmail.com  
+![](http://i.imgur.com/AklRbrW.jpg) flKeysGeek@gmail.com
+
+# *Coming Next -- devtools extension* #
+
+  
