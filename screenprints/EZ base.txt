@@ -1,0 +1,287 @@
+/*--------------------------------------------------------------------------------------------------
+Dreamweaver LINT global references and definitions  not used here {
+--------------------------------------------------------------------------------------------------*/
+/*global 
+EZ:true, EZ$:true, EZ_:true,
+EZgetEl, EZgetValue, EZsetValue, EZnone, EZdisplayCaller,
+ 
+DWfile, dw:true, e:true, f:true, g:true
+*/
+var e;			//global used for try/catch
+(function() {[	//global variables and functions defined but not used
+EZgetEl, EZgetValue, EZsetValue, EZnone, EZdisplayCaller,
+
+DWfile, dw, e, f, g ]});
+//. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .}
+(function(ez)
+{
+	var defaultOptions = {
+		equals: {
+			ignore: 'objectType',		//most defaults still in EZ.equals()
+			groups: {
+				log: {
+					showDiff:25,
+				}
+				//console: true,
+				//log: true,
+			}
+		},
+		format: {				
+			formatter: 'toString',
+			formatOpts: { 					
+				tostring: {
+					timestamp: false,
+					format: 'string',			//"string", "html" or "collapse"
+					collapse: {					//ignored unless format="html"
+						depth: 3,				//depth minlines used - maxlines not
+						minlines: 3,			//no collapse if less items than value
+						maxlines: 10			//collapse if more items than value
+					},
+												//TODO: support "stringify"
+					htmlFormatter: 'EZ.format.Element',	
+					htmlFormatterOpts: {		
+						extract: 'brief'
+					},							//...if htmlFormatter not defined...
+					html: {						//toString() internal html format options
+						maxdepth: 3,	
+						maxchildren: 1,
+						maxchars: 99,
+						attributes: 'id className tagName parent'.split(' '),
+						input: [				//currently html_tagtype_keys and hardcoding
+							{
+								type: 'text textarea password hidden button',
+								attributes: 'value'
+							},{
+								type: 'radio checkbox',
+								attributes: 'checked'
+							},{
+								type: 'image',
+								attributes: 'src'
+							}
+						]
+					}
+				},								
+				stringify: {
+					spaces:4,
+					legacy: '*',
+					plus: 'ignore="constructor script" unquoteKeys escapeAll'
+				}
+			},
+			// . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 	
+			htmlFormatter: {		
+				format: 'html',					//"html" "json" or "object" 
+				formatter: 'EZ.stringify',		//json formatter
+				formatOpts: {spaces: 4},
+				
+				sort: false,
+				maxdepth: 4,
+				maxchildren: 1,
+				maxchars: 0,
+				maxlinechars: 0,
+			//	removeQuotes: false,
+				noAttributeQuotes: false,
+				quote: '"',
+				tagValue: 'style src href',
+				tagAttributes: ('title checked autocomplete translate spellcheck readOnly disabled required'
+							 + ' value size multiple').split(/\+/),
+				
+				extract: 'basic',				
+				extractGroups: {
+					brief: ['tagName', 'type', 'name', 'id', 'className'],
+					basic: 'tagName type id name className checked value src href'.split(/\s+/),
+					plus: ['basic', 'attributes'],					//basic plus defined tag attributes
+					children: ['basic', 'children'], 				//basic plus children
+					all:'plus checked value selected'.split(/\s+/),	//innerText ??
+					
+					//TODO: ...
+					outer: ['all', 'children'],
+					currentStyle: '',
+					offsets: ('clientWidth clientHeight clientLeft clientTop ' 
+							 + 'offsetWidth offsetHeight offsetLeft offsetTop offsetParent '
+							 + 'clientWidth clientHeight clientLeft clientTop').split(/\s+/),
+					elements: 'parentElement nextElementSibling previousElementSibling'.split(/\s+/),
+					//or nodes
+					most: 'events sibblings offsets'.split(/\s+/),
+					verbose: 'parent children'.split(/\s+/),
+					//verbose: []
+					defined: [],
+				},
+				defaults: {String:'extract', Array:'extract'},
+			},
+			// . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+			version: '02-18-2017'
+		}
+	};
+	
+	//===============================================================================================
+	/**
+	 *	EZ(),  EZ$(), EZ_(), EZ.context(), EZ.get(), EZ.getEl(), EZ.set(), EZ.val() and tubs
+	**/
+	(function _____EZ_EZget_EZset_related_____() {
+	/*-----------------------------------------------------------------------------------------------
+	EZ(el,options) -- 											primary EZ Object defined as Function
+	
+	returns single element or Array of elements if el is Array of selectors.
+	
+	TODO:
+		when called as tag handler e.g. onclick="EZ(...)" -- tag passed as this if tag has EZ() bind.
+		allow defaultFormatOptions changes by onLoad functions() including <body onLoad="...">
+	------------------------------------------------------------------------------------------------*/
+	window.EZ = function EZ(sel, options)
+	{
+		if (this instanceof arguments.callee) return	//called as constructor
+		
+		void(options);									//DW lint -- debugger convenience
+		EZ.tags = [];
+		
+		var el = sel;
+		var type = EZ.getType(el);
+		if (type == 'Element')
+			return EZ.el = EZ.tags[0] = el;
+
+														  //-----------------------------------\\
+		while (false && typeof(el) == 'string')			 // TODO: cache?? -- could have changed \\
+		{												//---------------------------------------\\
+			EZ.cache = EZ.cache || [];
+			var idx = EZ.cache.indexOf(sel)
+			el = EZ[idx];
+			if (el !== undefined || !(el instanceof Element))
+				break;									//nogo if not cache or not still Element
+			
+			EZ.cache.splice(idx,1)
+			EZ.cache.unshift(el);
+			EZ.cache = EZ.cache.slice(0,50);
+			return EZ.el = EZ.tags[0] = el;
+		}
+		
+		var args = [].slice.call(arguments);
+		var defaults = {defaults:{legacy:false}}
+		args.push(defaults);
+		
+		return EZgetEl.apply(this, args);
+	}
+														  //-------------------------------\\
+	if (ez instanceof Object)							 // restore any prior EZ properties \\ 
+	{													//-----------------------------------\\
+		for (var key in ez) if (EZ[key] === undefined) EZ[key] = ez[key]; 
+	}
+	/*--------------------------------------------------------------------------------------------------
+	return current global options with defaults appended
+	--------------------------------------------------------------------------------------------------*/
+	EZ.defaultOptions = function EZdefaultOptions(name)
+	{
+		var defaultOpts = 'EZ.defaultOptions.'.concat(name).ov();
+		var options = 'EZ.'.concat(name,'.options').ov() || defaultOpts;
+		
+		if (options != defaultOpts)
+		{
+			Object.keys(defaultOpts).forEach(function(key)
+			{
+				if (key in options) return;
+				options[key] = defaultOpts[key];
+			});
+		}
+		return EZ[name].options = options || {};
+	}
+	//________________________________________________________________________________________________
+	Object.keys(defaultOptions).forEach(function(key)
+	{ EZ.defaultOptions[key] = defaultOptions[key] });
+						//NOTE: Chrome seems to load below script before executing this statement ??
+						//		Does this mean functions can be referenced before they are defined
+						//		as IE has always allowed but not historically allowed by Mozilla ??
+	EZ.defaultFormatOptions = defaultOptions.format;
+	/*--------------------------------------------------------------------------------------------------
+	EZ variants and related
+	--------------------------------------------------------------------------------------------------*/
+	/**
+	 *	EZ$: return all elements matching all selector(s)
+	 */
+	EZ.$ = EZ$ = function()
+	{
+		var args = [].slice.call(arguments).concat([ {defaults:{all:true}} ]);
+		return EZgetEl.apply(this, args);
+	}
+	/**
+	 *	EZ_: return null if no el matches selector
+	 */
+	EZ_ = function()
+	{
+		var args = ([].slice.call(arguments)).concat([ {defaults:{all:false}} ]);
+		return EZgetEl.apply(this, args);
+	}
+	EZ._ = EZ_;
+	/**
+	 *	EZ.nul: return all elements matching selector(s) or null
+	 */
+	EZ.nul = function()
+	{
+		var args = [].slice.call(arguments).concat([ {defaults:{notFound:null}} ]);
+		return EZgetEl.apply(this, args);
+	}
+	//_____________________________________________________________________________________________
+	EZ.test = function()
+	{
+		EZ.test.run('#myid', 							{EZ: {ex:'',	note:''	}})
+		EZ.test.run('<div>', '<div',					{EZ: {ex:'',	note:''	}})
+		EZ.test.run('.myclass',							{EZ: {ex:'',	note:''	}})
+		EZ.test.run('myid', 'div', 'myclass',			{EZ: {ex:'',	note:''	}})
+	
+		// form fields
+		EZ.test.run('notifyForm:notifySelected',		{EZ: {ex:'',	note:''	}})
+		EZ.test.run('@notifyForm:notifySelected',		{EZ: {ex:'',	note:''	}})
+		EZ.test.run('@notifyForm:notifySelecte',		{EZ: {ex:'',	note:'bad name'	}})
+		EZ.test.run('notifySelected', 					{EZ: {ex:'',	note:''	}})
+		EZ.test.run('@notifySelected', 					{EZ: {ex:'',	note:''	}})
+		//. . . . . . . . . . . . . . . . . . . . . . . .
+	}
+	//__________________________________________________________________________________
+	/**
+	 * 	if element context, get chain selection element if callers 1st arg is array
+	 *	otherwise prepend context elements to callers args.
+	 *	if not element context return caller args as is.
+	 */
+	EZ.context = function EZcontext(ctx)
+	{
+		var args = [].slice.call(arguments.callee.caller.arguments);
+		if (ctx != window && typeof(ctx) != 'function')
+		{
+			if (!EZ.isArray(args[0]))
+				args.unshift(ctx);		//prepend context element(s)
+			else
+			{				//update 1st arg with selected elements
+			   var tags = EZgetEl.call(ctx, args[0], true);
+			   args[0] = tags.length > 1 ? tags : tags[0];
+			}
+		}
+		return args;
+	}
+	//__________________________________________________________________________________
+	/**
+	 *	calls EZ.get_basic until and if EZ.getValue loaded
+	 */
+	EZ.get = function EZget(el, defaultValue)
+	{
+		if (EZ.getConstructorName(el) == 'EZfield')
+			el = el.el;
+	   var rtnValue = (window.EZgetValue)
+					? EZgetValue.apply(this,[].slice.call(arguments))	//full functionality if loaded
+					: EZ.get_basic(el, defaultValue);					//otherwise basic function
+		
+		EZ.tags = EZ.get.tags = EZ.tags;
+		EZ.el = EZ.get.el = EZ.tags instanceof Object ? EZ.tags[0] : EZ.none();
+		return rtnValue;
+	}
+	//__________________________________________________________________________________
+	/**
+	 *	stub with min functionality -- until full version loaded
+	 *	if el not element, try as id or name -- returns 1st element for html collection
+	 */
+	EZ.getEl = function EZgetEl(el, allTags /* true for all tags */)
+	{
+		var name = el + '';
+		if (!EZ.isEl(el)) el = document.getElementById(el);
+		if (!el) el = document.getElementsByName(name);
+	
+		if (!allTags && EZ.isArray(el)) el = EZ.collapse(el);
+		return el;
+	}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>sample page</title>
+<style>
+	headline {font-size: 24pt;}
+	/* css comment */
+	@import url("../../DW-CC-2017-code-coloring-pref@@@/_work/sample-tags/main.css");
+	h2, .head2 {
+	  font-family : 'Sans-Serif';
+	  font-weight : bold;
+	  color : #336699 !important;
+	}
+	@media screen, print {
+	  pre { margin: 0px 10px 10px }
+	  h1 { font-size: 14px; padding-top: 10px }
+	}
+</style>
+<link href="../_etc/sample%20code/_hello.css" rel="stylesheet" type="text/css">
+<script>
+	/* javascript comment */
+    var myColor = 'Blue' || '';
+	switch ( myColor.toLowerCase() ) 
+	{
+		case "blue":
+		   alert("Just like the sky!");
+		  	break;
+
+		default:
+		   alert("no color");
+    }	
+	var number = 2;
+	testMe(number);		 // inline comment
+	function testMe() {
+		return window.!isNaN(number);
+	 }
+</script>
+</head>
+<body>
+	<!-- html comment -->
+	<div id="headline" class="head2">
+		<img src="../../DW-CC-2017-code-coloring-pref@@@/_work/sample-tags/image.png" width="15" />
+	</div>
+	<table>
+	  <tr>
+		<td height="25px">
+			<a href="../../DW-CC-2017-code-coloring-pref@@@/_work/sample-tags/link">Plain Text&nbsp;</a>
+		</td>
+	  </tr>
+	</table>
+	<p>Paragraph <b>Text</b></p>
+	<form action="../../DW-CC-2017-code-coloring-pref@@@/_work/sample-tags/page.cgi">
+		<input type="submit" value="Press Me">
+	</form>
+</body>
+</html>

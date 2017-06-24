@@ -64,7 +64,7 @@ Dreamweaver extension with GUI screen for setting colors/sizes by theme.
 - They can be installed separately by selectively adding css to custom theme
 - both require a custom Dreamweaver theme -- create or select as follows
 
-1. Download [theme-css](https://github.com/flkeysgeek/theme-less/raw/master/theme-css/theme-css.2017-06-20%20beta.zip) 
+1. Download [theme-less.zip](https://github.com/flkeysgeek/custom-tag-colors/raw/master/theme-less.zip)
   
 2. From DW menu: edit > preferences > Interface (left panel category)
 
