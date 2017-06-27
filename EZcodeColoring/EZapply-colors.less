@@ -1,0 +1,328 @@
+.css-colors() {};
+
+@import "original-themes/Raven II.main.less";				//base theme
+@import "theme-colors/Raven.color-settings.default.less";
+
+//@import "Classic.color-settings.current.less"; 
+//@import "Raven.color-settings.default.less"; 
+
+.multilineSelection(@BG) //HTML wins over JS or CSS
+{
+	/* multiline selection: css, js, html/xml mode unknown
+	<div style="position: relative; z-index: 1;">
+		<div class="CodeMirror-selected" style="position: absolute; ..."></div>
+		<div class="CodeMirror-selected" style="position: absolute; ..."></div>
+	</div>	
+	*/ 
+	.CodeMirror .CodeMirror-lines .CodeMirror-selected {
+		background: @BG;
+	} 
+} 
+
+/* DEFAULT THEME defined in codemirror.css =======================================
+
+.cm-s-default .cm-header {color: blue;}
+.cm-s-default .cm-quote {color: #090;}
+.cm-negative {color: #d44;}
+.cm-positive {color: #292;}
+.cm-header, .cm-strong {font-weight: bold;}
+.cm-em {font-style: italic;}
+.cm-link {text-decoration: underline;}
+.cm-strikethrough {text-decoration: line-through;}
+
+.cm-s-default .cm-keyword {color: #708;}
+.cm-s-default .cm-atom {color: #219;}
+.cm-s-default .cm-number {color: #164;}
+.cm-s-default .cm-def {color: #00f;}
+.cm-s-default .cm-variable,
+.cm-s-default .cm-punctuation,
+.cm-s-default .cm-property,
+.cm-s-default .cm-operator {}
+.cm-s-default .cm-variable-2 {color: #05a;}
+.cm-s-default .cm-variable-3, .cm-s-default .cm-type {color: #085;}
+.cm-s-default .cm-comment {color: #a50;}
+.cm-s-default .cm-string {color: #a11;}
+.cm-s-default .cm-string-2 {color: #f50;}
+.cm-s-default .cm-meta {color: #555;}
+.cm-s-default .cm-qualifier {color: #555;}
+.cm-s-default .cm-builtin {color: #30a;}
+.cm-s-default .cm-bracket {color: #997;}
+.cm-s-default .cm-tag {color: #170;}
+.cm-s-default .cm-attribute {color: #00c;}
+.cm-s-default .cm-hr {color: #999;}
+.cm-s-default .cm-link {color: #00c;}
+
+.cm-s-default .cm-error {color: #f00;}
+.cm-invalidchar {color: #f00;}
+
+.CodeMirror-composing { border-bottom: 2px solid; }
+
+// Default styles for common addons
+
+div.CodeMirror span.CodeMirror-matchingbracket {color: #0f0;}
+div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
+.CodeMirror-matchingtag { background: rgba(255, 150, 0, .3); }
+.CodeMirror-activeline-background {background: #e8f2ff;}
+================================================================================*/
+
+
+
+
+//__________________________________ JavaScript __________________________________\\
+/*
+
+// CC 2015 Classic
+@dw-js-bracket:		#009;
+@dw-js-comment: 	#999;
+@dw-js-text:	 	#000;
+@dw-js-keyword:	 	#909;
+@dw-js-identifier:	#000;
+@dw-js-native:	 	#099;
+@dw-js-number: 	 	#F00;
+@dw-js-operator: 	#00F;
+@dw-js-RegExp: 	 	#060;	
+@dw-js-reserved:	#009;
+@dw-js-string:	 	#00F;
+										//map DW legacy selectors to CodeMirror
+@js-comment		: @dw-js-comment;
+@js-defaultColor: @dw-js-text;
+@js-attribute 	: @dw-js-keyword;
+@js-meta      	: @dw-js-keyword;
+@js-number    	: @dw-js-number;
+@js-atom      	: @dw-js-number;		//true/false +??
+@js-def       	: @dw-js-identifier;	//var def
+@js-variable  	: @dw-js-identifier;	//var ref
+@js-variable-2	: @dw-js-identifier;
+@js-tag			: @dw-js-bracket;
+@js-hr			: @dw-js-bracket;	
+@js-keyword		: @dw-js-reserved;
+@js-header		: @dw-js-reserved;
+@js-link     	: @dw-js-native;
+@js-builtin   	: @dw-js-native;
+@js-operator  	: @dw-js-operator;
+@js-property  	: @dw-js-operator;
+@js-string    	: @dw-js-string;
+@js-obj-regexp  : @dw-js-RegExp;			//string_2
+
+@js-defaultColor: #CCC;	 		//devtools Zero Dark Matrix
+@js-atom      	: #89f5a2;
+@js-attribute   : #4e87bf;
+@js-builtin     : #8da6ce;
+@js-comment     : #676767;
+@js-def         : #49a6d2;
+@js-error       : #f8f8f8;
+@js-header      : #ff6400;
+@js-hr          : #aeaeae;
+@js-keyword     : #8b6ccf;
+@js-link        : #8da6ce;
+@js-meta        : #d8fa3c;
+@js-number      : #89f5a2;
+@js-operator    : #cdb943;
+@js-property    : #cdb943;
+@js-string      : #f07b3c;
+@js-tag         : #49a6d2;
+@js-variable    : #ccc;
+@js-variable-2  : #ccc;
+@js-obj-regexp  : #ff54e8;
+*/
+
+/*
+.JavaScript, .HTML 					//DO NOT ignore on html page
+{									//give priority over above .JavaScript css
+	.multilineSelection(@js_background);
+	
+
+	.cm-js-comment { 
+		color: @js-comment; 
+		font-style: italic; 
+	}
+	.cm-js-error { 
+		color: white; 
+		background: red; 
+	}
+	.cm-js-atom 						{ color: @js-atom }
+	.cm-js-attribute 					{ color: @js-attribute; }
+	.cm-js-builtin 						{ color: @js-builtin; }
+	.cm-js-comment  { font-style: italic; color: @js-comment; }
+	.cm-js-def 							{ color: @js-def; }
+	.cm-js-header 						{ color: @js-header; }
+	.cm-js-hr 							{ color: @js-hr; }
+	.cm-js-keyword  { font-style: italic; color: @js-keyword; }
+	.cm-js-link 						{ color: @js-link; }
+	.cm-js-meta 						{ color: @js-meta; }
+	.cm-js-number 						{ color: @js-number; }
+	.cm-js-operator 					{ color: @js-operator;}
+	.cm-js-property 					{ color: @js-property; }
+	.cm-js-string 						{ color: @js-string; }
+	.cm-js-string-2 					{ color: @js-obj-regexp; }
+	.cm-js-tag 							{ color: @js-tag; }
+	.cm-js-variable 					{ color: @js-variable; }
+	.cm-js-variable-2 					{ color: @js-variable-2; }
+}
+*/
+		
+/*____________________________________ CSS ______________________________________
+
+//cm-variable-4  ??
+							
+//as of 06-24-2017 no string-n and no variable ??
+______________________________________ CSS ______________________________________*/
+
+.css-colors-default() 
+{
+	.css-tag		{color: #494949};	//html tag in selector
+	.css-def		{color: #E57D05};	//directives e.g. @mtea, @import, @media
+	.css-variable 	{color: darkcyan};	//directive arguments
+	.css-keyword	{color: #B400B4};	
+	.css-property	{color: #4A4543};	
+	.css-qualifier	{color: #0007E3};	
+	.css-string		{color: #648C2C};	
+
+	.css-comment	{.cm-comment};
+	.css-important	{color: #F00};
+	.css-highlight	{color: #e9e9e9};
+	.css-error {
+		color: white;
+		background: #ad0b0b;
+		border-radius: 3px;
+	}
+	.css-meta      	{.css-def};		
+	.css-variable-2	{.css-variable};	//less variable
+	.css-variable-3	{.css-variable};	//less variable
+	.css-builtin  	{.css-qualifier}; 	//#id in selector
+	.css-quote    	{.css-qualifier}; 	
+	.css-atom		{.css-keyword};	
+	.css-variable-4	{.css-keyword};		//:pseudo selector 10% darken
+	.css-hr       	{.css-keyword};	
+	.css-number     {.css-keyword};	
+	.css-attribute  {.css-keyword};	
+	.css-operator   {.css-keyword};	
+	.css-plus       {.css-keyword};	
+	.css-minus      {.css-keyword};	
+	.css-string-2  	{.css-string};		
+	.css-link  		{.css-string};		
+	.css-rangeinfo  {.css-string};		
+	.css-bracket  	{.cm-bracket};		
+	
+	.css-at-rule    {.css-variable};	// firefox ??
+	.css-color		{.css-def};			//??
+}
+
+#makeImportant() { 						//see !IMPORTANT note below
+	.css-colors-default();
+
+	//.CSS, .SCSS, .LESS, .HTML 
+	.CSS {
+		.css-colors();
+
+		//.multilineSelection(@css_background);
+		span.cm-m-css
+		{
+			&.cm-def 		{.css-def};
+			&.cm-meta		{.css-meta};
+
+			&.cm-tag		{.css-tag};
+			&.cm-attribute	{.css-attribute};
+			&.cm-builtin	{.css-builtin};
+			&.cm-keyword	{.css-keyword};
+			&.cm-property 	{.css-property};
+			&.cm-qualifier	{.css-qualifier};
+
+			&.cm-variable	{.css-variable};
+			&.cm-variable-2	{.css-variable-2};
+			&.cm-variable-3 {.css-variable-3};
+			&.cm-variable-4 {.css-variable-4};
+
+			&.cm-string		{.css-string};
+			&.cm-string-2	{.css-string-2};
+			&.cm-link		{.css-link};
+			&.cm-rangeinfo 	{.css-rangeinfo};
+
+			&.cm-bracket 	{.css-bracket};
+			&.cm-quote		{.css-quote};
+			&.cm-operator 	{.css-operator};
+
+			&.cm-atom		{.css-atom};
+			&.cm-hr			{.css-hr};
+			&.cm-number		{.css-number};
+			&.cm-plus		{.css-plus};
+			&.cm-minus 		{.css-minus};
+
+			&.cm-comment	{.css-comment};
+			&.cm-important	{.css-important};
+			&.cm-TODO		{.css-highlight};
+			&.cm-error		{.css-error}
+
+
+			&.cm-keyword,					//assume keyword !important BUT...
+			::shadow &.cm-keyword,
+			.webkit-css-keyword,
+			::shadow .webkit-css-keyword 	{.css-important}; 
+			/*
+			&.cm-property,					//...NOT !important if follows property
+			&.cm-property + span, 			//may be other senarios not !important
+			&.cm-attribute,					
+			&.cm-attribute + span {		
+				::shadow & + .cm-keyword, 
+				& + .cm-keyword 			{.css-keyword}; 
+				}								
+			}
+			*/
+		}
+	}
+	/*=========================================================================
+	!IMPORTANT is required because its used by some of the base themes
+	=========================================================================*/
+} & { #makeImportant() !important}
+
+//_____________________________________ HTML _____________________________________\\
+
+//.HTML .multilineSelection(@html_background) !important;
+#makeImportant() 
+{											//see !IMPORTANT note below
+
+	.HTML {
+		.cm-m-xml {
+ 
+			&.cm-comment	{.html-comment}
+			&.cm-keyword	{.html-keyword}
+			&.cm-qualifier	{.html-qualifier}
+			&.cm-builtin	{.html-builtin}
+
+			&.cm-attribute	{.html-attribute}
+			&.cm-property	{.html-property}
+
+			&.cm-atom 		{.html-value}
+			&.cm-string 	{.html-string}
+
+			//as of 06-24-2017 no string-n and no variable found at quick study
+
+			&.cm-number		{.html-number}
+			&.cm-special	{.html-special}
+			&.cm-quote 		{.html-quote}
+			&.cm-bracket	{.html-bracket}
+
+			&.cm-error, 
+			&.cm-tag .error	{.html-error}
+			
+			//add .cm-tag to only highlight tag not attr but highlighted elsewhere
+			&.CodeMirror-matchingtag:not(.cm-matchhighlight) {.html-highlight}
+			&.CodeMirror-matchingtag:not(.cm-matchhighlight):not(.cm-bracket) {				
+				font-weight: 900;	//super bold tagname for matching tag selection
+			}
+		
+			&.cm-tag		{.html-default-tags};	//{color: @html-tag-default}
+		}
+		.html-custom-tag-colors();
+	}
+	/*=========================================================================
+	!IMPORTANT is UNFORTUNATELY required to override color from below css...
+	...defined above -AND- in BracketsDWExtension/.../default-code-coloring.css
+	
+		.CodeMirror-matchingbracket, .CodeMirror-matchingtag {
+			background-color: #1654D9;
+			color: #ffffff !important;
+		}
+	=========================================================================*/
+} & { #makeImportant() !important}
+

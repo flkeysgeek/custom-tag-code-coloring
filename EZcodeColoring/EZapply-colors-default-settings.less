@@ -1,0 +1,179 @@
+/*********************************************************************
+NOT CURRENT -- see EZapply.less
+
+				EZcolorCoding dark theme default colors
+*********************************************************************/
+
+@blueBG: rgba(0, 149, 255, 0.4);	//used alot for dark highlighting
+
+//______________________________ HTML _______________________________\\
+
+.html-default-tags	{color: #99cdff}
+
+.html-custom-tag-colors() { .cm-m-xml.cm-tag-
+{
+	&script		{color: #090}
+    &style		{color: #090}
+	
+	&img		{color: #909}
+	
+	&table		{color: #099}
+	&th, &td, 
+	&tr {
+		color: lighten(#090, 5%)
+	}
+    &form {color: orange; font-weight: bold}
+}}
+
+.html-background	{background: #000}
+.html-highlight		{background: @blueBG}
+.html-error {
+	color: white;
+	background: #C00;
+	border-radius: 3px;
+}
+
+.html-comment	{color: #999}				//shared tag properties 
+.html-keyword	{color: #99cdff}
+.html-qualifier	{color: #99cdff}
+.html-builtin	{color: #99cdff}
+
+.html-attribute	{color: aqua}
+.html-property	{color: #ffc39c}
+ 
+.html-text		{color: #000}
+.html-value		{color: #FE8FA2}			
+.html-number	{color: #FE8FA2}
+.html-string	{color: #ffdc79}
+
+.html-quote		{color: whitesmoke}
+.html-special	{color: #fff}
+.html-bracket	{color: #99cdff}
+
+
+//_______________________________ JS ________________________________\\
+/*
+// CC 2015 Classic
+@dw-js-bracket:		#009;
+@dw-js-comment: 	#999;
+@dw-js-text:	 	#000;
+@dw-js-keyword:	 	#909;
+@dw-js-identifier:	#000;
+@dw-js-native:	 	#099;
+@dw-js-number: 	 	#F00;
+@dw-js-operator: 	#00F;
+@dw-js-RegExp: 	 	#060;	
+@dw-js-reserved:	#009;
+@dw-js-string:	 	#00F;
+*/
+
+//______________________________ CSS ________________________________\\
+
+
+.html-background	{background: #000}
+.html-highlight		{background: @blueBG}
+.html-error {
+	color: white;
+	background: #C00;
+	border-radius: 3px;
+}
+
+.html-comment	{color: #999}				//shared tag properties 
+.html-keyword	{color: #99cdff}
+.html-qualifier	{color: #99cdff}
+.html-builtin	{color: #99cdff}
+
+.html-attribute	{color: aqua}
+.html-property	{color: #ffc39c}
+ 
+.html-text		{color: #000}
+.html-value		{color: #FE8FA2}			
+.html-number	{color: #FE8FA2}
+.html-string	{color: #ffdc79}
+
+.html-quote		{color: whitesmoke}
+.html-special	{color: #fff}
+.html-bracket	{color: #99cdff}
+
+// ???
+@css-defaultBG		: #FFF;
+@css-highlightBG	: #E6E6E6;	//TODO: no highlighing if none ??
+@css-bracketColor	: #06639D; 
+								
+@css-comment	: #999;
+@css-important	: #F00;
+@css-error		: red;
+@css-errorBG	: white;
+
+@css-meta		: #099;				
+@css-def      	: @css-meta;		//directive: @import, @media, @... (dw-import);
+@css-variable 	: #900;				//directive arguments (dw-media)
+@css-variable-2	: @css-variable;	//less variable
+
+@css-at-rule    : @css-variable;	// firefox ??
+@css-color		: @css-def;			//?
+
+@css-selector 	: #F0F;
+@css-selector-matches: #F0F;		//darken 15%
+
+@css-builtin    : @css-selector; 	//#id in selector
+@css-tag		: @css-selector;	//html in selector
+@css-qualifier	: @css-selector;	//class in selector
+@css-pseudo		: @css-qualifier;	//darken 10%;	//:pseudo in selector
+
+@css-property: 	#000;
+
+@css-value	 	: #00F;
+@css-atom      	: @css-value;		//property value
+@css-keyword	: @css-value;		//lighten(@css-value, 5%);
+
+@css-string		: #060;	
+@css-string-2  	: @css-value;		//lighten(@css-value, 25%);
+@css-number    	: @css-value;		//lighten(@css-value, 25%);
+
+@css-operator  	: @css-value;		//darken(@css-value, 15%);
+@css-url       	: @css-string;		//darken(@css-string, 15%);	//??
+
+/*************************************
+@css-defaultColor	: #009;
+@css-string: #c7a749;					//DW Raven
+@css-keyword: #fc8889 !important;
+@css-important: #de0a08 !important;
+
+
+
+body.dark {							// CSS devtools Zero Dark Matrix
+	@css-at-rule   : #b094bb;
+	@css-atom      : #ccc;
+	@css-builtin   : #ff9635;
+	@css-comment   : #676767;
+	@css-def       : #ff9635;
+	@css-important : #f00;
+	@css-meta      : #6aedff;
+	@css-number    : #ccc;
+	@css-operator  : #ccc;
+	@css-property  : #6aedff;
+	@css-qualifier : #ff9635;
+	@css-string    : #e3b959;
+	@css-string-2  : #ccc;
+	@css-tag       : #ff9635;
+	@css-variable  : #ff9635;
+	@css-variable-2: #ff9635;
+	
+	@css-selector	: @css-qualifier;				//firefox ??
+	@css-keyword	: darken(@css-qualifier, 15%);	//not !important
+	@css-pseudo		: lighten(@css-qualifier, 25%);	//variable-2
+	@css-url       	: darken(@css-string, 15%);		// ??
+	
+	@css-selector  	: @css-qualifier;
+	@css-selector-matches: lighten(@css-qualifier, 15%);
+}
+****************************************/
+
+
+
+
+
+
+
+

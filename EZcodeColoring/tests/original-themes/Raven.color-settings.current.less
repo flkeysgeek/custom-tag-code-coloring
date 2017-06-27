@@ -1,0 +1,160 @@
+/*********************************************************************
+				Raven Dark default EZapply theme colors
+*********************************************************************/
+
+@blueBG: rgba(0, 149, 255, 0.4);	//used alot for dark highlighting
+
+//______________________________ HTML _______________________________\\
+
+@defaultBG			: #000;
+@highlightBG 		: @blueBG;
+
+								//currently stylable tag colors
+@html-tag-script	: #090;
+@html-tag-style		: #099;		//purple
+
+@html-tag-a			: #060;			//green
+//@html-tag-a		: lime;
+@html-tag-form		: #F90;
+@html-tag-form-inner: #F90;
+@html-tag-object	: #F90;
+@html-tag-img		: #fff700;		//yellow
+@html-tag-table		: #099;
+@html-tag-table-inner: @html-tag-table;		//darken(@html-tag-table, 10%);
+@html-tag-other		: lime;			//??
+@html-tag-default	: #99cdff;
+								
+@html-comment	: #999;				//shared tag properties 
+
+@html-keyword	: @html-tag-default;
+@html-qualifier	: @html-tag-default;
+@html-builtin	: @html-tag-default;
+
+@html-attribute	: aqua;
+@html-property	: #ffc39c;
+ 
+@html-text		: #000;
+@html-value		: #FE8FA2;			
+@html-number	: #FE8FA2;
+@html-string	: #ffdc79;
+
+@html-special	: #fff;
+@html-bracket	: @html-tag-default;
+
+//_______________________________ JS ________________________________\\
+/*
+// CC 2015 Classic
+@dw-js-bracket:		#009;
+@dw-js-comment: 	#999;
+@dw-js-text:	 	#000;
+@dw-js-keyword:	 	#909;
+@dw-js-identifier:	#000;
+@dw-js-native:	 	#099;
+@dw-js-number: 	 	#F00;
+@dw-js-operator: 	#00F;
+@dw-js-RegExp: 	 	#060;	
+@dw-js-reserved:	#009;
+@dw-js-string:	 	#00F;
+*/
+
+//______________________________ CSS ________________________________\\
+	// ???
+@css-defaultBG		: #FFF;
+@css-highlightBG	: #E6E6E6;	//TODO: no highlighing if none ??
+@css-bracketColor	: #06639D; 
+								
+@css-comment	: #999;
+@css-important:	: #F00;
+@css-error		: red;
+@css-errorBG	: white;
+
+@css-meta		: #099;				
+@css-def      	: @css-meta;		//directive: @import, @media, @... (dw-import);
+@css-variable 	: #900;				//directive arguments (dw-media)
+@css-variable-2	: @css-variable;	//less variable
+
+@css-at-rule    : @css-variable;	// firefox ??
+@css-color		: @css-def;			//?
+
+@css-selector: 	: #F0F;
+@css-selector-matches: #F0F;		//darken 15%
+
+@css-builtin    : @css-selector; 	//#id in selector
+@css-tag		: @css-selector;	//html in selector
+@css-qualifier	: @css-selector;	//class in selector
+@css-pseudo		: @css-qualifier;	//darken 10%;	//:pseudo in selector
+
+@css-property	: #000;
+
+@css-value:	 	: #00F;
+@css-atom      	: @css-value;		//property value
+@css-keyword	: @css-value;		//lighten(@css-value, 5%);
+
+@css-string		: #060;	
+@css-string-2  	: @css-value;		//lighten(@css-value, 25%);
+@css-number    	: @css-value;		//lighten(@css-value, 25%);
+
+@css-operator  	: @css-value;		//darken(@css-value, 15%);
+@css-url       	: @css-string;		//darken(@css-string, 15%);	//??
+
+/*************************************
+@css-defaultColor	: #009;
+@css-string: #c7a749;					//DW Raven
+@css-keyword: #fc8889 !important;
+@css-important: #de0a08 !important;
+
+
+
+body.dark {							// CSS devtools Zero Dark Matrix
+	@css-at-rule   : #b094bb;
+	@css-atom      : #ccc;
+	@css-builtin   : #ff9635;
+	@css-comment   : #676767;
+	@css-def       : #ff9635;
+	@css-important : #f00;
+	@css-meta      : #6aedff;
+	@css-number    : #ccc;
+	@css-operator  : #ccc;
+	@css-property  : #6aedff;
+	@css-qualifier : #ff9635;
+	@css-string    : #e3b959;
+	@css-string-2  : #ccc;
+	@css-tag       : #ff9635;
+	@css-variable  : #ff9635;
+	@css-variable-2: #ff9635;
+	
+	@css-selector	: @css-qualifier;				//firefox ??
+	@css-keyword	: darken(@css-qualifier, 15%);	//not !important
+	@css-pseudo		: lighten(@css-qualifier, 25%);	//variable-2
+	@css-url       	: darken(@css-string, 15%);		// ??
+	
+	@css-selector  	: @css-qualifier;
+	@css-selector-matches: lighten(@css-qualifier, 15%);
+}
+****************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

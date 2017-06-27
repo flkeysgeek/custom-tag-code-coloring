@@ -1,7 +1,7 @@
-_etc/
-_work/
-theme-less/*.css
-_ref links/
+_*/
 -theme-less/*.css
 -theme-less/*.map
-
+node_modules/
+EZcodeColoring/*.css
+EZcodeColoring/*.css.map
+EZcodeColoring/theme-colors/*.css.map

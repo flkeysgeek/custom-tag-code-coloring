@@ -1,0 +1,413 @@
+// Copyright (c) 2014 Adobe Systems Incorporated. All rights reserved.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the "Software"),
+// to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+// and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+
+// Style definitions are from
+// https://github.com/chriskempson/tomorrow-theme/tree/master/Brackets
+
+/*
+ * Brackets Default Theme
+ *
+ * Defines all the variables that one can configure in a theme. This should
+ * contain all variables / mixins for UI styling that we want to be able to
+ * change in a theme.
+ *
+ * Throughout the rest of the LESS files we should _only_ use color
+ * variable names that are on the LHS of the list below. So, if we
+ * need a new color for some UI element, we should add a variable
+ * in this file.
+ */
+
+/*
+  This LESS file contains code coloring configuration and the default colors specified
+  in this files have been defined globaly. Which means if a selector defined below is
+  being used in multiple document modes then all of those tokens will be colored using
+  the color value specified here. In order to control the number of unique colors used,
+  selectors are grouped together to distribute a limited number of colors across all
+  possible tokens in different document modes.
+
+  For example consider the following HTML snippet -
+   ----------------------------------
+    <div>
+        My Sample content
+    </div>
+   ----------------------------------
+
+  And the following CSS snippet -
+   ----------------------------------
+    div {
+        color: #00f;
+    }
+   ----------------------------------
+
+  In CC 2017, in both HTML and CSS doc modes 'div' has been assigned '.cm-tag' selector.
+  This implies that if in this LESS file the selector group containing '.cm-tag' is assigned
+  a color value '#446fbd', the tag name 'div' in HTML and the selector name 'div' in CSS will
+  have the same color. For a more detailed understanding of tokens and selectors being used in
+  different language modes, please go though the follwoing helpx page section -
+
+  (https://helpx.adobe.com/dreamweaver/using/customize-code-coloring.html#Understandingselectors)
+
+  However it's possible to specify different color values for these selectors targetting
+  different language modes. What needs to be done is identify the tokens what's being used
+  in a particular doc mode and target the corresponding selectors by nesting them under the
+  MODE selector.
+
+  For example let's take the snippets and case described above. If we want to override the
+  default color of tag only in HTML mode, we need to append this selector after the "custom" marker
+  in this LESS file.
+
+   ----------------------------------------------
+   .HTML {
+        .cm-tag {
+            color: <custom color here>;
+        }
+   }
+   ----------------------------------------------
+
+   This example can be expanded to include individual selectors or certain selectors grouped together.
+
+   These are the list of popular language modes along with the file extensions which they are associated with. Any of these modes can be used as parent selectors and then the individual token color can be
+   nested inside to make sure that we change only the targetted modes coloring.
+
+    ->Groovy(groovy,gradle)
+    ->Properties(ini,properties)
+    ->CSS(css,css.erb)
+    ->SCSS(scss,scss.erb)
+    ->Stylus(styl)
+    ->JavaScript(js,js.erb,jsm,_js)
+    ->JSON(json)
+    ->VBScript(vbs)
+    ->VB(vb)
+    ->XML(xml,wxs,wxl,wsdl,rss,atom,rdf,xslt,xsl,xul,xsd,xbl,mathml,config,plist,xaml)
+    ->SVG(svg)
+    ->HTML                  (html,htm,shtm,shtml,xhtml,cfm,cfml,cfc,dhtml,xht,tpl,twig,kit,jsp,aspx,ascx,asp,master,cshtml,vbhtml)
+    ->EJS(ejs,dust)
+    ->Embedded Ruby(erb,html.erb,htm.erb)
+    ->JSX(jsx)
+    ->C(c,h,i)
+    ->C++(cc,cp,cpp,c++,cxx,hh,hpp,hxx,h++,ii,ino)
+    ->C#(cs,asax,ashx)
+    ->Java(java)
+    ->Scala(scala,sbt)
+    ->Dart(dart)
+    ->PHP(php,php3,php4,php5,phtm,phtml,ctp)
+    ->CoffeeScript(coffee,cf,cson,_coffee)
+    ->Clojure(clj,cljs,cljx)
+    ->Perl(pl,pm,t)
+    ->Ruby(rb,ru,gemspec,rake)
+    ->Python(py,pyw,wsgi,gyp,gypi)
+    ->SASS(sass)
+    ->Diff(diff,patch)
+    ->Lua(lua)
+    ->YAML(yaml,yml)
+    ->SQL(sql)
+    ->Haxe(hx)
+    ->Bash(sh,command,bash)
+    ->Haskell(hs)
+    ->RDF Turtle(ttl)
+    ->Markdown(md,markdown,mdown,mkdn)
+    ->Markdown (GitHub)()
+    ->LESS(less)
+    ->Handlebars(hbs,handlebars)
+*/
+
+
+/* Define some variables used in multiple places */
+/* 1. Background color for the code view */
+@background: #202020;
+/* 2. Foreground color for the code view (Regular strings or text) */
+@foreground: #e9e9e9;
+
+/* Code Styling */
+
+.CodeMirror, .CodeMirror-scroll {
+    background-color: @background;
+    color: @foreground;
+}
+/* NA */
+.CodeMirror-focused .CodeMirror-activeline-background {
+    background: #b7b7b7;
+}
+/* NA */
+.show-line-padding .CodeMirror-focused .CodeMirror-activeline-background {
+    box-shadow: inset 15px 0 0 0 #000;
+}
+/* NA */
+.CodeMirror-focused .CodeMirror-activeline {
+    .CodeMirror-gutter-elt {
+        background: rgba(0, 0, 0, 0.2);
+        color: #fff;
+    }
+ /* NA */
+    .inline-widget .CodeMirror-gutter-elt {
+        color: #767676;
+    }
+}
+
+/* Color Theme Selectors & Color Values */
+
+.cm-atom, .cm-string, .cm-string-2, .cm-hr {color: #ffdc79;}
+.cm-number, .cm-attribute, .cm-plus, .cm-qualifier {color: #a4eba9;}
+.cm-def, .cm-property {color: #a4eba9;}
+.cm-variable, .cm-variable-2, .cm-variable-3, .cm-operator, .cm-meta, .cm-bracket {color: #e9e9e9;}
+.cm-comment {color: #919191; }
+.cm-error, .cm-minus {color: #fc8889;}
+.cm-header {color: #848877;}
+.cm-link {color: #81d5ef; text-decoration: none;}
+.cm-rangeinfo {color: #bee3ed;}
+.cm-keyword, .cm-builtin, .cm-tag, .cm-quote {color: #99cdff;}
+
+/* HTML Specific Code Colouring */
+.HTML {
+	.cm-keyword, .cm-qualifier, .cm-builtin, .cm-tag, .cm-quote {
+	  color: #99cdff;
+	}
+	.cm-number, .cm-atom {
+	  color: #FE8FA2;
+	}
+	.cm-attribute {
+		color: #e9e9e9;
+	}
+	.cm-string {
+		color: #ffdc79;
+	}
+	.cm-bracket {
+		color: #99cdff;
+	}
+    .cm-property {
+		color: #ffc39c;
+	}
+}
+
+/* PHP Specific Code Colouring */
+.PHP {
+	.cm-meta {
+    	color: #ab80ff;
+	}
+	.cm-keyword, .cm-builtin {
+		color: #a4eba9;
+	}
+	.cm-bracket, .cm-tag, .cm-def, .cm-variable {
+		color: #82C1FF;
+	}
+	.cm-string {
+		color: #ffdc79;
+	}
+	.cm-operator {
+		color: #e9e9e9;
+	}
+	.cm-variable-2 {
+		color: #FF76A4;
+	}
+	.cm-number {
+		color: #FF6F00;
+	}
+}
+
+/* JavaScript Specific Code Colouring */
+.JavaScript {
+  	.cm-variable, .cm-variable-2, .cm-string-2 {
+		color: #e9e9e9;
+	}
+	.cm-def, .cm-property {
+		color: #82C1FF;
+	}
+	.cm-string {
+		color: #ffdc79;
+	}
+	.cm-keyword, .cm-atom {
+		color: #a4eba9;
+	}
+	.cm-number {
+		color: #fc8889;
+	}
+}
+
+/* CSS, SCSS, LESS Specific Code Colouring */
+.CSS, .SCSS, .LESS {
+	.cm-string, .cm-string-2, .cm-link, .cm-rangeinfo {
+		color: #ffdc79;
+	}
+	.cm-tag {
+		color: #a4eba9;
+	}
+    .cm-m-css.cm-keyword, .cm-atom, .cm-hr, .cm-variable, .cm-number, .cm-attribute, .cm-plus, .cm-error, .cm-minus {
+		color: #fc8889 !important;
+	}
+	.cm-variable-4  {
+		color: #ffae5e !important;
+	}
+	.cm-def {
+		color: #B28BFF;
+	}
+	.cm-meta, .cm-property {
+		color: #ffc39c;
+	}
+    .cm-qualifier, .cm-builtin, .cm-quote, .cm-variable-2, .cm-variable-3 {
+		color: #99cdff;
+	}
+	.cm-operator, .cm-bracket {
+		color: #e9e9e9;
+	}
+}
+
+.JSON {
+	.cm-comment {
+		color: @foreground;
+		font-style: normal;
+	}
+}
+
+/* Extra CSS */
+
+.CodeMirror-searching {
+    background-color: #ffe497;
+    color: #222222 !important;
+    &.searching-current-match {
+        background-color: #ffc41d;
+        color: #222222 !important;
+    }
+}
+
+.CodeMirror-cursor {
+    border-left: 1px solid @foreground !important;
+}
+
+.CodeMirror-gutters {
+    background-color: @background;
+    border-right: none;
+}
+/* sequence numbers */
+.CodeMirror-linenumber {
+    color: #919191;
+}
+
+/* drag & Select text ,change focus */
+.CodeMirror .CodeMirror-selected {
+    background: rgba(255,255,255,0.23);
+	transition: all 360ms ease;
+}
+
+/* drag & Select text*/
+.CodeMirror-focused .CodeMirror-selected {
+    background: rgba(0, 149, 255, 0.6);
+	color: #ffffff !important;
+}
+
+/* drag & Select text ,change focus */
+.CodeMirror .CodeMirror-selected-codefolding {
+    background: rgba(199, 199, 199, 0.3);
+}
+
+/* drag & Select text*/
+.CodeMirror-focused .CodeMirror-selected-codefolding {
+    border: solid 1px rgba(157, 163, 180, 0.8) !important;
+    background: rgba(8,31,52,0.38);
+}
+
+.CodeMirror-matchingbracket, .CodeMirror-matchingtag {
+    /* Ensure visibility against gray inline editor background */
+    background-color: #00679B;
+    color: #fff!important;
+}
+
+.CodeMirror-overwrite .CodeMirror-cursor {
+    border-left: none !important;
+    border-bottom: 1px solid #fff;
+}
+
+/*
+    CodeMirror's use of descendant selectors for certain styling causes problems when editors are
+    nested because, for items in the inner editor, the left-hand clause in the selector will now
+    match either the actual containing CodeMirror instance *OR* the outer "host" CodeMirror instance.
+
+    TODO (issue #324): We'll still have problems if editors can be nested more than one level deep,
+    or if any other descendant-selector-driven CM styles can differ between inner & outer editors
+    (potential problem areas include line wrap and coloring theme: basically, anything in codemirror.css
+    that uses a descandant selector where the CSS class name to the left of the space is something
+    other than a vanilla .CodeMirror)
+ */
+.CodeMirror {
+    .CodeMirror {
+        background: transparent;
+    }
+
+    .CodeMirror .CodeMirror-gutters {
+        background: transparent;
+        border-right: none;
+    }
+
+    .CodeMirror .CodeMirror-activeline-background {
+        background: transparent;
+    }
+
+    .CodeMirror .CodeMirror-activeline .CodeMirror-gutter-elt {
+        background: transparent;
+        color: #767676;
+    }
+
+    .CodeMirror-focused .CodeMirror-activeline-background {
+        background: #777;
+    }
+
+    .CodeMirror-focused .CodeMirror-activeline {
+        .CodeMirror-gutter-elt {
+            background: rgba(0, 0, 0, 0.2);
+            color: #fff;
+        }
+    }
+}
+/* dropdown icon - normal */
+.CodeMirror-foldgutter-open:after {
+    color: #666;
+}
+/* dropdown icon - when closed */
+.CodeMirror-foldgutter-folded:after {
+    color: #aaa;
+}
+/* dropdown icon - hover */
+.CodeMirror.over-gutter, .CodeMirror-activeline {
+    .CodeMirror-foldgutter-open:after {
+        color: #888;
+    }
+}
+/* three dotted line box */
+.CodeMirror-foldmarker {
+    border-color: #595b5c;
+    color: #bcbcbc;
+    background-color: #464748;
+    box-shadow:  inset 0px 0px 1px 0px #bcbcbc;
+}
+
+/* Non-editor styling */
+
+.image-view,
+.not-editor {
+    background-color: @background;
+}
+
+.view-pane .image-view {
+    color: @foreground;
+}
+
+/* Custom code colors or overrides should start after this line */
+
+@blueBG: rgba(0, 149, 255, 0.4);	//used alot for dark highlighting
+//////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,23 @@
+{
+  "name": "custom-tag-code-coloring",
+  "version": "1.0.0",
+  "description": "Adobe Dreamweaver CC 2017 lost the ability to define custom tag Code Coloring.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flkeysgeek/custom-tag-code-coloring.git"
+  },
+  "author": "Dave Otto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flkeysgeek/custom-tag-code-coloring/issues"
+  },
+  "homepage": "https://github.com/flkeysgeek/custom-tag-code-coloring#readme",
+  "devDependencies": {
+    "codemirror": "git+https://github.com/codemirror/CodeMirror.git",
+    "less": "^2.7.2"
+  }
+}

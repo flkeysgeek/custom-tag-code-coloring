@@ -1,0 +1,387 @@
+/* DELETED COPYRIGHT & INSTRUCTIONS during development */
+/* Define some variables used in multiple places */
+/* 1. Background color for the code view */
+/* 2. Foreground color for the code view (Regular strings or text) */
+/* Code Styling */
+.CodeMirror,
+.CodeMirror-scroll {
+  background-color: #fdfdfd;
+  color: #3a3a3a;
+}
+/* NA */
+.CodeMirror-focused .CodeMirror-activeline-background {
+  background: #c3c3c3;
+}
+/* NA */
+.show-line-padding .CodeMirror-focused .CodeMirror-activeline-background {
+  box-shadow: inset 15px 0 0 0 #000;
+}
+/* NA */
+.CodeMirror-focused .CodeMirror-activeline {
+  /* NA */
+}
+.CodeMirror-focused .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+.CodeMirror-focused .CodeMirror-activeline .inline-widget .CodeMirror-gutter-elt {
+  color: #626262;
+}
+.cm-atom,
+.cm-string,
+.cm-string-2,
+.cm-hr {
+  color: #0008FF;
+}
+.cm-number,
+.cm-attribute,
+.cm-plus,
+.cm-qualifier {
+  color: #1EA1F5;
+}
+.cm-def,
+.cm-property {
+  color: #7347B9;
+}
+.cm-variable,
+.cm-variable-2,
+.cm-variable-3,
+.cm-operator,
+.cm-meta {
+  color: #3a3a3a;
+}
+.cm-bracket {
+  color: #5B5B5B;
+}
+.cm-comment {
+  color: #969696;
+  font-style: normal;
+}
+.cm-error,
+.cm-minus {
+  color: #E96D3B;
+}
+.cm-header {
+  color: #87908e;
+}
+.cm-link {
+  color: #17939D;
+  text-decoration: none;
+}
+.cm-rangeinfo {
+  color: #17939D;
+}
+.cm-bracket,
+.cm-keyword,
+.cm-builtin,
+.cm-tag,
+.cm-quote {
+  color: #0877BD;
+}
+/* check above against zero dark for completeness not colors
+.cm-atom {
+  color: #89f5a2 !important;
+}
+.cm-comment {
+  color: #676767 !important;
+  font-style: italic;
+}
+.cm-variable {
+  color: #ccc !important;
+}
+.cm-string {
+  color: #f07b3c !important;
+}
+.cm-keyword {
+  color: #8b6ccf !important;
+  font-style: italic;
+}
+.cm-number {
+  color: #89f5a2 !important;
+}
+.cm-operator {
+  color: #cdb943 !important;
+}
+.cm-error {
+  background: #9D1E15 !important;
+  color: #ccc !important;
+}
+.cm-s-default .cm-property {
+  color: #ccc !important;
+}
+*/
+/* HTML Specific Code Colouring */
+.HTML .cm-keyword,
+.HTML .cm-builtin,
+.HTML .cm-tag,
+.HTML .cm-quote,
+.HTML .cm-bracket {
+  color: #06639D;
+}
+.HTML .cm-number {
+  color: #B400B4;
+}
+.HTML .cm-atom {
+  color: #C737C7;
+}
+.HTML .cm-attribute,
+.HTML .cm-qualifier {
+  color: #1EA1F5;
+}
+.HTML .cm-bracket {
+  color: #06639D;
+}
+.HTML .cm-property {
+  color: #729443;
+}
+.HTML .cm-qualifier {
+  color: #0008FF;
+}
+/* PHP Specific Code Colouring */
+.PHP .cm-meta {
+  color: #DE2316;
+}
+.PHP .cm-keyword,
+.PHP .cm-builtin {
+  color: #825CC0;
+}
+.PHP .cm-tag {
+  color: #06639D;
+}
+.PHP .cm-def,
+.PHP .cm-variable {
+  color: #545454;
+}
+.PHP .cm-bracket {
+  color: #006767;
+}
+.PHP .cm-string {
+  color: #0008FF;
+}
+.PHP .cm-operator {
+  color: #212121;
+}
+.PHP .cm-variable-2 {
+  color: #E77E04;
+}
+.PHP .cm-number {
+  color: #039BE5;
+}
+/* JavaScript Specific Code Colouring */
+.JavaScript .cm-def,
+.JavaScript .cm-variable,
+.JavaScript .cm-variable-2,
+.JavaScript .cm-property,
+.JavaScript .cm-string-2 {
+  color: #545454;
+}
+.JavaScript .cm-property {
+  color: #E97F05;
+}
+.JavaScript .cm-string {
+  color: #0000D7;
+}
+.JavaScript .cm-keyword,
+.JavaScript .cm-atom {
+  color: #7950BC;
+}
+.JavaScript .cm-number {
+  color: #B300B3;
+}
+/* CSS, SCSS, LESS Specific Code Colouring */
+.CSS .cm-string,
+.SCSS .cm-string,
+.LESS .cm-string,
+.CSS .cm-string-2,
+.SCSS .cm-string-2,
+.LESS .cm-string-2,
+.CSS .cm-link,
+.SCSS .cm-link,
+.LESS .cm-link,
+.CSS .cm-rangeinfo,
+.SCSS .cm-rangeinfo,
+.LESS .cm-rangeinfo {
+  color: #648C2C;
+}
+.CSS .cm-tag,
+.SCSS .cm-tag,
+.LESS .cm-tag {
+  color: #494949;
+}
+.CSS .cm-keyword,
+.SCSS .cm-keyword,
+.LESS .cm-keyword,
+.CSS .cm-atom,
+.SCSS .cm-atom,
+.LESS .cm-atom,
+.CSS .cm-variable-4,
+.SCSS .cm-variable-4,
+.LESS .cm-variable-4,
+.CSS .cm-hr,
+.SCSS .cm-hr,
+.LESS .cm-hr,
+.CSS .cm-number,
+.SCSS .cm-number,
+.LESS .cm-number,
+.CSS .cm-attribute,
+.SCSS .cm-attribute,
+.LESS .cm-attribute,
+.CSS .cm-plus,
+.SCSS .cm-plus,
+.LESS .cm-plus,
+.CSS .cm-error,
+.SCSS .cm-error,
+.LESS .cm-error,
+.CSS .cm-minus,
+.SCSS .cm-minus,
+.LESS .cm-minus {
+  color: #B400B4;
+}
+.CSS .cm-def,
+.SCSS .cm-def,
+.LESS .cm-def {
+  color: #E57D05;
+}
+.CSS .cm-property,
+.SCSS .cm-property,
+.LESS .cm-property,
+.CSS .cm-operator,
+.SCSS .cm-operator,
+.LESS .cm-operator,
+.CSS .cm-bracket,
+.SCSS .cm-bracket,
+.LESS .cm-bracket {
+  color: #4A4543;
+}
+.CSS .cm-qualifier,
+.SCSS .cm-qualifier,
+.LESS .cm-qualifier,
+.CSS .cm-builtin,
+.SCSS .cm-builtin,
+.LESS .cm-builtin,
+.CSS .cm-quote,
+.SCSS .cm-quote,
+.LESS .cm-quote {
+  color: #0007E3;
+}
+.CSS .cm-variable,
+.SCSS .cm-variable,
+.LESS .cm-variable,
+.CSS .cm-variable-2,
+.SCSS .cm-variable-2,
+.LESS .cm-variable-2,
+.CSS .cm-variable-3,
+.SCSS .cm-variable-3,
+.LESS .cm-variable-3 {
+  color: darkcyan;
+}
+/* Extra CSS */
+.CodeMirror-searching {
+  background-color: #fee994;
+  color: #393939 !important;
+}
+.CodeMirror-searching.searching-current-match {
+  background-color: #f5a644;
+  color: #393939 !important;
+}
+.CodeMirror-cursor {
+  border-left: 1px solid #575757 !important;
+}
+.CodeMirror-gutters {
+  background-color: #fdfdfd;
+  border-right: none;
+}
+/* sequence numbers */
+.CodeMirror-linenumber {
+  color: #a7a7a7;
+}
+/* drag & Select text */
+.CodeMirror .CodeMirror-selected {
+  background: rgba(199, 199, 199, 0.8);
+}
+/* drag & Select text, change focus */
+.CodeMirror-focused .CodeMirror-selected {
+  background: rgba(120, 171, 222, 0.45);
+}
+/* drag & Select text ,change focus */
+.CodeMirror .CodeMirror-selected-codefolding {
+  background: rgba(199, 199, 199, 0.8);
+}
+/* drag & Select text*/
+.CodeMirror-focused .CodeMirror-selected-codefolding {
+  border: solid 1px rgba(37, 56, 112, 0.67) !important;
+  background: rgba(200, 209, 231, 0.5);
+  color: #1e1e1e !important;
+}
+.CodeMirror-overwrite .CodeMirror-cursor {
+  border-left: none !important;
+  border-bottom: 1px solid #626262;
+}
+/*
+CodeMirror's use of descendant selectors for certain styling causes problems when editors are
+nested because, for items in the inner editor, the left-hand clause in the selector will now
+match either the actual containing CodeMirror instance *OR* the outer "host" CodeMirror instance.
+
+TODO (issue #324): We'll still have problems if editors can be nested more than one level deep,
+or if any other descendant-selector-driven CM styles can differ between inner & outer editors
+(potential problem areas include line wrap and coloring theme: basically, anything in codemirror.css
+that uses a descandant selector where the CSS class name to the left of the space is something
+other than a vanilla .CodeMirror)
+*/
+.CodeMirror .CodeMirror {
+  background: transparent;
+}
+.CodeMirror .CodeMirror .CodeMirror-gutters {
+  background: transparent;
+  border-right: none;
+}
+.CodeMirror .CodeMirror .CodeMirror-activeline-background {
+  background: transparent;
+}
+.CodeMirror .CodeMirror .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: transparent;
+  color: #767676;
+}
+.CodeMirror .CodeMirror-focused .CodeMirror-activeline-background {
+  background: #2f2f2f;
+}
+.CodeMirror .CodeMirror-focused .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+/* dropdown icon - normal */
+.CodeMirror-foldgutter-open:after {
+  color: #a7a7a7;
+}
+/* dropdown icon - when closed */
+.CodeMirror-foldgutter-folded:after {
+  color: #727272;
+}
+/* dropdown icon - hover */
+.CodeMirror.over-gutter .CodeMirror-foldgutter-open:after,
+.CodeMirror-activeline .CodeMirror-foldgutter-open:after {
+  color: #8e8e8e;
+}
+/* three dotted line box */
+.CodeMirror-foldmarker {
+  border-color: #83ADBB;
+  color: #1e1e1e;
+  background-color: rgba(6, 159, 248, 0.16);
+  box-shadow: inset 0px 0px 1px 0px #0D3D66;
+}
+/* Non-editor styling */
+.image-view,
+.not-editor {
+  background-color: #fdfdfd;
+}
+.view-pane .image-view {
+  color: #3a3a3a;
+}
+.CodeMirror-matchingbracket,
+.CodeMirror-matchingtag {
+  /* Ensure visibility against gray inline editor background */
+  background-color: #1654D9;
+  color: #ffffff !important;
+}
+
+/*# sourceMappingURL=Classic.main.css.map */
