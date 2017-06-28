@@ -10,9 +10,11 @@ The included xml.js restores that feature as shown below:
 
 ### defining tag code coloring in the coming July release is *REAL* easy
 
-![](http://i.imgur.com/rlOWNjw.png)
+![](http://i.imgur.com/rlOWNjw.png)  
 
-The tag colors are defined by adding css of the following form to a custom theme:
+Generates following...
+
+### The tag colors are defined by adding css of the following form to a custom theme:
 
     span.cm-m-xml.cm-tag.cm-tag-body {
       color: red;
