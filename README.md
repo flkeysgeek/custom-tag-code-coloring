@@ -8,7 +8,7 @@ The included xml.js restores that feature as shown below:
 ![](http://i.imgur.com/UDrZsS6.png) 
 ![](http://i.imgur.com/RJg4zVx.png)
 
-### defining tag code colorings In the coming July release is *REAL* easy
+### defining tag code coloring in the coming July release is *REAL* easy
 
 ![](http://i.imgur.com/LF0h4V9.png)
 
