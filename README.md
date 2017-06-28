@@ -12,7 +12,7 @@ The included xml.js restores that feature as shown below:
 
 ![](http://i.imgur.com/rlOWNjw.png)  
 
-Generates following...
+Generates css of the following form...
 
 ### The tag colors are defined by adding css of the following form to a custom theme:
 
