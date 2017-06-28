@@ -8,11 +8,11 @@ The included xml.js restores that feature as shown below:
 ![](http://i.imgur.com/UDrZsS6.png) 
 ![](http://i.imgur.com/RJg4zVx.png)
 
-### defining tag code coloring in the coming July release is *REAL* easy
+### Defining tag code coloring in the coming July release is *REAL* easy
 
 ![](http://i.imgur.com/rlOWNjw.png)  
 
-Generates css of the following form...
+Auto generates css of the form as described in next section (to be moved to wiki TBD section).
 
 ### The tag colors are defined by adding css of the following form to a custom theme:
 
