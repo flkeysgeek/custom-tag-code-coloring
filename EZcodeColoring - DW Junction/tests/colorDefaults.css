@@ -1,0 +1,26 @@
+.css-keyword {
+  color: orange !important;
+}
+.css-property {
+  color: green !important;
+}
+.CSS .css-keyword {
+  color: red !important;
+}
+.CSS .css-qualifier {
+  color: blue !important;
+}
+.CSS span.cm-m-css.cm-keyword {
+  color: red !important;
+}
+.CSS span.cm-m-css.cm-property {
+  color: green !important;
+}
+.CSS span.cm-m-css.cm-qualifier {
+  color: blue !important;
+}
+/*=========================================================================
+	!IMPORTANT is required because its used by some code I out of my control
+	=========================================================================*/
+
+/*# sourceMappingURL=colorDefaults.css.map */

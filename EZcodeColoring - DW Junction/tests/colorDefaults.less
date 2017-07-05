@@ -1,0 +1,27 @@
+
+.css-colors-default() 
+{
+	.css-keyword	{color: orange};	
+	.css-property	{color: green};	//only here
+}
+.css-colors() 
+{
+	.css-keyword	{color: red};	
+	.css-qualifier	{color: blue};	//only here
+}
+
+#makeImportant() { 						//see !IMPORTANT note below
+	.css-colors-default();
+	.CSS {
+		.css-colors(); 
+		span.cm-m-css {
+			&.cm-keyword	{.css-keyword};
+			&.cm-property 	{.css-property};
+			&.cm-qualifier	{.css-qualifier};
+			
+		}
+	}
+	/*=========================================================================
+	!IMPORTANT is required because its used by some code I out of my control
+	=========================================================================*/
+} & { #makeImportant() !important}

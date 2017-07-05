@@ -1,0 +1,854 @@
+@charset "utf-8";
+/*
+body.designView .designShort {
+ 	height: 10px !important; 
+}
+body.designView .designNarrow {
+ 	width: 10px !important; 
+}
+body.designView .designTiny {
+ 	width: 10px !important; 
+ 	height: 10px !important; 
+}
+body.designView .hidden,
+body.designView .hidden * {
+	z-index: -999 !important;
+	background-color: #EAE1FF !important;
+}
+body.designView .hidden.designShow,
+body.designView .hidden.designShow * {
+ 	display: inherit !important; 
+}
+body.designView label.hidden {
+ 	display: inherit !important; 
+}
+body.designView input.hidden[type=button] {
+ 	display: block !important; 
+	background-image: url(button.png);
+	border: 1px solid black !important;
+	height: 20px;
+}
+
+*/
+body.loading.designView .designFixed * {
+	display: block;
+}
+body.loading.designView .designFixed {
+ 	position: fixed !important; 
+	zwidth: 999px;
+}
+body.loading.designView .designRelative {
+ 	margin-top: 20px;
+	position: relative !important; 
+	display:block !important;
+	xopacity: 1.0 !important;
+	z-index: 9999 !important;
+}
+/*--------------------------------/
+experipental styles              /
+-------------------------------*/
+.noFocus input[type=image], .noFocus img {
+	outline: initial;				/* kill focus border -- at least on chrome */
+}
+input[type=image], img {
+	vertical-align: bottom;
+	outline: initial;				/* kill focus border on chrome */
+}
+pre {
+	margin-bottom: 2px;
+}
+/*_________________________________________________________________________________*/
+/*
+/*	used by EZ.debug() [version: 08-15-2016] for .debugImage and .nosaveImage
+/*_________________________________________________________________________________*/
+.EZborderPadding *, 				/* tags with optional 1px .EZenableBorder */
+.EZborderPadding:not(.EZenabledBorder) {
+	margin: 1px;					/* padding when border NOT shown */				
+}
+.EZborderPadding .EZenabledBorder {
+	margin: 0px;					/* kill padding when border shown */
+}
+.EZenabledBorder {
+	border: 1px red solid;
+}
+
+/*--------------------------------/
+body / document styles           /
+-------------------------------*/
+
+body {
+	margin-left: 5px;
+	margin-top: 0px;
+	margin-right: 5px;
+	margin-bottom: 0px;
+	zbackground-color: #F0F0F0;
+}
+body.dw-simulator * {
+	font-family: Arial;
+	/* background-color: white; */ /* EZ test assist disabled 07-17-2016 ?? */
+	/* font-weight: normal; */
+	/* height: auto; */ 			/* deleted between 01-07-17 and 02-25-17 */
+   font-size: 12px;
+}
+
+thead#dataHead {}
+
+td#argTooltipNoneExists {}
+
+section.formatSettings.suggDiff {}
+
+div#argFormatSettings {}
+
+span.tooltip.delayLots {}
+
+span.sugg {}
+
+/****************************************/
+/* possible general EZcommon canidates */
+/**************************************/
+body.loading .hidden,		/* body has .loading class until removed by setup() so */
+body.loading .invisible,	/* DW shows purple BG for .hidden and .invisible class */
+body.loading .helpBox *,
+body.loading .hidden * {
+	background-color: #D6B0E3;
+}							
+body.loading .helpBox.helpBoxShadow *,
+body.loading .helpBox.shadowMore * {
+	background-color: #D6B0E3 !important;
+}							
+body.loading:not(dw) .helpBox,
+body.loading:not(dw) .helpBox *,
+body.loading:not(dw) .hidden.absolute,
+body.loading:not(dw) .hidden.absolute * {
+	display: none !important;
+	zz-index: -999 !important;
+}
+body.live .hidden,			/* avoids purple flicker in browser before setup() adds */
+body:not(.live) .hidden {	/* .live class and removes .loading DW ignores selector */
+	display: none;			/* with :not because its not recognized pseudo clas     */
+	/* background: #FFFFAA; */
+}
+body:not(.live) .hidden.showHidden {
+	display: initial;		/* EZ.markers() convenience -- currently only adds selectors */
+}
+.unhide {
+	display: initial !important;
+	/* visibility: visible !important; */
+}
+body.live .verydim {
+	opacity: 0.2;
+	transition: opacity 3s;
+}
+.visible {
+	visibility: visible !important;
+}
+body.live .invisible,		/* ditto for .invisible class */
+body:not(.live) .invisible {
+	visibility: hidden;
+}					
+body.live:not(.debugOptions) .EZnosaveImage:not(.EZenabledBorder),
+body.live:not(.debugOptions) .debugMode {
+	display: none;
+}
+input#debugOn + span,
+body.live.debugOptions .debugMode,
+body.live.debugOptions tr.debugMode td {
+	background: #ddfff9;
+	border-radius: 8px;
+	padding: 2px 4px;
+}
+.live .nowrap {
+	white-space:nowrap;
+}
+/*
+.wrap, .wrap *, .nowrap.wrap, .nowrap.wrap * {
+	white-space: normal;
+}
+*/
+body.loading .design_right {
+	position: fixed;
+	left: 50px;
+}
+body.loading .design_marginTop {
+	margin-top: 10px;
+}
+body.loading .designRightLots {
+	left: 1000px !important;
+}
+/*-----------------------------------------------------------------------/
+legacy general EZcommon -- above added 09-10-2016 from EZtest_assistant /
+.hidden {display: none;}	
+.invisible {visibility: hidden;}
+----------------------------------------------------------------------*/
+#simulatorBody, #simulatorBody * {font-size: 100%}
+.monospace { font-family: monospace }
+.gray, .grey { color: #505050 }
+
+/*form {margin:0;display:inline}*/	/* 02-12-2017: implies height/width:100% -- use below: */
+form {								/* keep from covering whole page and stealing clicks */
+	position:absolute;
+	height: 0;
+	width: 0;
+}
+a, .link {color: #c00; text-decoration:none;}
+a.selected {color: red;}
+a:hover, a.underline, .link:hover {text-decoration:underline;
+}
+:not(select).highlight {		/* , select.highlight option:first-of-type */
+	background-color:#FFFFBC;
+	padding-left: 6px;
+}
+select[size] option.highlight {
+	/* padding-left: 22px; */
+	text-align: right;
+	border-radius: 8px;
+	border: 1px solid #e7e2e2;
+	padding-right: 3px;
+}
+select option .listOptionsSeparator {
+	padding-top: 5px;
+	border-top: 1px solid grey;
+	margin-top: 5px;
+}
+select.highlight.recent option:nth-child(2) {
+	padding: 2px 3px;
+	border-top: 1px solid grey;
+	/* margin-top: 5px; */
+}
+select.highlight.recent option:not(:checked):nth-child(2) {
+	padding-top: 6px;
+}
+.dim,							/* lost as-of 03-2017 */
+.dimmer {
+	opacity: 0.60;
+	filter:Alpha(opacity=60);
+}
+.dimMore, .TODO {
+	opacity: 0.40 !important;
+	filter:Alpha(opacity=40) !important;
+}
+.dimLots {
+	opacity: 0.20 !important;
+	filter: Alpha(opacity=30) !important;
+}
+.undim {
+	opacity: 1.0 !important;
+	filter:Alpha(opacity=100) !important;
+}
+.arrow {font-size:20px;line-height:20px}
+.disabled {color: #AAA;}
+.bold {font-weight: bold}
+.italic {font-style: italic}
+.lineThru, .strike {text-decoration:line-through}
+.pointer {cursor: pointer}
+#bodyTop .normal {	/* may cancels header -or- below -- fix dont comment out */
+	font-weight: normal;
+} 
+
+pre {margin-top: 1px;}
+.pre, .pre * {
+	white-space: pre !important;
+	font-family: monospace !important;
+}
+line {
+	display: inline-block;
+	width: 100%;
+	white-space: pre !important;
+	font-family: monospace !important;
+}
+pre line:hover,
+.pre line:hover {
+  font-weight: bold;
+  color: #c00;
+  background-color: bisque;
+}
+.nowrap { white-space: nowrap }
+.hideoverflow {overflow: hidden}
+.pointer {cursor:pointer}
+
+.floatLeft {
+	float: left;
+	/* text-align: center; */	/* causes lots of havoc for EZ Test Assistant */
+}
+.floatRight { float: right}
+.floatClear { clear: both}
+span.floatClear:not(.hidden) { display: block }
+
+.alignLeft, 
+.alignLeft.floatLeft {text-align: left;}
+.alignRight {text-align: right;}
+.alignCenter {text-align: center;}
+
+#bodyTop .valignMiddle {vertical-align:middle}
+
+body .absolute {position: absolute;/* right: 81px; *//* top: -22px; *//* z-index: 99999; */}
+.relative 	   { position: relative }
+
+.block {display:block}
+blockquote {
+	margin: 0 0 0 20px;
+}
+label + blockquote, input[type=checkbox] + blockquote {
+	margin-top: -3px;
+}
+	
+.marginAll 		  { margin: 5px }
+
+.marginTop 		  { margin-top: 5px }
+.marginRight 	  { margin-right: 5px }
+.marginBottom 	  {margin-bottom: 5px;}
+.marginLeft 	  {margin-left: 5px;}
+.marginBoth		  {margin-left: 5px;margin-right: 5px;}
+.marginBothMore	  {margin-left: 10px;margin-right: 10px;}
+
+.marginTopTiny 	  { margin-top: 1px }
+.marginTopLess 	  { margin-top: 3px }
+.marginTopMore 	  {margin-top: 10px;}
+.marginTopLots 	  { margin-top: 25px }
+
+.marginRightTiny  { margin-right: 1px }
+.marginRightLess  { margin-right: 3px }
+.marginRightMore  { margin-right: 10px }
+.marginRightLots  { margin-right: 25px }
+
+.marginBottomTiny { margin-bottom: 1px }
+.marginBottomLess {margin-bottom: 3px;}
+.marginBottomMore { margin-bottom: 10px }
+.marginBottomLots { margin-bottom: 25px }
+
+.marginLeftTiny	  { margin-left: 1px}
+.marginLeftLess	  { margin-left: 3px}
+.marginLeftMore	  { margin-left: 10px}
+.marginLeftLots	  { margin-left: 25px }
+
+span.marginAll,
+span.marginTop,
+span.marginTopTiny,
+span.marginTopLess,
+span.marginTopMore,
+span.marginTopLots,
+span.marginRight,
+span.marginRightTiny,
+span.marginRightLess,
+span.marginRightMore,
+span.marginRightLots,
+span.marginBottom,
+span.marginBottomTiny,
+span.marginBottomLess,
+span.marginBottomMore,
+span.marginBottomLots,
+span.marginLeft,
+span.marginLeftTiny,
+span.marginLeftLess,
+span.marginLeftMore,
+span.marginLeftLots {
+	display: inline-block;
+}
+
+.paddingAll	   {padding: 5px;}
+.paddingTop	   {padding-top: 5px}
+.paddingRight  {padding-right: 5px}
+.paddingBottom {padding-bottom: 5px}
+.paddingLeft   {padding-left: 5px}
+
+.paddingAllLess	   {padding: 3px;}
+.paddingTopLess	   {padding-top: 3px}
+.paddingRightLess  {padding-right: 3px}
+.paddingBottomLess {padding-bottom: 3px}
+.paddingLeftLess   {padding-left: 3px}
+
+.paddingAllMore	   {padding: 10px;}
+.paddingTopMore	   {padding-top: 10px}
+.paddingRightMore  {padding-right: 10px}
+.paddingBottomMore {padding-bottom: 10px}
+.paddingLeftMore   {padding-left: 10px}
+
+.paddingAllLots	   {padding: 25px;}
+.paddingTopLots	   {padding-top: 25px}
+.paddingRightLots  {padding-right: 25px}
+.paddingBottomLots {padding-bottom: 25px}
+.paddingLeftLots   {padding-left: 25px}
+
+.fullWidth  {width: 100%}
+.fullHeight {height:100%}
+
+.heading {
+	font-weight: bold;
+	font-size: 12px;
+}
+.header {
+	font-family: Verdana, Geneva, sans-serif;
+	/* font-size: 15px; */
+	color: #006;
+}
+.subHeader, subHeader *,
+.sub-header, sub-header * {
+	font-size: 14px;	/* looks good in simulator -- maybe smaller in DW */
+	font-weight: bold;
+	color: #0505a2;		/* was #006 before 01-24-17 */
+}
+body.simulatorBody .header {
+	font-size: 18px;
+}
+
+.notable {
+	color: #C00;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.note, .red {color:#C00;}
+
+.warn {color:#3232FE;}
+
+.errorNote, .redBG {
+	color: #FFF;
+	background-color: #F00;
+	font-weight: bold;
+}
+
+.simulatorBody #messages {
+	max-height:122px;
+	overflow: scroll;
+}
+
+.round, .roundCorners {
+    border-radius: 10px;
+}
+.roundLess {
+	border-radius: 6px;
+	/* padding: 1px 3px 2px; */
+}
+
+
+/* EZ shared css */
+
+.spanBG span[id] {
+	background-color: tan;
+}
+.yellowBG input {
+	background-color: #FF9;
+}
+.radioBG {
+	background-color: #EFEFEF;
+}
+
+/* reference: https://css-tricks.com/examples/hrs */
+hr {
+	border: 0;
+	height: 0;
+	box-shadow: 0 0 0 1px #DADADA;
+	margin: 6px 1px 12px;/* left/right match last box-shadow value */
+}
+hr.short {
+	margin: 1px 1px 3px;
+}
+
+.borderSimple, .border-simple, .border-blue {
+	border: 2px solid tan;
+	border-radius: 4px;
+}
+.borderSimple hr, .border-simple hr {
+	box-shadow: 0 0 0 1px tan;
+	/* margin: 6px -5px 10px; *//* left/right match border-simple padding */
+}
+borderTop, .top-border {
+	border-top:solid thin;
+}
+.borderFull, .full-border {
+	border-top: thin inset;
+	border-right: thin inset;
+	border-bottom: thin inset;
+	border-left: thin inset;
+}
+.borderInset, .full-border-inset {
+	border-top: thin outset #CCC;
+	border-right: thin inset #CCC;
+	border-bottom: thin inset #CCC;
+	border-left: thin outset #CCC;
+}
+.shadowBlue,
+.shadowGreen,
+.shadowPink,
+.shadowTan {
+	box-shadow: 2px 2px 2px grey;
+	border: 1px solid;
+	border-radius: 8px;
+	padding: 3px;
+}
+.shadowBlue {
+	border-color: #8383C4;
+	background-color: aliceblue;
+}
+.shadowGreen {
+	border-color: #5BD85B;
+	background-color: #D5FBD5;
+}
+.shadowPink {
+	border-color: #ceb7bb;
+	background-color: #FFD9DF;
+}
+.shadowTan {
+	border-color: #D9C59E;
+	background-color: wheat;
+}
+.helpBox {
+			/* hack so DW CC2005 shows layer icon -- not great */
+	background: #FCEBCB;	/* light tan */
+	border: 2px solid navy;
+	padding: 4px;
+	border-radius: 10px;
+	z-index: 99;
+	min-width: 200px;
+	min-height: 50px;
+	text-align: left;
+	/* height: 100%; */
+	/* max-width: 600px; */
+}
+
+div#okArgsIgnored {}
+.helpBox .helpBox {
+	border: 2px solid rgba(14, 14, 133, 0.4);
+	background: #ddfff9;
+}
+.helpBoxShadow .helpBox {
+	box-shadow: 2px 2px 10px 6px #eeeeee;
+	border-radius: 8px;
+	padding: 3px;
+}
+.helpBoxShadow .helpBox.shadowMore {
+	box-shadow: 0px -1px 22px 15px #f0f0f0;
+}
+.helpBox h2 {
+	margin: 0 5px 5px 0;
+	color: navy;
+	white-space: nowrap;
+}
+.helpBox img[src*="close.png"] {
+	cursor: pointer;
+	border: none;
+	float: right;
+}
+.textBox, .textbox {
+	padding: 5px;
+	border: 2px solid #C00;
+	background: #FEFEC8;/* light yellow */
+	white-space:pre;
+	overflow:auto;
+	font-size: 11px;
+	border-radius: 4px;
+}
+span.textBox, span.textbox {
+	display:block; 			/* overrides .hidden */
+}
+.helpBox fieldset {
+	border-color: #EEE;
+}
+.helpBox.above {
+	bottom: 18px;
+}
+.helpBox.aboveMore {
+	bottom: 36px;
+}
+img.popup {
+	vertical-align: middle;
+	cursor: pointer;
+}
+input.popup[type=image] {
+ 	border: none;
+ 	border: 0;
+}
+
+.white {
+	font-weight: bold;
+	color: #FFF;
+}
+.editpage td {
+	color:#7A6326;
+}
+
+.small, .small * {font-size: 80%}
+body.simulatorBody .smaller, .smaller * {font-size: 90%;}
+.large, .large * {font-size: 160%}
+.larger, .larger *  {font-size: 115%;}	/* EZtest_assistant changed from 17px */
+
+input[type*="text"] {
+  /* border: 1px solid transparent; */
+  margin: 0px 1px 1px -1px;
+  margin: 0px 0 0px -1px;
+}
+input[type*="text"]:focus {
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0px 0 8px rgba(102, 175, 233, 0.6);
+  /* padding: 1px 1px; */
+  border-radius: 3px;
+  border: 1px solid #9cd3ff;
+  margin: 0px 2px 0px 1px;
+}
+.centerInput,
+.centerInput input {
+	text-align: center;
+	/* margin: 0 auto 1px; */
+}
+.inputRight.input,
+.inputRight input {
+	text-align: right;
+	margin: 0 auto;
+}
+
+body.simulatorBody textarea {font-size: 12px}
+
+input.narrowVery {width:20px}
+input[size="3"] {width:20px}
+input[size="5"] {width:30px}
+input.narrowVery, input[size="3"], input[size="5"] {
+	text-align: center;
+}
+
+/* EZ floater css */
+
+input[type=checkbox] {
+	margin-right: -2px;
+	margin-top: 3px;
+	vertical-align: top;
+	vertical-align: middle;	/* EZ test assist -- fieldset legend */
+}
+select[size] {
+	border-radius: 3px;
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+/*--------------------------------------------------------------------------------
+some input tag styles should only apply to DW extensions not just .bodySimimulator
+
+for this scenario, currently using:  body:not(.live)
+--------------------------------------------------------------------------------*/
+body:not(.live) input[type=checkbox] {height: 12px;} 
+
+												/* deprecatwd: indent .childContainer checkbox */
+												/*  		   and dim when parent not checked */
+												/* parent cannot have label child requires...  */
+												/* ...label.childContainer -- better ver below */
+input[type=checkbox] + label.childContainer {color: #AAA;} 
+input[type=checkbox]:checked + label.childContainer {color: inherit;} 
+.childContainer {margin-left: 14px; display:block;}
+.childContainer input {height: 10px;}
+										
+input:not(:checked) + .dependent, 			/* .dependent dimmed when parent not checked */
+input:not(:checked) + span + .dependent{	/* parent input tag cannot have label        */
+	opacity: 0.6;
+	color: #8d8d8d;
+} 
+input:not(:checked) + .dependent textarea {
+	opacity: 0.4;
+	background: #b4b4b4;
+	border-radius: 8px;
+}	 
+											/* disabled 03-03-2017: added color & :not(:checked)
+input + label.dependent {opacity:0.4} 
+body input:checked + .dependent, 
+input:checked + .indent + .dependent {
+	opacity: inherit;
+} 												*/
+
+.dependent input {height: 10px !important}
+label.dependent {margin-left: 16px; display:block}
+.dependent {margin-left: 20px;/* display:block; */}
+
+fieldset {
+	/* margin: -5px 2px; */						/* think for DW dom -- nogo on EZtestAssistant */
+	/* margin: -5px 0 -3px 2px; */				/* EZtrace.html -- but nogo on EZtestAssistant */
+	padding: 2px;								/* less than default */
+	text-align:left;
+	border-radius: 4px;
+}
+fieldset legend {								/* idea from EZtestAssistant */
+  margin-left: 4px;
+  margin-right: 2px;
+}
+fieldset p {margin: 0; padding:0}
+fieldset div.margin-zero {margin-top:0}
+body:not(.simulatorBody) div {/*margin-top: -15px; test assist*/}	/* DW quirk? */
+body:not(.simulatorBody) fieldset table {/*margin-top: -15px;*/}
+
+label { white-space: nowrap }
+
+.EZcheckbox3way {
+	position: relative;
+}
+.EZcheckbox3way.some::after {
+	position: absolute;
+	top: -5px;
+	right: 1px;
+	content: "☑";
+	opacity: 0.6;
+	z-index:2;
+	font-size: 16px;
+}
+
+/*************************/
+/*bookmark -----FLOATERS*/
+/***********************/
+
+body.floater input {font-size: 8px}
+body.simulatorBody input {font-size: 12px;}
+  
+body.floater input[type=text] {padding:0;margin-left:-2px;margin-right:-2px}
+body.floater input[type=image] {margin-left: -2px;margin-right: -4px}
+
+body.floater input[type=radio] {margin-right: -6px}
+body:not(.live).simulatorBody input[type=radio] {
+	margin-right: -2px;
+	margin-bottom: 6px;
+}
+input[type=radio] {
+	margin-right: -1px;		/* EZ test assitant -2 ==> -1 */
+}
+body.floater input[type=checkbox] {margin-right: -4px}
+body.simulatorBody input[type=checkbox] {margin-right: -1px;}
+
+body.floater select {font-size: 9px;}
+body.simulatorBody select * {font-size: 13px;}
+
+body.floater input.larger {font-size:10px}
+body.floater input.large {font-size:12px}
+body.floater span.larger {font-size:12px}
+
+body.floater select.smaller{font-size:8px;line-height:8px}
+body.floater input.smaller {font-size:6px}
+body.floater div.smaller {width:75%}
+
+
+body.floater textarea { font-size: 9px}
+
+/**********************************************************/
+/*bookmark -----collaspe/expand EZdisplayObject() levels */
+/********************************************************/
+/* http://stackoverflow.com/questions/3331353/transitions-on-the-display-property */
+.EZdisplayObject div {
+    transition: opacity 1s ease-out;
+    zzzheight: auto;
+	zzzoverflow: hidden;
+}
+.collapsed {
+	background: url(../../icons/arrowRight.png) no-repeat;
+	background-position-x: 9px;
+	background-position-y: 3px;
+	/* 	width: 1.5em; */
+}
+.expanded {
+	background: url(../../icons/arrowDown.png) no-repeat;
+	background-position-x: 9px;
+	background-position-y: 3px;
+}
+.expanded.all, .collapsed.obj {
+	background-position-x: -2px;
+}
+.expanded.obj, .collapsed.obj {	/* lineup object arrows with array indent */
+	margin-left: -8px;
+	padding-right: 8px;
+}
+.expanded:hover, .collapsed:hover,
+.expanded + span:hover, .collapsed + span:hover {
+	cursor: pointer;
+}
+span.expanded {		
+    opacity: 1;
+}
+span.collapsing + div {		/* used during collase transition */
+	opacity: 0; 
+}
+span.collapsed + div {		/* use height to hide to support transitions */
+    height: 0;
+    opacity: 0; 
+    overflow: hidden;
+}
+
+/***********************************/
+/*bookmark -----checklist/sortable*/
+/*********************************/
+.checklist .sortable-ghost {	/* drag item TODO: default css in EZsortable */
+	opacity: 0.6;
+	padding: 4px;
+	border: 1px dashed #C00;
+	color: #FEFEC8;
+	background: #FEFEC8; 
+	width: 100%;
+	zzzheight: 14px;
+}
+.sortable-ghost .drag-handle {	/* hide drag handle in sortable-ghost */
+	color: #FEFEC8;				/* TODO: do with js in EZsortable     */
+}
+.sortable-ghost i,				/* hide checkbox, drag-handle & close X  */
+.sortable-ghost input,			/* in sortable-ghost                     */
+.sortable-ghost .drag-handle,
+.not-dragable .drag-handle {	/* and drag-handle in non-dragable items */
+	visibility:hidden;
+}
+.checklist .drag-handle {
+	color: #8FB5FC;
+	font-size: 14px;
+	line-height: 14px;
+	display: inline-block;
+	cursor: move;
+	padding-bottom: 2px;
+	/* cursor: -webkit-grabbing; */
+}
+
+/* hover BG for LI (except drag ghost -- not working) */
+.checklist .notDragging li.dragable:not(.sortable-ghost):hover {background-color: #ff9;}
+
+/* highlight (yellow BG) selected li (except drag-handle) */
+.checklist li.selected span { background-color: yellow; }
+.checklist li.selected span.drag-handle { background-color: inherit; }
+
+.checklist ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	zzzposition: absolute;
+	height: 12px;
+}
+.checklist li {
+	position: relative;
+	padding: 0px 20px 0px 4px;
+	height: 16px;
+}
+.checklist li input[type=checkbox] { height: 10px; margin: 0 }
+
+/* display X when hover on draggable item in function list */
+.checklist li I {
+	-webkit-transition: opacity .2s;
+	transition: opacity .2s;
+	opacity: 0;
+	display: block;
+	cursor: pointer;
+	color: #c00;
+	top: -1px;
+	right: 4px;
+	position: absolute;
+	font-style: normal;
+	font-size: 12px;
+	line-height: 12px;
+}
+.checklist .notDragging li.dragable:hover I {
+	opacity: 1;
+}
+
+
+/* EZdebugger -- from revize.css -- possibly shared by commands+ */
+#debugTester, #debugTester td, #debugTester div, #debugTester select, #debugTester input, #debugTester textarea {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.simulator, .debug {display: none}
+.simulatorBody .simulator, 
+.simulatorBody .debug, 
+.simulatorBody #stacktrace, #stacktrace .note {
+	font-size: 12px;
+	font-family:monospace;
+}
+.simulatorBody #stacktrace .note {
+	font-weight: bold;
+}
+.debugBody .debug {display: block}

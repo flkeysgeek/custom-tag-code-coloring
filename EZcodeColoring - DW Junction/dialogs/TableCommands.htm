@@ -1,0 +1,114 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- MENU-LOCATION=NONE -->
+<html xmlns:MMString="http://www.macromedia.com/schemes/data/string/">
+<head>
+<!-- Copyright 1999, 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title>Table</title>
+<script src="TableCommands.js"></script>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use. -->
+<script language="javascript" src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<!-- End removal area. -->
+<link href="../fields.css" rel="stylesheet" type="text/css">
+<link href="../Styles/TableCommands.css" rel="stylesheet" type="text/css" />
+</head>
+<body topmargin="0" onLoad="initializeUI()">
+<form name="theForm">
+  <table border="0" cellpadding="0" cellspacing="4">
+    <tr>
+      <td colspan="5" align="right" nowrap><table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="center" nowrap>Table size&nbsp;</td>
+          <td width="100%" valign="center"><hr size="2"></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>Rows:</td>
+      <td width="1%"><input name="Rows" type="text" class="smallNumOrChar" value="3" size="8"></td>
+      <td align="right" nowrap>Columns:</td>
+      <td><input name="Cols" type="text" class="smallNumOrChar" value="6" size="8"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>Table width:</td>
+      <td><input name="Width" type="text" class="smallNumOrChar" value="100" size="8"></td>
+      <td colspan="2" align="left" nowrap><select name="Units" class="unitList">
+        <option value="percent" selected> percent</option>
+        <option value="pixels"> pixels</option>
+      </select></td>
+      <td align="left" nowrap>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>Border thickness:</td>
+      <td><input name="Border" type="text" class="smallNumOrChar" value="3" size="8"></td>
+      <td colspan="2" align="left" nowrap>pixels</td>
+      <td align="left" nowrap>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>Cell padding:</td>
+      <td><input name="Cellpad" type="text" class="smallNumOrChar" value="" size="8"></td>
+      <td align="left"><img src="../Shared/MM/Images/tableCellPadding.png" width="17" height="17"></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right" nowrap>Cell spacing:</td>
+      <td><input name="Cellspace" type="text" class="smallNumOrChar" value="" size="8"></td>
+      <td align="left"><img src="../Shared/MM/Images/tableCellSpacing.png" width="17" height="17"></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="5" align="right" valign="baseline" nowrap><table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="center" nowrap>Header&nbsp;</td>
+          <td width="100%" valign="center"><hr size="2"></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="center" nowrap><table cellspacing="1" border="0">
+        <tr>
+          <td width="70" height="65" align="center" nowrap bgcolor="#116BD9" name="none"><font color="#FFFFFF" id="nonefont">
+            <input type="image" onClick="TBL_HDR.update('none');focus()" src="../Shared/MM/Images/tableHeaderNone.png" alt="No header" name="tableImage12" width="37" height="33" align="absmiddle">
+            <br>
+            None</font></td>
+          <td width="70" height="65" align="center" nowrap bgcolor="#DCDCDC" name="col"><font color="#555555" id="colfont">
+            <input type="image" onClick="TBL_HDR.update('col');focus()" src="../Shared/MM/Images/tableHeaderColumn.png" alt="Left column header" name="tableImage22" width="37" height="33" align="absmiddle">
+            <br>
+            Left </font></td>
+          <td width="70" height="65" align="center" nowrap bgcolor="#DCDCDC" name="row"><font color="#555555" id="rowfont">
+            <input type="image" onClick="TBL_HDR.update('row');focus()" src="../Shared/MM/Images/tableHeaderRow.png" alt="Top row header" name="tableImage32" width="37" height="33" align="absmiddle">
+            <br>
+            Top </font></td>
+          <td width="70" height="65" align="center" nowrap bgcolor="#DCDCDC" name="both"><font color="#555555" id="bothfont">
+            <input type="image" onClick="TBL_HDR.update('both');focus()" src="../Shared/MM/Images/tableHeaderBoth.png" alt="Left and top headers" name="tableImage42" width="37" height="33" align="absmiddle">
+            <br>
+            Both </font></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="right" nowrap><table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td valign="center" nowrap>Accessibility&nbsp;</td>
+          <td width="100%" valign="center"><hr size="2"></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td colspan="5" align="right" nowrap><table width="100%" border="0" cellpadding="0" cellspacing="4">
+        <tr>
+          <td align="right" nowrap>Caption:</td>
+          <td><input name="Caption" type="text" id="Caption" value="" class="largeTField"></td>
+        </tr>
+        <tr>
+          <td align="right" valign="top" nowrap>Summary:</td>
+          <td><textarea name="Summary" wrap="virtual" class="cls_TableCommands_textarea_Summary" id="Summary"></textarea></td>
+        </tr>
+      </table></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

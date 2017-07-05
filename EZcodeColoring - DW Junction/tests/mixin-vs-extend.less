@@ -1,0 +1,62 @@
+/*
+
+.my-inline-block() {
+  display: inline-block;
+  font-size: 0;
+}
+.thing1 {
+  .my-inline-block;
+}
+.thing2 {
+  .my-inline-block;
+}
+*/
+
+.ex-inline-block {
+  display: inline-block;
+  font-size: 0;
+}
+.thing1 {
+  &:extend(.ex-inline-block);
+}
+.thing2 {
+  &:extend(.ex-inline-block);
+}
+/*
+
+
+
+
+// declare detached ruleset
+@detached-ruleset: { background: red; };
+
+// use detached ruleset
+.top {
+    @detached-ruleset(); 
+}
+.tags {
+	form {color:aqua};
+}
+
+
+@rs1: {
+	color: bisque;
+	background: red;
+};
+.CSS .cm-m-css-1 {
+
+	@rs1();
+}
+
+.my-extend {
+  display: inline-block;
+  font-size: 0;
+}
+
+@rs: {.my-extend};
+
+.CSS .cm-m-css {
+
+	@rs();
+}
+*/

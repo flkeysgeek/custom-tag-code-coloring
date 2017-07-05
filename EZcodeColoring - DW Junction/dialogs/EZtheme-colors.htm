@@ -1,0 +1,161 @@
+<!DOCTYPE HTML SYSTEM "-//Macromedia//DWExtension layout-engine 5.0//dialog">
+<!-- 
+	<menuitem name="Theme Colors..." file="EZcodeColoring/EZtheme-setup.htm" id="DWMenu_EZ_Code_Coloring" />
+	<menuitem name="_Preferences..." key="Ctrl+U" command="dw.showPreferencesDialog()" enabled="true" platform="win" id="DWMenu_Edit_Preferences" />-->
+<!-- MENU-LOCATION=NONE -->
+<html xmlns:MMString="http://www.macromedia.com/schemes/data/string/">
+<head>
+<!-- Copyright 1999, 2000, 2001, 2002, 2003, 2004, 2005 Macromedia, Inc. All rights reserved. -->
+<title>EZtheme colors</title>
+<script type="text/javascript" src="EZ-lib/EZutils.js"></script>	
+<script src="EZtheme-colors.js"></script>
+<!-- Remove the following SCRIPT tag if you are modifying this file for your own use.
+<script language="javascript" src="../Shared/MM/Scripts/CMN/displayHelp.js"></script>
+<link href="../fields.css" rel="stylesheet" type="text/css">
+<link href="../Styles/TableCommands.css" rel="stylesheet" type="text/css" />
+End removal area. -->
+<link href="EZ-lib/EZcommon.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+p, ul {
+	margin-top: 6px;
+	margin-bottom: 0px;
+}
+.notable {
+	color: #C00;
+	font-weight: bold;
+	font-style: italic;
+}
+.floatLeft {
+	float: left;
+}
+.floatRight {
+	float: right
+}
+.floatClear {
+	clear: both
+}
+//form:not(.noThemeFound),	/* ?? */
+.noThemeFound {
+	display: none;
+}
+</style>
+</head>
+<body topmargin="0" onLoad="setup()">
+<form name="theForm" style="width: 800px">
+    <table class="floatLeft" width="250" border="0" cellpadding="0" cellspacing="4">
+      <tr>
+        <td colspan="3" align="right" nowrap>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td valign="center" nowrap>config</td>
+              <td width="100%" valign="center"><hr size="2"></td>
+            </tr>
+          </table>
+		</td>
+      </tr>
+      <tr>
+        <td colspan="3" align="left" nowrap>
+		  <div class="noThemeFound notable">
+		  	No user themes found -- you must first create new theme</div>
+		</td>
+      </tr>
+      <tr>
+        <td align="right" nowrap>theme name:</td>
+        <td>
+			<select name="themeName" id="themeName">
+            <option value="-">- not allowed- </option>
+            <option value="CC-2015-classic">CC 2015 classic</option>		
+            <option value="CC-2017-classic">CC 2015 classic</option>		
+            </select>
+		</td>
+        <td>
+		  <input type="button" class="needEZtheme" name="installEZtheme" id="installEZtheme" value="install code coloring">
+          <input type="button" class="haveEZtheme"  name="removeEZtheme" id="removeEZtheme" value="remove code coloring">
+		</td>
+      </tr>
+      <tr>
+        <td align="right" nowrap>initial theme colors:</td>
+        <td>
+		  <select name="themeColors" id="themeColors">
+            <option value="theme default">default</option>
+            <option value="-">---------------------------</option>
+            <option value="CC-2015-classic">CC 2015 classic</option>		
+          </select>
+		</td>
+        <td> tagName colors:
+			<select name="tagColors" id="tagColors">
+            <option value="suggested">suggested</option>
+            <option value="-">---------------------------</option>
+            <option value="CC-2015-classic">CC 2015 classic</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="left" nowrap>
+			<div class="xmlNo notable">xml.js required for tag colors by tagName</div>
+			<div class="xmlYes">xml.js installed to support for colors by tagName</div>
+		</td>
+        <td align="center" nowrap>
+			<input class="xmlNo" type="button" name="installEZxml" id="installEZxml" value="install EZ xml.js">
+			<br>
+			<input class="xmlYes" type="button" name="removeEZxml" id="removeEZxml" value="remove EZ xml.js">
+	    </td>
+      </tr>
+      <tr>
+        <td colspan="3" align="right" valign="baseline" nowrap>
+		  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td valign="center" nowrap>features&nbsp;</td>
+              <td width="100%" valign="center"><hr size="2"></td>
+            </tr>
+          </table>
+		</td>
+      </tr>
+      <tr>
+        <td colspan="3" align="center" nowrap>
+		  <div align="left" style="min-height: 200px; padding: 6px">
+            <p>Once EZtheme Code Coloring is installed ...</p>
+            <p class="notable" align="right">...define html  colors by tag name  as shown &gt;&gt;&gt;</p>
+            <p><b><i>Additional code view OPTIONAL settings:</i></b></p>
+            <ul>
+				<li>more NOTABLE cursor:  make it wider, taller, choose a color</li>
+				<li>code view cursor still visable when design view has focus</li>
+				<li>design view  selection shows in code view with and  w/o focus</li>
+				<li>disable or dress-down highlighting
+				of matching brackets or tags<br> 
+				&nbsp;&nbsp;&nbsp;retains code color of attributes, properties, values, etc...</li>
+				<li>set different background  colors for day and night</li>
+			</ul>
+            <p class="notable" align="right">...many syntax errors display as shown  &gt;&gt;&gt;</p>
+            <p>TODO:</p>
+            <ul>
+              <li>smartIndent: true/false</li>
+            </ul>
+			
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3" align="center" nowrap>
+			<label>JavaScript
+              <input name="evalString" type="text" size="50" id="evalString"
+					   onKeyPress="//RZenterKey('evalButton',event)"></label>
+              <input type="button" name="evalButton" id="evalButton"
+				   onClick="document.theForm.evalResults.value = eval(document.theForm.evalString.value);"
+				   zzzonClick="window.EZ.toString(eval(document.theForm.evalString.value))"
+				 value="eval">
+		</td>
+      </tr>
+      <tr>
+        <td colspan="3" align="center" nowrap>
+			<textarea name="evalResults" id="evalResults" cols="45" rows="5" style="width: 95%">eval results</textarea>
+		</td>
+      </tr>
+    </table>
+  <div class="floatLeft" style="width: 300px; position: relative">
+	<div class="pre EZtoString-formattedText EZstringify-json" style="width: 300px; position: absolute"></div>
+    <img src="images/sample_tag_colors.png" /> 
+    <img src="images/missing_tags.png"/> 
+  </div>
+</form>
+</body>
+</html>
