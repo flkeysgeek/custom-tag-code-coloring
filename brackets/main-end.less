@@ -1,0 +1,579 @@
+.CodeMirror-gutters:before {color: orange !important} 
+
+///////////////////////////////////////////////////////////////////////////////
+
+//creates custom tag code coloring PLUS from current setting in main.less
+//.../Dreamweaver CC 2017/en_US/Configuration/Brackets/extensions/user/theme-name
+
+///////////////////////////////////////////////////////////////////////////////
+
+//==========================================================================
+										//development standalone convenience
+@import "main";						//EZtheme settings
+@import "main-beg";	//required for stand-alone 
+//==========================================================================
+
+//.multilineSelection(@BG) 		//HTML wins over JS or CSS
+//{
+	/* multiline selection: css, js, html/xml mode unknown
+	<div style="position: relative; z-index: 1;">
+		<div class="CodeMirror-selected" style="position: absolute; ..."></div>
+		<div class="CodeMirror-selected" style="position: absolute; ..."></div>
+	</div>	
+	*/ 
+//	.CodeMirror .CodeMirror-lines .CodeMirror-selected {
+//		background: @BG;
+//	} 
+//} 
+
+
+
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+                                        CSS formatting
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+#makeImportant-css() { 					//see !IMPORTANT note below
+	/*____________________________________________________________________________________
+										CSS default values from  (base theme)
+	____________________________________________________________________________________*/
+
+
+	//.CSS, .SCSS, .LESS, .HTML 
+	.CSS {
+		/*____________________________________________________________________________________
+										CSS current values from main.js (user settimgs)
+		____________________________________________________________________________________*/
+		.css-current-settings();
+
+		//.multilineSelection(@css_background);
+		span.cm-m-css
+		{ 
+			&.CodeMirror-matchingbracket when not(@css-MATCHING-brackets) {.css-background};
+			&.CodeMirror-matchingbracket when not(@css-MATCHING-brackets) {.css-bracket};
+			
+			&.cm-def 		{.css-def};
+			&.cm-meta		{.css-meta};
+
+			&.cm-tag		{.css-tag};
+			&.cm-attribute	{.css-attribute};
+			&.cm-builtin	{.css-builtin};
+			&.cm-keyword	{.css-keyword};
+			&.cm-property 	{.css-property};
+			&.cm-qualifier	{.css-qualifier};
+
+			&.cm-variable	{.css-variable};
+			&.cm-variable-2	{.css-variable-2};
+			&.cm-variable-3 {.css-variable-3};
+			&.cm-variable-4 {.css-variable-4};
+
+			&.cm-string		{.css-string};
+			&.cm-string-2	{.css-string-2};
+			&.cm-link		{.css-link};
+			&.cm-rangeinfo 	{.css-rangeinfo};
+
+			&.cm-bracket 	{.css-bracket};
+			&.cm-quote		{.css-quote};
+			&.cm-operator 	{.css-operator};
+
+			&.cm-atom		{.css-atom};
+			&.cm-hr			{.css-hr};
+			&.cm-number		{.css-number};
+			&.cm-plus		{.css-plus};
+			&.cm-minus 		{.css-minus};
+
+			&.cm-comment	{.css-comment};
+			&.cm-important	{.css-important};
+//			&.cm-TODO		{.css-highlight};
+			&.cm-error		{.css-error}
+
+
+			&.cm-keyword,						//assume keyword !important BUT...
+			::shadow &.cm-keyword,
+			.webkit-css-keyword,
+			::shadow .webkit-css-keyword 	{.css-important}; 
+			
+			/*
+			<span class="cm-m-css cm-property">border-right</span>
+			<span class="cm-m-css">: </span>
+			<span class="cm-m-css cm-number">2px</span>
+			<span class="cm-m-css"> </span>
+			<span class="cm-m-css cm-atom">solid</span>
+			<span class="cm-m-css"> </span>
+			<span class="cm-m-css cm-keyword">navy</span>	NOT IMPORTSNT
+			<span class="cm-m-css"> </span>
+			<span class="cm-m-css cm-keyword">!important</span>
+			<span class="cm-m-css">;</span></span>
+			*/
+			&.cm-m-css.cm-number + span + .cm-atom + span + .cm-keyword,
+			
+  			&.cm-property + .cm-keyword,			//...NOT !important if follows property
+			&.cm-property + span + .cm-keyword, 	//or attr -- probably other cases
+			&.cm-attribute + .cm-keyword,					
+			&.cm-attribute + span + .cm-keyword {		
+				 .css-keyword
+			}
+ 
+  			&.cm-property,			
+			&.cm-property + span, 	
+			&.cm-attribute,				
+			&.cm-attribute + span {		
+				::shadow & + .cm-keyword { 
+					& + .cm-keyword 		{.css-keyword}; 
+				}
+			}
+			/*===========================================================================================
+			CSS merged code view styles (used by Brackets / CodeMirror)
+			==================================================================================*/
+		}
+	}
+	//!important is required because its used by some of the base themes
+} & { #makeImportant-css() !important}
+ 
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+                                        	JS formatting
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+#makeImportant-js() { 					//see !IMPORTANT note below
+
+	.JavaScript {
+		
+		.js-current-settings();
+		//.multilineSelection(@css_background);
+		
+		span.cm-m-javascript
+		{
+			//below comment formatted for main.css (when comments are retained)
+
+		  /*=======================================================================================
+		JS MERGED (default/current)		 	code view styles (used by Brackets / CodeMirror)
+		=======================================================================================*/
+			
+			&.cm-variable		{.js-variable}
+			&.cm-variable-2		{.js-variable-2}
+			&.cm-string-2 		{.js-string-2}
+			&.cm-def			{.js-variable}
+			&.cm-property 		{.js-property}
+			&.cm-string 		{.js-string}
+			&.cm-keyword		{.js-atom}
+			&.cm-atom 			{.js-keyword}
+			&.cm-number 		{.js-number}
+
+			&.cm-text			{color: @foreground};
+//			&.cm-comment		{.js-comment}
+			&.cm-error			{.js-error}
+		}
+	}
+	//!important is required because to override !important in some base themes
+} & { #makeImportant-js() !important}
+
+
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+                                        	HTML formatting
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+//span.cm-search-highlight {
+//	&-start:before, &-end:before {
+//		border-color: #89f5a2 !important;
+//	}
+//	&:before {
+//	  border-color: #89f5a2 !important;
+//	  padding: 2px !important;
+//	}
+//}
+	
+		
+#makeImportant-html() 	 					//see !IMPORTANT note below
+{
+    .HTML
+	{
+	    .html-settings();	 
+		/*=======================================================================================
+		HTML  (default/current)	MERGED		 	code view styles (used by Brackets / CodeMirror)
+		=======================================================================================*/
+		//as of 06-24-2017 no string-n and no variable found at quick study
+
+		//	<span class="cm-js-property cm-overlay 
+		//		cm-search-highlight cm-search-highlight-start CodeMirror-selectedtext">s</span>	
+		//	<span class="cm-js-property cm-overlay 
+		//		cm-search-highlight CodeMirror-selectedtext">aveSetting</span>	
+		//	<span class="cm-js-property cm-overlay
+		//		cm-search-highlight cm-search-highlight-end CodeMirror-selectedtext">s</span>: 
+		
+		
+									//NOT when matching tag or search match (sample above)
+		span.cm-m-xml:not(.cm-matchhighlight) { 
+			&.cm-keyword		{.html-keyword}
+			&.cm-qualifier		{.html-qualifier} 
+			&.cm-builtin		{.html-builtin}
+
+			&.cm-attribute		{.html-attribute}
+			&.cm-property		{.html-property}
+
+			&.cm-atom 			{.html-atom}
+			&.cm-string 		{.html-string} 
+
+			&.cm-number			{.html-number}
+			&.cm-quote 			{.html-quote}
+			&.cm-bracket		{.html-bracket}
+
+			&.cm-comment		{.html-comment}
+			&.cm-error, 
+			&.cm-tag .error		{.html-error}
+		}
+		
+		//	&.CodeMirror-matchingtag:not(.cm-matchhighlight) {.html-highlight}
+		.html .cm-m-xml.cm-tag.CodeMirror-matchingtag:not(.cm-matchhighlight).cm-bracket
+			:extend(.cm-m-xml) {
+			border-radius: 3px;	
+			font-weight: 900;		//too much if attr color not retained
+		};							//..e.g. xml -- but probably done elsewhere
+				
+		
+		//.cm-tag.CodeMirror-matchingtag:not(.cm-matchhighlight).cm-bracket
+		//		:extend(.cm-m-xml) {
+		//		border-radius: 3px;	
+		//		font-weight: 900 !important;
+		//	};
+		//								
+		//.cm-m-xml if used
+		//.cm-m-x.cm-tag.CodeMirror-matchingtag:not(.cm-matchhighlight):not(.cm-bracket)
+		//:extend(.cm-m-x.cm-tag) {
+		//	font-weight: 900;
+		//	//background: darken(@blueBG, 30%);
+		//	//border-radius: 6px;
+		//	//box-shadow: -1px 0px 9px 0px lime !important;
+		//};
+		
+		.html-tag-colors();
+										//TODO: text
+		
+	}
+	.html span.cm-m-xml.CodeMirror-matchingtag:not(.cm-matchhighlight) {
+		font-weight: bold; 
+	}
+										//do not highlight white space at start or end of line
+										//probably needs more nots
+
+	//--------------------------------------------------------------------------------------------
+	//	!important is UNFORTUNATELY required to override color from below selector
+	//	found in base DW themes (DWmain.js) 
+	//	-AND- BracketsDWExtension/.../default-code-coloring.css
+	//
+	//			.CodeMirror-matchingbracket, .CodeMirror-matchingtag {
+	//				background-color: #1654D9;
+	//				color: #ffffff !important; 
+	//			}
+	//--------------------------------------------------------------------------------------------
+} & { #makeImportant-html() !important}
+
+  
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+                                       ALL-FILE-TYPES -- merged
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+#makeImportant-global() { 					
+
+	span.cm-comment 	{.all-comments};	//apply global comment property
+	.CSS span.cm-m-css, 					//...or mode override for mixedmode
+	.JavaScript span.cm-m-js, 
+	.HTML span.cm-m-xml {
+		&.cm-comment 	{.cm-comment};
+		&.cm-comment 	{.all-comments};
+	}										//TODO: support mixedmode on non-html
+} & { #makeImportant-global() !important}
+
+/* 
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+ 
+                                       NOTABLE CURSORS 
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+//	.linenumbers		 			{color: lighten(#B2B2B2, 10%)}
+//.cm-m-css CodeMirror-matchingbracket
+
+
+/****************************************************************
+Start of: extras
+https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref   
+
+NOTE:  
+    DW prefixes all these selectors with "#editor-holder" so  
+
+        body.dark .CodeMirror-cursor
+
+    becomes 
+        #editor-holder body.dark .CodeMirror-cursor
+
+    ...so the following form is used to reference body class:
+
+        body.dark & .CodeMirror-cursor {                  
+
+    becomes:
+        body.dark #editor-holder .CodeMirror-cursor {                  
+
+*****************************************************************/
+
+						/*****************************/
+						/* matching brackets / tags */
+                    	/***************************/
+
+body:not(.dark) & 
+span.CodeMirror-matchingbracket {
+	background: #A0E2F6;
+	color: black !important;
+	border-radius: 4px;
+	font-weight: 400;
+	max-height: 14px;
+}
+body.dark & 				//matching bracket polish makes ch before cursor readible
+span.CodeMirror-matchingbracket {
+	border-radius: 4px;
+}
+
+						/******************************/
+						/* matching tags white-space */
+                    	/****************************/
+
+body:not(.dark) & span.CodeMirror-matchingbracket + span.CodeMirror-matchingbracket {
+}
+							//*** VERY POWERFUL *** whitespace at start of line
+							//do not highlight white space at start of line
+							//...nor end of line (for Matching Tags)
+							//...needs refinement for selections
+							//...probably needs more nots 
+							
+.CodeMirror-line > span > 
+span:first-of-type:not(.cm-bracket):not(.cm-comment):not(.CodeMirror-matchingbracket) {
+		background: #202020;	//TODO: not hard-coded
+		//background: black;	//...testing convenience
+}
+.CodeMirror-line > span > 
+zspan:first-of-type:not(.cm-bracket):not(.cm-comment):not(.CodeMirror-matchingbracket) {
+	
+	& {
+		position: relative;
+	}							//put whitespace BG in layer so the
+	&:before {					//.CodeMirror-selected layer(s) can override
+		background: #202020;	//TODO: not hard-coded
+		//background: black;	//...testing convenience
+		position: absolute;
+		content: " ";
+		z-index: -1;
+		width: 100%;
+	}
+}
+.CodeMirror-selected {			//selected BG layer has priority
+    z-index: 9;
+}
+/*
+*/
+						/*************************************/
+						/* line numbers -- lighter for dark */
+                    	/***********************************/
+body.dark & .CodeMirror-linenumber {
+    color: #B2B2B2;
+}
+                    	/*******************************/
+						/* cursor -- taller and wider */
+						/*****************************/
+//.CodeMirror .CodeMirror-cursor,      		
+.CodeMirror:not(.CodeMirror-focused) .CodeMirror-cursors {
+	visibility: visible !important;			/* in case CodeMirror left wrapper hidden */		
+}
+.CodeMirror .CodeMirror-cursors .CodeMirror-cursor:before {
+	visibility: visible !important;			
+}
+
+body.dark &
+.CodeMirror .CodeMirror-cursor,      			//yellow for dark themes
+.CodeMirror-cursors:not(.CodeMirror-overwrite) .CodeMirror-cursor {
+    border-left: 2px solid yellow !important; 	
+    margin-top: -1px !important;
+}
+body:not(.dark) & 
+.CodeMirror .CodeMirror-cursor, 				//navy blue for light themes 
+.CodeMirror-cursors:not(.CodeMirror-overwrite) .CodeMirror-cursor {      
+    border-left: 2px solid navy !important; 	
+    margin-top: 0px !important;
+}
+.CodeMirror.CodeMirror-focused, .CodeMirror:not(.CodeMirror-focused) {
+	.CodeMirror-overwrite .CodeMirror-cursor { 
+		&:extend(.overwrite-CURSOR);			//OVERWRITE cursor -- default thick red
+		border-left: none !important;
+	}
+}
+                    	/*******************************/
+						/* hightligh linebwith cursor */
+						/*****************************/
+
+.dashed-cursor-line()						//may be shared by multiple selectors
+{
+	position: relative;
+	
+	.CodeMirror-cursor:before {
+		content: " ";
+		position: absolute;
+		height: inherit;
+		left: -2999px;
+		right: -2999px;
+		
+		border-top-width:	 1px;
+		border-bottom-width: 1px;
+		border-top-style:	 dashed;
+		border-bottom-style: dashed;
+	}
+}
+											//all files
+//.CodeMirror:not(.CodeMirror-focused) .CodeMirror-cursors {
+.CodeMirror .CodeMirror-cursors {
+	.dashed-cursor-line()
+}
+body.dark &
+.CodeMirror .CodeMirror-cursor:before {
+	border-top-color: yellow !important;
+	border-bottom-color: yellow !important;
+}
+body:not(.dark) &
+.CodeMirror:not(.CodeMirror-focused) .CodeMirror-cursors:before {
+	border-top-color:  #333333 !important;
+	border-bottom-color: #333333 !important;
+}
+
+
+						/*****************************************/
+						/* tail on cursor when code view blured */
+						/***************************************/
+/*------------------------------------------------------------------------- DEPRICATE ??											
+.CodeMirror:not(.CodeMirror-focused).HTML .CodeMirror-cursor:after {    
+    content: "";                            
+    position: absolute;
+    top: 0;
+    left: 0px;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 7.3px 0px 7px 0px;  
+    height: 0px;
+    display: inline-block;
+}
+.CodeMirror:not(.CodeMirror-focused) .CodeMirror-cursor {	                         
+    min-height: 14px; 
+    line-height:14px;
+}
+----------------------------------------------------------------------------------*/
+						/****************************************/
+						/* blinking cursor in code view blured */
+						/**************************************/
+/*------------------------------------------------------------------------- DEPRICATED												
+@keyframes blinking {                              
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+.CodeMirror:not(.CodeMirror-focused).HTML .CodeMirror-cursors {
+	opacity: 1.0;							// in case animation did not finish
+}
+.CodeMirror:not(.CodeMirror-focused).HTML .CodeMirror-cursor {
+		animation: blinking 1.5s 10;		//blinking for 15 sec    
+		-webkit-transition: all 1.0s 20.0s;
+		transition: all 1.0s 20.0s;			//redundant as safety
+		opacity: 1.0;
+		border-left-width: 1px;				// solid yellow !important; 	
+}
+.CodeMirror:not(.CodeMirror-focused) .CodeMirror-cursor:after {    
+	border-left-width: 30px !important;
+}
+body.dark & .CodeMirror:not(.CodeMirror-focused) .CodeMirror-cursor:after {    
+    border-left-color: rgba(240,255,0,0.60);
+}
+body:not(.dark) & .CodeMirror:not(.CodeMirror-focused) .CodeMirror-cursor:after {    
+    border-left-color: rgba(159,225,244,0.60);
+}
+----------------------------------------------------------------------------------*/
+
+                    /*********************************************/
+                    /* BG color of selected text or html tag(s) */
+                    /*******************************************/
+body.dark & .CodeMirror:not(.CodeMirror-focused) .CodeMirror-selected {
+	background: rgba(0, 149, 255, 0.6);
+//    background: rgba(0, 149, 255, 0.4);
+}
+body:not(.dark) & .CodeMirror:not(.CodeMirror-focused) .CodeMirror-selected {
+    background: rgba(121, 215, 244, 0.7);
+}
+                    /*************************************/
+                    /* arrows above and below selection */
+                    /***********************************/
+.CodeMirror:not(.CodeMirror-focused).HTML
+{ 
+	.CodeMirror-selected:first-of-type:before,
+	.CodeMirror-selected:last-of-type:after {
+		content: "";
+		position: absolute;
+		border-style: solid;
+		border-color: transparent;
+		height: 0px;
+		display: inline-block;
+	}
+	.CodeMirror-selected:first-of-type:before {
+		top: -6px;
+		left: -11px;
+		border-width: 5px 0px 5px 14px;
+		transform: rotate(50deg); 
+	}
+	.CodeMirror-selected:last-of-type:after {
+		bottom: -6px;
+		right: -11px;
+		border-width: 5px 14px 5px 0px;
+		transform: rotate(50deg);         
+	}
+	body.dark & .CodeMirror-selected:first-of-type:before {
+		border-left-color: #ffc41d; 
+	}
+	body.dark & .CodeMirror-selected:last-of-type:after {
+		border-right-color: #ffc41d;    
+	}
+	body:not(.dark) & .CodeMirror-selected:first-of-type:before {
+		border-left-color: darkblue; 
+	}
+	body:not(.dark) & .CodeMirror-selected:last-of-type:after {
+		border-right-color: darkblue;    
+	}
+}
+/*****************************************************************/
+/* end of: Notable code view selection and cursor                */
+/*****************************************************************/
+.CodeMirror-gutters:hover:after:extend(.update-time){};
+.CodeMirror.CodeMirror-focused .CodeMirror-gutters:before {
+	color: lime !important; 
+} 
+.CodeMirror:not(.CodeMirror-focused) .CodeMirror-gutters:before {
+	color: #1EC71E !important; 
+}
+//.CodeMirror-gutters:before,
+//.CodeMirror-gutters:hover:after {
+//	&:extend(.CODE-COLORING-ICON);	//opacity set at bottom of main.less
+//}

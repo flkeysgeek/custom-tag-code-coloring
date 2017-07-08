@@ -1,0 +1,44 @@
+@charset "utf-8";
+body.simulatorBody {
+    font-size: 12px;
+    font-family: Arial;
+}
+p {white-space: normal}		/* chrome hack for text inside float */
+p, ul {
+	margin-top: 6px;
+	margin-bottom: 0px;
+}
+.notable {
+	color: #C00;
+	font-weight: bold;
+	font-style: italic;
+}
+//form:not(.noThemeFound),	/* ?? */
+.noThemeFound {
+	display: none;
+}
+.box {
+	 padding:6px;
+	 border: 2px solid navy;
+}
+fieldset {
+	margin-top: 9px;
+}
+fieldset > legend {
+	color: navy;
+}
+fieldset > legend > input {
+	margin-top: -6px;
+	display: inline-block;
+}
+th {
+	font-size: 12px;
+	color: navy;
+}
+fieldset > legend + div {
+	margin-top: 0px;
+}
+fieldset label {
+	display: block;
+}
+

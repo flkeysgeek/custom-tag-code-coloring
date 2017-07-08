@@ -1,0 +1,44 @@
+/**/
+/**/
+/**/
+
+
+.CodeMirror-line > span > 
+span:first-of-type:not(.cm-bracket):not(.cm-comment):not(.CodeMirror-matchingbracket) {
+	
+	&{
+	position: relative;
+	}						//put whitespace BG in layer so the
+	&:before {					//.CodeMirror-selected layer(s) can override
+		background: #202020;	//TODO: not hard-coded
+		//background: black;	//...testing convenience
+		position: absolute;
+		content: " ";
+		z-index: -1;
+		width: 100%;
+	}
+}
+.CodeMirror-selected {			//selected BG layer has priority
+      background: pink !important; 	// pink dev convenience -- remove for live 
+gv
+    z-index: 9;
+}
+/*
+.CodeMirror-line > span > span:first-of-type:not(.cm-bracket):not(.cm-comment).cm-m-xml {
+    zbackground: black;				// black for dev testing -- use theme value 
+    position: relative;
+}
+.CodeMirror-line > span > span:first-of-type:not(.cm-bracket):not(.cm-comment).cm-m-xml:before {
+    background: black;
+    background: black;
+    position: absolute;
+    content: " ";
+    z-index: -1;
+    width: 100%;
+}
+
+.CodeMirror-selected {
+    background: pink !important; 	// pink dev convenience -- remove for live 
+    z-index: 9;
+}
+*/

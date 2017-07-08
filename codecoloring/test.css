@@ -1,0 +1,19 @@
+/**/
+/**/
+/**/
+.CodeMirror-line > span > span:first-of-type:not(.cm-bracket):not(.cm-comment):not(.CodeMirror-matchingbracket) {
+  position: relative;
+}
+.CodeMirror-line > span > span:first-of-type:not(.cm-bracket):not(.cm-comment):not(.CodeMirror-matchingbracket):before {
+  background: #202020;
+  position: absolute;
+  content: " ";
+  z-index: -1;
+  width: 100%;
+}
+.CodeMirror-selected {
+  background: pink !important;
+  gvz-index: 9;
+}
+
+/*# sourceMappingURL=test.css.map */

@@ -1,0 +1,265 @@
+/*_______________________________________________________________________________
+
+	imported at top new main.js containing EZtheme current color settings
+
+		1. import DWmain.js (original main.js renamed)
+		2. create css for theme default colors
+		3. initialize / define all variables / mixed uses by EZtheme
+
+	returns to main.js
+
+	EZtheme status icon displayed as red -- turns green or hidden after less
+	successfully completes.
+
+		yellow	after DWmain load
+		aqua	after less in this file successfully completes.
+		 		after current setting processed
+		green	all less code processed -- hidden if show-status-icon: false;
+
+_________________________________________________________________________________*/
+ 
+.CodeMirror-gutters:before {		//display yellow @ sign left of line #1
+	content: "@";
+	color: red !important;			//starts as red but turns to green after base
+	position: absolute;				//theme merged with current color value 
+	top: 1px;						
+	left: 3px;
+	opacity: 1.0;
+}
+.CodeMirror-gutters:hover:after {	//gutter :hover shows theme update time
+	content: "pending theme update...";	//updated with time set in main.less
+	color: white !important;		
+	background: darkgreen !important;
+	position: absolute;				
+	top: 1px;						
+	left: 50px;
+	padding: 1px 5px;
+	opacity: 1.0;
+}
+
+//===========================================================================
+.base-theme() {
+	@import "main-theme";		//import base main.less provided by Adobe
+}
+.base-theme();						//output as-is
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+                                    END OF BASE THEME (original main.js)
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+.CodeMirror-gutters:before {color: yellow !important}
+
+@blueBG: rgba(0, 149, 255, 0.4);	//used alot for dark highlighting
+
+									//save some base theme settings
+.background	{color: @foreground; background: @background};			//	.background default color/background
+.CodeMirror-focused					//	.highlight (override BG of selection)
+.CodeMirror-activeline-background:extend(.highlight all) {}
+
+.html-highlight		{background: rgba(0, 149, 255, 0.4)}
+
+.declare-cm-vars() {
+	.cm-atom, .cm-string, .cm-string-2, .cm-hr {}
+	.cm-number, .cm-attribute, .cm-plus, .cm-qualifier {}
+	.cm-def, .cm-property {}
+	.cm-variable, .cm-variable-2, .cm-variable-3, .cm-operator, .cm-meta, .cm-bracket {}
+	.cm-comment {}
+	.cm-error, .cm-minus {}
+	.cm-header {}
+	.cm-link {}
+	.cm-rangeinfo {}
+	.cm-keyword, .cm-builtin, .cm-tag, .cm-quote {}
+}
+.BASE {
+	.declare-cm-vars();					//...unqualified
+	
+	.HTML, .PHP, .JavaScript, .CSS, .SCSS, .LESS, .JSON {
+		.declare-cm-vars();				//...qualified
+	}
+}
+
+/*_____________________________ clear html class names _______________________________*/
+@html-highlight-matching-brackets: true;
+@html-highlight-matching-TAGS	 : true;
+
+@css-highlight-matching-brackets: true;
+@css-highlight-matching-TAGS	: true;
+
+@js-highlight-matching-brackets	: true;
+@js-highlight-matching-TAGS	 	: true;
+
+.js-value			{}; 		//convenience selector
+.css-value			{}; 
+.html-value			{};
+
+.html-tag 			{}		
+.html-property 		{};	
+.html-attribute		{}
+.html-keyword, .html-qualifier, .html-builtin, .html-quote{};
+.html-number		{};
+.html-atom 			{};		//value
+.html-string 		{};
+.html-bracket 		{};
+.html-comment 		{};				
+.html-text 			{};
+.html-comment		{};
+.html-error			{};
+.html-settings() 	{};
+.html-tag-colors()  {};
+
+.js-variable		{};
+.js-variable-2		{};
+.js-string-2 		{};
+.js-def				{};
+.js-property 		{};
+.js-string 			{};
+.js-keyword			{};
+.js-atom 			{};
+.js-number 			{};
+.js-text			{};
+.js-comment			{};
+.js-error			{};
+
+.css-meta			{};
+.css-def			{};
+.css-variable		{};
+.css-tag 			{};					//  html <tag>
+.css-builtin		{};
+.css-qualifier		{};
+.css-pseudo 		{};
+.css-property		{};
+.css-attribute  	{};
+.css-variable-2		{};	
+.css-value			{}; 		
+.css-atom			{};
+.css-number			{};
+.css-hr				{};
+.css-plus			{};
+.css-minus 			{};	
+.css-string  		{};
+.css-string-2		{};
+.css-link			{};
+.css-rangeinfo		{};
+.css-string			{};
+.css-operator   	{};
+.css-bracket   		{};
+
+
+//_______________________________ get ALL base theme colors _________________________
+.BASE {
+//	.base-theme();
+	.base-theme() !important;
+}
+
+.BASE { 
+	.HTML {
+		.base-theme();
+		.base-theme() !important;
+	}
+}
+/*_________________________________ save HTML base theme defaults _______________________________*/
+									
+									
+.HTML {								//settings in main.js have higher priority
+	.cm-m-xml.cm-tag		:extend(	.BASE .HTML .cm-tag			){};
+	.cm-m-xml.cm-keyword	:extend(	.BASE .HTML .cm-keyword		){};
+	.cm-m-xml.cm-property	:extend(	.BASE .HTML .cm-property	){};
+	.cm-m-xml.cm-attribute	:extend(	.BASE .HTML .cm-attribute	){};
+	.cm-m-xml.cm-qualifier	:extend(	.BASE .HTML .cm-qualifier	){};
+	.cm-m-xml.cm-builtin	:extend(	.BASE .HTML .cm-builtin		){};
+	.cm-m-xml.cm-value		:extend(	.BASE .HTML .cm-atom		){};
+	.cm-m-xml.cm-atom 		:extend(	.BASE .HTML .cm-atom		){};
+	.cm-m-xml.cm-number		:extend(	.BASE .HTML .cm-number		){};
+	.cm-m-xml.cm-string 	:extend(	.BASE .HTML .cm-string		){};
+	.cm-m-xml.cm-quote 		:extend(	.BASE .HTML .cm-quote		){};
+	.cm-m-xml.cm-bracket	:extend(	.BASE .HTML .cm-bracket		){};
+	.cm-m-xml.cm-operator	:extend(	.BASE .HTML .cm-operator	){};
+}
+	
+.html-background	{.background};
+.html-activeline {}
+.CodeMirror .CodeMirror-activeline-background:extend(.html-activeline){};
+
+
+//.html-activeline:extend(.CodeMirror .CodeMirror-activeline-background all){};
+.CodeMirror .CodeMirror-activeline-background:extend(.html-activeline){};
+
+
+/*
+.html-activeline {
+	&.extend(.CodeMirror .CodeMirror-activeline-background)
+}
+.CodeMirror-focused .CodeMirror-activeline-background:extend(.html-activeline) {};
+
+
+.html-activeline-focus	{}
+    .CodeMirror .CodeMirror-activeline-background {
+        background: transparent;
+    }
+
+    .CodeMirror-focused .CodeMirror-activeline-background {
+        background: #777;
+    }
+*/
+
+
+/*_________________________________ JS base theme defaults ____________________________________*/
+
+//as of 06-24-2017 no string-n and no variable found at quick study of codemirror javascript.js
+
+.JavaScript {				//settings in main.js have higher priority
+	.cm-m-javascript.cm-variable	:extend(	.BASE .JavaScript .cm-variable	) {};
+	.cm-m-javascript.cm-variable-2	:extend(	.BASE .JavaScript .cm-variable-2) {};
+	.cm-m-javascript.cm-string-2	:extend(	.BASE .JavaScript .cm-string-2	) {};
+	.cm-m-javascript.cm-def			:extend(	.BASE .JavaScript .cm-variable	) {};
+	.cm-m-javascript.cm-property	:extend(	.BASE .JavaScript .cm-property	) {};
+	.cm-m-javascript.cm-string		:extend(	.BASE .JavaScript .cm-string	) {};
+	.cm-m-javascript.cm-keyword		:extend(	.BASE .JavaScript .cm-atom		) {};
+	.cm-m-javascript.cm-atom		:extend(	.BASE .JavaScript .cm-keyword	) {};
+	.cm-m-javascript.cm-number		:extend(	.BASE .JavaScript .cm-number	) {};
+}
+/*
+.js-text			{color: @foreground};
+.js-comment			{.cm-comment}
+.js-error			{.cm-error}
+*/
+/*_________________________________ CSS base theme defaults ___________________________________
+
+
+_________________________________________________________________________________*/
+.CSS {							//settings in main.js have higher priority
+	.cm-m-css.cm-meta			:extend(	.BASE .CSS .cm-meta		) {};
+	.cm-m-css.cm-def			:extend(	.BASE .CSS .cm-def	 	) {};
+	.cm-m-css.cm-variable		:extend(	.BASE .CSS .cm-variable	) {};
+	.cm-m-css.cm-tag 			:extend(	.BASE .CSS .cm-tag		) {};		
+	.cm-m-css.cm-builtin		:extend(	.BASE .CSS .cm-builtin	) {};
+	.cm-m-css.cm-qualifier		:extend(	.BASE .CSS .cm-qualifier) {};
+	.cm-m-css.cm-pseudo 		:extend(	.BASE .CSS .cm-pseudo	) {};
+	.cm-m-css.cm-property		:extend(	.BASE .CSS .cm-property	) {};
+	.cm-m-css.cm-attribute  	:extend(	.BASE .CSS .cm-attribute) {};
+	.cm-m-css.cm-variable-2		:extend(	.BASE .CSS .cm-variable-2){};
+	.cm-m-css.cm-atom			:extend(	.BASE .CSS .cm-atom		) {};
+	.cm-m-css.cm-number			:extend(	.BASE .CSS .cm-number	) {};
+	.cm-m-css.cm-hr				:extend(	.BASE .CSS .cm-hr		) {};
+	.cm-m-css.cm-plus			:extend(	.BASE .CSS .cm-plus		) {};
+	.cm-m-css.cm-minus 			:extend(	.BASE .CSS .cm-minus	) {};	
+	.cm-m-css.cm-string  		:extend(	.BASE .CSS .cm-string	) {};
+	.cm-m-css.cm-string-2		:extend(	.BASE .CSS .cm-string-2	) {};
+	.cm-m-css.cm-link			:extend(	.BASE .CSS .cm-link		) {};
+	.cm-m-css.cm-rangeinfo		:extend(	.BASE .CSS .cm-rangeinfo) {};
+	.cm-m-css.cm-string			:extend(	.BASE .CSS .cm-string	) {};
+	.cm-m-css.cm-operator   	:extend(	.BASE .CSS .cm-operator	) {};
+	.cm-m-css.cm-bracket   		:extend(	.BASE .CSS .cm-bracket	) {};
+}
+.css-important		{color: #F00};		//----- NEW recommended -----\\
+
+.css-text			{color: @foreground};
+.css-comment		{.cm-comment}
+.css-background 	{.background};
+
+.css-error			{.cm-error}
+

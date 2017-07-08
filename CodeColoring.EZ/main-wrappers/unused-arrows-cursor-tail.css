@@ -1,0 +1,92 @@
+						/*****************************************/
+						/* tail on cursor when code view blured */
+						/***************************************/
+/*----------------------------------------------------------------------- DEPRICATED ??											
+.CodeMirror:not(.CodeMirror-focused).HTML .CodeMirror-cursor:after {    
+    content: "";                            
+    position: absolute;
+    top: 0;
+    left: 0px;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 7.3px 0px 7px 0px;  
+    height: 0px;
+    display: inline-block;
+}
+.CodeMirror:not(.CodeMirror-focused) .CodeMirror-cursor {	                         
+    min-height: 14px; 
+    line-height:14px;
+}
+----------------------------------------------------------------------------------*/
+						/****************************************/
+						/* blinking cursor in code view blured */
+						/**************************************/
+/*------------------------------------------------------------------------- DEPRICATED ??
+@keyframes blinking {                              
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+.CodeMirror:not(.CodeMirror-focused).HTML .CodeMirror-cursors {
+	opacity: 1.0;							// in case animation did not finish
+}
+.CodeMirror:not(.CodeMirror-focused).HTML .CodeMirror-cursor {
+		animation: blinking 1.5s 10;		//blinking for 15 sec    
+		-webkit-transition: all 1.0s 20.0s;
+		transition: all 1.0s 20.0s;			//redundant as safety
+		opacity: 1.0;
+		border-left-width: 1px;				// solid yellow !important; 	
+}
+.CodeMirror:not(.CodeMirror-focused) .CodeMirror-cursor:after {    
+	border-left-width: 30px !important;
+}
+body.dark & .CodeMirror:not(.CodeMirror-focused) .CodeMirror-cursor:after {    
+    border-left-color: rgba(240,255,0,0.60);
+}
+body:not(.dark) & .CodeMirror:not(.CodeMirror-focused) .CodeMirror-cursor:after {    
+    border-left-color: rgba(159,225,244,0.60);
+}
+----------------------------------------------------------------------------------*/
+                    /*************************************/
+                    /* arrows above and below selection */
+                    /***********************************/
+/*------------------------------------------------------------------------- DEPRICATED ??
+.CodeMirror:not(.CodeMirror-focused).HTML
+{ 
+	.CodeMirror-selected:first-of-type:before,
+	.CodeMirror-selected:last-of-type:after {
+		content: "";
+		position: absolute;
+		border-style: solid;
+		border-color: transparent;
+		height: 0px;
+		display: inline-block;
+	}
+	.CodeMirror-selected:first-of-type:before {
+		top: -8px;
+		left: -14px;
+		border-width: 5px 0px 5px 14px;
+		transform: rotate(40deg); 
+	}
+	.CodeMirror-selected:last-of-type:after {
+		bottom: -6px;
+		right: -11px;
+		border-width: 5px 14px 5px 0px;
+		transform: rotate(50deg);         
+	}
+	
+	
+	body.dark & .CodeMirror-selected:first-of-type:before {
+		border-left-color: #ffc41d; 
+	}
+	body.dark & .CodeMirror-selected:last-of-type:after {
+		border-right-color: #ffc41d;    
+	}
+	body:not(.dark) & .CodeMirror-selected:first-of-type:before {
+		border-left-color: darkblue; 
+	}
+	body:not(.dark) & .CodeMirror-selected:last-of-type:after {
+		border-right-color: darkblue;    
+	}
+}
+----------------------------------------------------------------------------------*/

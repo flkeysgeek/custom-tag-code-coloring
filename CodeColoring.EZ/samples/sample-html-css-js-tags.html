@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>sample page</title>
+<style> 
+	headline {font-size: 24pt;} 
+	/* css comment */
+	@import url("../main.css");
+	h2, .head2 {
+	  font-family : 'Sans-Serif';
+	  font-weight : bold;
+	  color : #336699 !important;
+	}
+	@media screen, print {
+	  pre { margin: 0px 10px 10px }
+	  h1 { font-size: 14px; padding-top: 10px }
+	}
+	EZtest.className#id:after {
+		color: green;
+	}
+
+</style>
+<script>
+	/* javascript comment */
+	function testMe() {
+		window.open("http://www.revize.com");
+	 }
+	var tokens = new Array("Hello", 'world');
+	testMe(tokens);		 // inline comment
+</script>
+</head>
+<body>
+	<!-- html comment -->
+	<div id="headline" class="head2">
+		<img src="../image.png" width="15" />
+	</div>
+	<table>
+	  <tr>
+		<td class="notable">do tell</td>
+		<td height="25px">
+			<a href="../link">Plain Text&nbsp;</a>
+		</td>
+	  </tr>
+	</table>
+	<p>Paragraph <b>Text</b></p>
+	<form action="../page.cgi">
+		<input type="submit" value="Press Me">
+	</form>
+</body>
+</html>

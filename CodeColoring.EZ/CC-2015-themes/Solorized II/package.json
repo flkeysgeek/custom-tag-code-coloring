@@ -1,0 +1,14 @@
+{
+    "title": "Solorized II",
+    "name": "Solorized II",
+    "description": "Solarized Light Theme for Dreamweaver",
+    "version": "0.1.0",
+    "author": "Adobe Systems Incorporated",
+    "engines": {
+        "brackets": ">=0.42.0"
+    },
+    "theme": {
+        "file": "main.less",
+        "addModeClass": true
+    }
+}

@@ -1,0 +1,375 @@
+@import "wrappers.EZ/DW-main-wrapper-beg.EZ";	
+
+.update-date-time {content: "8:37 pm"}
+@advanced-options: "day";	//day, night or none -- options at end of page
+
+//_________________________________________________________________________________\\
+//                                                                                  \\
+//				       Raven Dark -- CURRENT settings                                \\
+//                                                                                    \\
+//                               HTML colors                                           \\
+//______________________________________________________________________________________\\
+
+.html-tag-colors() {		//DO NOT DELETE THIS LINE OR NEXT
+	.cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag- {	
+		
+							//define styles for specific tagname(s) with css styles
+							//must prefix with "&" e.g. &body {color: red}
+		
+		&img				{color: #EC02EC}
+		&a					{color: lime}
+
+		&table				{color: #58BF9C; font-weight: 600} 		
+		&tr, &th, &td 		{color: #58BF9C; font-style: italic}
+
+		&form 				{color: orange; font-weight: bold}
+		&input, &textarea, 	{color: orange; font-style: italic} 	
+		
+		&select 			{color: orange;} 
+		&option				{color: #58BF9C;} 		
+		
+
+		&style,	&link,		
+		&script				{color: lime}
+ 
+
+}}  //DO NOT DELETE THIS LINE OR NEXT
+.html-settings() {		
+//______________________________________________________________________________________________
+//
+//	Other HTML colors: 	leave blank or delete for theme defaults
+//______________________________________________________________________________________________
+
+
+	.html-tag 			{};		//tag color for tags not listed above
+	
+	//THEME SETTINGS	 
+	//.cm-keyword, .cm-qualifier, .cm-builtin,  .cm-tag, .cm-quote {color: #99cdff}
+	
+	
+	.html-property 		{color: #f0874f};	
+	.html-attribute		{color: #88aed5};
+
+								//these often have same value
+	.html-keyword, 
+	.html-qualifier, .html-builtin, 
+	.html-quote			{};
+
+	.html-number		{};
+	.html-atom 			{};		//value
+
+	.html-string 		{color:#EBC865};
+	.html-bracket 		{};
+	.html-comment 		{};				
+	.html-text 			{};		//theme foreground (by default)
+ 
+	.html-background	{background: #000}
+
+	.html-error {				//delete to use theme default error color
+		color: white;
+		background: #C00;
+		border-radius: 3px;
+	}
+								//see: ...
+	@html-highlight-matching-brackets: true;
+	@html-highlight-matching-TAGS	 : true;
+
+/*============================================ THEME default setting
+	.html-tag 			{};		//tag color for tags not listed above
+	
+	//THEME SETTINGS	 
+	//.cm-keyword, .cm-qualifier, .cm-builtin,  .cm-tag, .cm-quote {color: #99cdff}
+	
+
+
+.HTML {
+	.cm-keyword, .cm-qualifier, .cm-builtin, .cm-tag, .cm-quote {
+	  color: #99cdff;
+	}
+	.cm-number, .cm-atom {
+	  color: #FE8FA2;
+	}
+	.cm-attribute {
+		color: #e9e9e9;
+	}
+	.cm-string {
+		color: #ffdc79;
+	}
+	.cm-bracket {
+		color: #99cdff;
+	}
+    .cm-property {
+		color: #ffc39c;
+	}
+}
+====================================================================*/
+
+
+/*________________________________________________________________________________________________*/
+}	//DO NOT DELETE THIS LINE
+
+//_____________________________________________________________________________\\
+//                                                                              \\
+//                           Javascript code colors                              \\
+//________________________________________________________________________________\\
+.js-current-settings() 
+{
+					//==============================================//
+					//	use below to OVERRIDE theme default colors //
+					//============================================//
+
+	.js-variable, .js-variable-2 {};	//often same value
+
+	.js-string-2 				{}
+	.js-def, .js-property 		{}
+
+	.js-string 					{}
+	.js-keyword, .js-atom 		{}
+	.js-number					{}
+
+	.js-text 					{};		//theme foreground (by default)
+
+	.js-error {							//delete to use theme default error color
+		color: white;
+		background: #C00;
+		border-radius: 3px;
+	}
+}
+//____________________________________ CSS ______________________________________
+//
+// CSS has alot more formatting settings -- below are those uniquely defined by
+// most themes -- the remainder are based on these settings unless overridden.
+//______________________________________________________________________________
+.css-current-settings() 
+{
+	.css-meta, .css-def 		{};
+	.css-variable
+
+	.css-tag 					{};					//  html <tag>
+	.css-builtin, 
+	.css-qualifier, .css-pseudo {};
+
+	.css-property				{};
+	.css-attribute  			{};					//if not keyword ?? / VARIABLE
+	.css-variable-2				{};	
+
+	.css-value					{}; 		//.cm-variable	//all value classe unless overridden
+	.css-atom, .css-number, .css-hr, .css-plus, .css-minus {.css-value};	
+
+	.css-string  				{};					//	string values override
+	
+	.css-string-2, 
+	.css-link, .css-rangeinfo  	{};	
+
+	.css-operator   			{}; 		
+	.css-bracket   				{};	
+
+	.css-important	{color: #F00};		//----- NEW recommended -----\\
+
+	.css-error {
+		color: white;
+		background: #ad0b0b;
+		border-radius: 3px;
+	}
+
+	//---------------------------------	live settings ----------------------------------\\
+	//___________________________________________________________________________________\\
+	.css-builtin 	{color: #a4eba9}	//really like this lime
+										//maybe all of below raven?? css formatting
+
+
+										//----- CC 2017 Raven theme ----- ??
+	@css-MATCHING-brackets: false;		//disabled for CSS
+						
+	.css-directive	{color: #B28BFF};	//all directives i.e. @... unless overridden
+	.css-selector	{color: #ffdc79};	//all selector classes unless overridden
+	.css-property	{color: #ffc39c};	//properties not defined as keyword
+	.css-keyword	{.css-property};	
+	.css-value		{color: #ffdc79};	//all value classes unless overridden
+	
+
+
+	.css-tag		{color: #a4eba9};	//html tag in selector
+	
+	.css-keyword	{color: #fc8889};	//color or common prop names e.g. "color", "red"
+	
+	.css-property	{color: #ffc39c};	//properties not defined as keyword
+	
+	.css-qualifier	{color: #99cdff};	//selector .className
+	
+	.css-def		{color: #B28BFF};	//directive e.g. meta @charset, @media, @import
+	
+	.css-string		{color: #ffdc79};	//string value
+
+	
+
+//____________________________________________________________________________
+//	
+// Most of the remaining CSS formatting styles are based on the above primary.
+// Many are a Mystery as to what they represent. Future releases may clarify.										
+//____________________________________________________________________________
+											
+	.css-string  	{.css-value};		//	string values
+	.css-tag		{color: #a4eba9};	//  html <tag>
+																				
+										//----- DIRECTIVE -----\\
+	.css-meta		{.css-directive};	//	other: @media, @import
+	.css-meta      	{color: #ffc39c};	//	meta @charset
+	.css-def		{.css-directive};	//	other: @media, @import
+	.css-variable-3	{.css-qualifier};	//less variable
+	
+										//----- SELECTOR -----\\
+	.css-tag		{color: #a4eba9};	//  html <tag>
+	.css-builtin  	{.css-qualifier}; 	//	#id
+	.css-qualifier	{color: #99cdff};	//	.className
+	.css-variable-4	{color: #ffae5e};	//	pseudo :after, :hover
+
+										//----- PROPERTY -----\\
+	.css-property	{color: #ffc39c};	//properties not defined as keyword
+	.css-attribute  {.css-keyword};	
+
+
+										//----- VALUE -----\\
+	.css-atom		{.css-keyword};	
+	.css-number     {.css-keyword};	
+	.css-string-2  	{.css-string};		
+	.css-link  		{.css-string};		
+	.css-rangeinfo  {.css-string};	
+	.css-variable 	{.css-keyword};		//directive arguments e.g. "utf-8", "screen"
+	.css-variable-2	{.css-qualifier};	
+	
+										//----- OTHER -----\\
+	.css-quote    	{.css-qualifier}; 		
+	.css-operator   {color: #e9e9e9}; 		
+	
+	.css-hr       	{.css-keyword};	
+	.css-plus       {.css-keyword};	
+	.css-minus      {.css-keyword};	
+	
+	.css-bracket   	{.css-operator};	
+	
+	.css-important	{color: #F00};		//----- NEW recommended -----\\
+	.css-error {
+		color: white;
+		background: #ad0b0b;
+		border-radius: 3px;
+	}
+										//----- THEME DEFAULT SETTINGS -----\\
+	.css-text		{color: @foreground};
+	.css-comment	{.cm-comment}
+//	.css-highlight	{.highlight};
+
+}
+/*__________________________________________________________________________________*/
+/*                                                                                  */
+/*                       Odds and Ends for ALL FILE TYPES:                          */
+/*__________________________________________________________________________________*/
+//                                                                                  //
+//     >>> global comment color -- NIGHT / DAY: backgroud and text color variants   //
+//                                                                                  //
+//     >>> NOTABLE CODE VIEW CURSOR: color, size, visibility without focus          //
+//                                                                                  //
+//     >>> selection highlight color / decoration with and without focus            //
+//                                                                                  //
+//     >>> matching brackets and tags -- globally disable or tweak appearance       //
+//                                                                                  //
+//__________________________________________________________________________________//
+
+									//======================================//
+									// NOTABLE cursor: wider, taller color //
+									//====================================//
+.insert-CURSOR						{border-left-width: 2px}
+
+body.dark:extend(.insert-CURSOR)	{border-left-color: yellow !important}
+body:not(.dark):extend(.insert-CURSOR)
+									{border-left-color: navy !important}
+
+.overwrite-CURSOR {					
+	width: 0.7em;					//thick red bottom border
+	border-bottom-color: red  !important;  	
+	border-bottom-width: 3px;  	
+    margin-top: -2px !important;
+}
+									//=====================================//
+									// when CODE VIEW does not have focus //
+									//===================================//
+.code-view-CURSOR					{visibility: visible}		//visible or hidden
+								
+.multiple-CURSORS					{visibility: visible}		//lines after 1st
+.CodeMirror-cursor:not(:first-of-type)
+
+									//source code view onBlur effects
+.source-code-CURSOR {				// 	recommended: 7.3px 0px 7px 0px (0's to hide)
+	.tail-size 						{border-width: 7.3px 0px 7px 0px};
+	.blinking-duration				{transition-duration: 20s};
+}
+									//selection highlight for code view w/o focuse
+body.dark & 
+.code-view-SELECTION-highlighting {
+	background: @blueBG	//rgba(0, 149, 255, 0.4);
+}
+body:not(.dark) 
+& .code-view-SELECTION-highlighting {
+	background: rgba(121, 215, 244, 0.7);
+}
+									//arrow decoration -- when not focused
+.source-code-SELECTION {			
+									//recommended: 5px 0px 5px 14px (0's to hide)
+	.arrows:before 					{border-width: 5px 0px 5px 14px};
+	
+									//recommended: 5px 14px 5px 0px (0's to hide)
+	.arrows:after 					{border-width: 5px 14px 5px 0px};
+								
+									//arrow color
+	body.dark:extend(.arrows)		{border-left-color: yellow !important}									
+	body:not(.dark):extend(.arrors)	{border-left-color: navy !important}
+}
+
+									//============================//
+									// MATCHING brackets options //
+									// matching tags - see HTML //
+									//=========================//								
+
+body.dark {							//less intrusive highlight for DARK themes
+	.matchingbracket {
+		border-radius: 4px;
+	}
+}
+body:not(.dark) {					//less intrusive highlight for light themes
+	.matchingbracket {
+		background: #A0E2F6;
+		color: black !important;
+		border-radius: 4px;
+		font-weight: 400;
+		max-height: 14px;
+	}
+}
+									//===============================//
+									// MISCELLANEOUS: odds and ends //
+									//=============================//
+.all-comments	{color: rgba(255,192,203,0.90); font-style: normal};    //use from below
+
+body.dark {
+	.all-comments					{color: rgba(255,192,203,0.90); font-style: normal};         
+//	.linenumbers		 			{color: lighten(#B2B2B2, 10%)}
+	.linenumbers		 			{color: #B2B2B2}
+	.day-BACKGROUND					{};					//blank for theme default
+	.night-BACKGROUND				{
+										color:lighten(@background, 10%);
+										background:lighten(@background, 10%);
+									};					
+}
+body:not(.dark) {
+	.all-comments					{color: #090};     //CC 2015
+	.day-BACKGROUND					{};					//blank for theme default
+	.night-BACKGROUND				{
+										color:lighten(@background, 10%);
+										background:lighten(@background, 10%);
+									};					
+}
+									//displays left of lineno #1 -- lightgreen or lime
+									//hover displays .update-date-time set at top of page
+.CODE-COLORING-ICON					{opacity: 1.0}
+
+/*___________________________________ EZtheme-merge import ___________________________________*/
+@import "wrappers.EZ/DW-main-wrapper-end.EZ";	

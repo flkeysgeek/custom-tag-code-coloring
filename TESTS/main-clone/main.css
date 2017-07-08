@@ -1,0 +1,2306 @@
+/*_______________________________________________________________________________
+
+	imported at top new main.js containing EZtheme current color settings
+
+		1. import DWmain.js (original main.js renamed)
+		2. create css for theme default colors
+		3. initialize / define all variables / mixed uses by EZtheme
+
+	returns to main.js
+
+	EZtheme status icon displayed as red -- turns green or hidden after less
+	successfully completes.
+
+		yellow	after DWmain load
+		aqua	after less in this file successfully completes.
+		 		after current setting processed
+		green	all less code processed -- hidden if show-status-icon: false;
+
+_________________________________________________________________________________*/
+.CodeMirror-gutters:before {
+  content: "@";
+  color: red !important;
+  position: absolute;
+  top: 1px;
+  left: 3px;
+  opacity: 1.0;
+}
+.CodeMirror-gutters:hover:after {
+  content: "theme updating...";
+  color: white !important;
+  background: darkgreen !important;
+  position: absolute;
+  top: 1px;
+  left: 50px;
+  padding: 1px 5px;
+  opacity: 1.0;
+}
+/* Define some variables used in multiple places */
+/* 1. Background color for the code view */
+/* 2. Foreground color for the code view (Regular strings or text) */
+/* Code Styling */
+.CodeMirror,
+.CodeMirror-scroll {
+  background-color: #202020;
+  color: #e9e9e9;
+}
+/* NA */
+.CodeMirror-focused .CodeMirror-activeline-background {
+  background: #b7b7b7;
+}
+/* NA */
+.show-line-padding .CodeMirror-focused .CodeMirror-activeline-background {
+  box-shadow: inset 15px 0 0 0 #000;
+}
+/* NA */
+.CodeMirror-focused .CodeMirror-activeline {
+  /* NA */
+}
+.CodeMirror-focused .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+.CodeMirror-focused .CodeMirror-activeline .inline-widget .CodeMirror-gutter-elt {
+  color: #767676;
+}
+/* Color Theme Selectors & Color Values */
+.cm-atom,
+.cm-string,
+.cm-string-2,
+.cm-hr {
+  color: #ffdc79;
+}
+.cm-number,
+.cm-attribute,
+.cm-plus,
+.cm-qualifier {
+  color: #a4eba9;
+}
+.cm-def,
+.cm-property {
+  color: #a4eba9;
+}
+.cm-variable,
+.cm-variable-2,
+.cm-variable-3,
+.cm-operator,
+.cm-meta,
+.cm-bracket {
+  color: #e9e9e9;
+}
+.cm-comment {
+  color: #919191;
+}
+.cm-error,
+.cm-minus {
+  color: #fc8889;
+}
+.cm-header {
+  color: #848877;
+}
+.cm-link {
+  color: #81d5ef;
+  text-decoration: none;
+}
+.cm-rangeinfo {
+  color: #bee3ed;
+}
+.cm-keyword,
+.cm-builtin,
+.cm-tag,
+.cm-quote {
+  color: #99cdff;
+}
+/* HTML Specific Code Colouring */
+.HTML .cm-keyword,
+.HTML .cm-qualifier,
+.HTML .cm-builtin,
+.HTML .cm-tag,
+.HTML .cm-quote {
+  color: #99cdff;
+}
+.HTML .cm-number,
+.HTML .cm-atom {
+  color: #FE8FA2;
+}
+.HTML .cm-attribute {
+  color: #e9e9e9;
+}
+.HTML .cm-string {
+  color: #ffdc79;
+}
+.HTML .cm-bracket {
+  color: #99cdff;
+}
+.HTML .cm-property {
+  color: #ffc39c;
+}
+/* PHP Specific Code Colouring */
+.PHP .cm-meta {
+  color: #ab80ff;
+}
+.PHP .cm-keyword,
+.PHP .cm-builtin {
+  color: #a4eba9;
+}
+.PHP .cm-bracket,
+.PHP .cm-tag,
+.PHP .cm-def,
+.PHP .cm-variable {
+  color: #82C1FF;
+}
+.PHP .cm-string {
+  color: #ffdc79;
+}
+.PHP .cm-operator {
+  color: #e9e9e9;
+}
+.PHP .cm-variable-2 {
+  color: #FF76A4;
+}
+.PHP .cm-number {
+  color: #FF6F00;
+}
+/* JavaScript Specific Code Colouring */
+.JavaScript .cm-variable,
+.JavaScript .cm-variable-2,
+.JavaScript .cm-string-2 {
+  color: #e9e9e9;
+}
+.JavaScript .cm-def,
+.JavaScript .cm-property {
+  color: #82C1FF;
+}
+.JavaScript .cm-string {
+  color: #ffdc79;
+}
+.JavaScript .cm-keyword,
+.JavaScript .cm-atom {
+  color: #a4eba9;
+}
+.JavaScript .cm-number {
+  color: #fc8889;
+}
+/* CSS, SCSS, LESS Specific Code Colouring */
+.CSS .cm-string,
+.SCSS .cm-string,
+.LESS .cm-string,
+.CSS .cm-string-2,
+.SCSS .cm-string-2,
+.LESS .cm-string-2,
+.CSS .cm-link,
+.SCSS .cm-link,
+.LESS .cm-link,
+.CSS .cm-rangeinfo,
+.SCSS .cm-rangeinfo,
+.LESS .cm-rangeinfo {
+  color: #ffdc79;
+}
+.CSS .cm-tag,
+.SCSS .cm-tag,
+.LESS .cm-tag {
+  color: #a4eba9;
+}
+.CSS .cm-keyword,
+.SCSS .cm-keyword,
+.LESS .cm-keyword,
+.CSS .cm-atom,
+.SCSS .cm-atom,
+.LESS .cm-atom,
+.CSS .cm-hr,
+.SCSS .cm-hr,
+.LESS .cm-hr,
+.CSS .cm-variable,
+.SCSS .cm-variable,
+.LESS .cm-variable,
+.CSS .cm-number,
+.SCSS .cm-number,
+.LESS .cm-number,
+.CSS .cm-attribute,
+.SCSS .cm-attribute,
+.LESS .cm-attribute,
+.CSS .cm-plus,
+.SCSS .cm-plus,
+.LESS .cm-plus,
+.CSS .cm-error,
+.SCSS .cm-error,
+.LESS .cm-error,
+.CSS .cm-minus,
+.SCSS .cm-minus,
+.LESS .cm-minus {
+  color: #fc8889;
+}
+.CSS .cm-variable-4,
+.SCSS .cm-variable-4,
+.LESS .cm-variable-4 {
+  color: #ffae5e !important;
+}
+.CSS .cm-def,
+.SCSS .cm-def,
+.LESS .cm-def {
+  color: #B28BFF;
+}
+.CSS .cm-meta,
+.SCSS .cm-meta,
+.LESS .cm-meta,
+.CSS .cm-property,
+.SCSS .cm-property,
+.LESS .cm-property {
+  color: #ffc39c;
+}
+.CSS .cm-qualifier,
+.SCSS .cm-qualifier,
+.LESS .cm-qualifier,
+.CSS .cm-builtin,
+.SCSS .cm-builtin,
+.LESS .cm-builtin,
+.CSS .cm-quote,
+.SCSS .cm-quote,
+.LESS .cm-quote,
+.CSS .cm-variable-2,
+.SCSS .cm-variable-2,
+.LESS .cm-variable-2,
+.CSS .cm-variable-3,
+.SCSS .cm-variable-3,
+.LESS .cm-variable-3 {
+  color: #99cdff;
+}
+.CSS .cm-operator,
+.SCSS .cm-operator,
+.LESS .cm-operator,
+.CSS .cm-bracket,
+.SCSS .cm-bracket,
+.LESS .cm-bracket {
+  color: #e9e9e9;
+}
+.JSON .cm-comment {
+  color: #e9e9e9;
+  font-style: normal;
+}
+/* Extra CSS */
+.CodeMirror-searching {
+  background-color: #ffe497;
+  color: #222222 !important;
+}
+.CodeMirror-searching.searching-current-match {
+  background-color: #ffc41d;
+  color: #222222 !important;
+}
+.CodeMirror-cursor {
+  border-left: 1px solid #e9e9e9 !important;
+}
+.CodeMirror-gutters {
+  background-color: #202020;
+  border-right: none;
+}
+/* sequence numbers */
+.CodeMirror-linenumber {
+  color: #919191;
+}
+/* drag & Select text ,change focus */
+.CodeMirror .CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.23);
+  transition: all 360ms ease;
+}
+/* drag & Select text*/
+.CodeMirror-focused .CodeMirror-selected {
+  background: rgba(0, 149, 255, 0.6);
+  color: #ffffff !important;
+}
+/* drag & Select text ,change focus */
+.CodeMirror .CodeMirror-selected-codefolding {
+  background: rgba(199, 199, 199, 0.3);
+}
+/* drag & Select text*/
+.CodeMirror-focused .CodeMirror-selected-codefolding {
+  border: solid 1px rgba(157, 163, 180, 0.8) !important;
+  background: rgba(8, 31, 52, 0.38);
+}
+.CodeMirror-matchingbracket,
+.CodeMirror-matchingtag {
+  /* Ensure visibility against gray inline editor background */
+  background-color: #00679B;
+  color: #fff!important;
+}
+.CodeMirror-overwrite .CodeMirror-cursor {
+  border-left: none !important;
+  border-bottom: 1px solid #fff;
+}
+/*
+    CodeMirror's use of descendant selectors for certain styling causes problems when editors are
+    nested because, for items in the inner editor, the left-hand clause in the selector will now
+    match either the actual containing CodeMirror instance *OR* the outer "host" CodeMirror instance.
+
+    TODO (issue #324): We'll still have problems if editors can be nested more than one level deep,
+    or if any other descendant-selector-driven CM styles can differ between inner & outer editors
+    (potential problem areas include line wrap and coloring theme: basically, anything in codemirror.css
+    that uses a descandant selector where the CSS class name to the left of the space is something
+    other than a vanilla .CodeMirror)
+ */
+.CodeMirror .CodeMirror {
+  background: transparent;
+}
+.CodeMirror .CodeMirror .CodeMirror-gutters {
+  background: transparent;
+  border-right: none;
+}
+.CodeMirror .CodeMirror .CodeMirror-activeline-background {
+  background: transparent;
+}
+.CodeMirror .CodeMirror .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: transparent;
+  color: #767676;
+}
+.CodeMirror .CodeMirror-focused .CodeMirror-activeline-background {
+  background: #777;
+}
+.CodeMirror .CodeMirror-focused .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+/* dropdown icon - normal */
+.CodeMirror-foldgutter-open:after {
+  color: #666;
+}
+/* dropdown icon - when closed */
+.CodeMirror-foldgutter-folded:after {
+  color: #aaa;
+}
+/* dropdown icon - hover */
+.CodeMirror.over-gutter .CodeMirror-foldgutter-open:after,
+.CodeMirror-activeline .CodeMirror-foldgutter-open:after {
+  color: #888;
+}
+/* three dotted line box */
+.CodeMirror-foldmarker {
+  border-color: #595b5c;
+  color: #bcbcbc;
+  background-color: #464748;
+  box-shadow: inset 0px 0px 1px 0px #bcbcbc;
+}
+/* Non-editor styling */
+.image-view,
+.not-editor {
+  background-color: #202020;
+}
+.view-pane .image-view {
+  color: #e9e9e9;
+}
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+                                    END OF BASE THEME (original main.js)
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+.CodeMirror-gutters:before {
+  color: yellow !important;
+}
+.background {
+  color: #e9e9e9;
+  background: #202020;
+}
+.html-highlight {
+  background: rgba(0, 149, 255, 0.4);
+}
+/*_____________________________ clear html class names _______________________________*/
+.BASE {
+  /* Define some variables used in multiple places */
+  /* 1. Background color for the code view */
+  /* 2. Foreground color for the code view (Regular strings or text) */
+  /* Code Styling */
+  /* NA */
+  /* NA */
+  /* NA */
+  /* Color Theme Selectors & Color Values */
+  /* HTML Specific Code Colouring */
+  /* PHP Specific Code Colouring */
+  /* JavaScript Specific Code Colouring */
+  /* CSS, SCSS, LESS Specific Code Colouring */
+  /* Extra CSS */
+  /* sequence numbers */
+  /* drag & Select text ,change focus */
+  /* drag & Select text*/
+  /* drag & Select text ,change focus */
+  /* drag & Select text*/
+  /*
+    CodeMirror's use of descendant selectors for certain styling causes problems when editors are
+    nested because, for items in the inner editor, the left-hand clause in the selector will now
+    match either the actual containing CodeMirror instance *OR* the outer "host" CodeMirror instance.
+
+    TODO (issue #324): We'll still have problems if editors can be nested more than one level deep,
+    or if any other descendant-selector-driven CM styles can differ between inner & outer editors
+    (potential problem areas include line wrap and coloring theme: basically, anything in codemirror.css
+    that uses a descandant selector where the CSS class name to the left of the space is something
+    other than a vanilla .CodeMirror)
+ */
+  /* dropdown icon - normal */
+  /* dropdown icon - when closed */
+  /* dropdown icon - hover */
+  /* three dotted line box */
+  /* Non-editor styling */
+}
+.BASE .CodeMirror,
+.BASE .CodeMirror-scroll {
+  background-color: #202020 !important;
+  color: #e9e9e9 !important;
+}
+.BASE .CodeMirror-focused .CodeMirror-activeline-background {
+  background: #b7b7b7 !important;
+}
+.BASE .show-line-padding .CodeMirror-focused .CodeMirror-activeline-background {
+  box-shadow: inset 15px 0 0 0 #000 !important;
+}
+.BASE .CodeMirror-focused .CodeMirror-activeline {
+  /* NA */
+}
+.BASE .CodeMirror-focused .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: rgba(0, 0, 0, 0.2) !important;
+  color: #fff !important;
+}
+.BASE .CodeMirror-focused .CodeMirror-activeline .inline-widget .CodeMirror-gutter-elt {
+  color: #767676 !important;
+}
+.BASE .cm-atom,
+.BASE .cm-string,
+.BASE .cm-string-2,
+.BASE .cm-hr {
+  color: #ffdc79 !important;
+}
+.BASE .cm-number,
+.BASE .cm-attribute,
+.BASE .cm-plus,
+.BASE .cm-qualifier {
+  color: #a4eba9 !important;
+}
+.BASE .cm-def,
+.BASE .cm-property {
+  color: #a4eba9 !important;
+}
+.BASE .cm-variable,
+.BASE .cm-variable-2,
+.BASE .cm-variable-3,
+.BASE .cm-operator,
+.BASE .cm-meta,
+.BASE .cm-bracket {
+  color: #e9e9e9 !important;
+}
+.BASE .cm-comment {
+  color: #919191 !important;
+}
+.BASE .cm-error,
+.BASE .cm-minus {
+  color: #fc8889 !important;
+}
+.BASE .cm-header {
+  color: #848877 !important;
+}
+.BASE .cm-link {
+  color: #81d5ef !important;
+  text-decoration: none !important;
+}
+.BASE .cm-rangeinfo {
+  color: #bee3ed !important;
+}
+.BASE .cm-keyword,
+.BASE .cm-builtin,
+.BASE .cm-tag,
+.BASE .cm-quote {
+  color: #99cdff !important;
+}
+.BASE .HTML .cm-keyword,
+.BASE .HTML .cm-qualifier,
+.BASE .HTML .cm-builtin,
+.BASE .HTML .cm-tag,
+.BASE .HTML .cm-quote,
+.HTML .cm-m-xml.cm-tag,
+.HTML .cm-m-xml.cm-keyword,
+.HTML .cm-m-xml.cm-qualifier,
+.HTML .cm-m-xml.cm-builtin,
+.HTML .cm-m-xml.cm-quote {
+  color: #99cdff !important;
+}
+.BASE .HTML .cm-number,
+.BASE .HTML .cm-atom,
+.HTML .cm-m-xml.cm-value,
+.HTML .cm-m-xml.cm-atom,
+.HTML .cm-m-xml.cm-number {
+  color: #FE8FA2 !important;
+}
+.BASE .HTML .cm-attribute,
+.HTML .cm-m-xml.cm-attribute {
+  color: #e9e9e9 !important;
+}
+.BASE .HTML .cm-string,
+.HTML .cm-m-xml.cm-string {
+  color: #ffdc79 !important;
+}
+.BASE .HTML .cm-bracket,
+.HTML .cm-m-xml.cm-bracket {
+  color: #99cdff !important;
+}
+.BASE .HTML .cm-property,
+.HTML .cm-m-xml.cm-property {
+  color: #ffc39c !important;
+}
+.BASE .PHP .cm-meta {
+  color: #ab80ff !important;
+}
+.BASE .PHP .cm-keyword,
+.BASE .PHP .cm-builtin {
+  color: #a4eba9 !important;
+}
+.BASE .PHP .cm-bracket,
+.BASE .PHP .cm-tag,
+.BASE .PHP .cm-def,
+.BASE .PHP .cm-variable {
+  color: #82C1FF !important;
+}
+.BASE .PHP .cm-string {
+  color: #ffdc79 !important;
+}
+.BASE .PHP .cm-operator {
+  color: #e9e9e9 !important;
+}
+.BASE .PHP .cm-variable-2 {
+  color: #FF76A4 !important;
+}
+.BASE .PHP .cm-number {
+  color: #FF6F00 !important;
+}
+.BASE .JavaScript .cm-variable,
+.BASE .JavaScript .cm-variable-2,
+.BASE .JavaScript .cm-string-2,
+.JavaScript .cm-m-javascript.cm-variable,
+.JavaScript .cm-m-javascript.cm-variable-2,
+.JavaScript .cm-m-javascript.cm-string-2,
+.JavaScript .cm-m-javascript.cm-def {
+  color: #e9e9e9 !important;
+}
+.BASE .JavaScript .cm-def,
+.BASE .JavaScript .cm-property,
+.JavaScript .cm-m-javascript.cm-property {
+  color: #82C1FF !important;
+}
+.BASE .JavaScript .cm-string,
+.JavaScript .cm-m-javascript.cm-string {
+  color: #ffdc79 !important;
+}
+.BASE .JavaScript .cm-keyword,
+.BASE .JavaScript .cm-atom,
+.JavaScript .cm-m-javascript.cm-keyword,
+.JavaScript .cm-m-javascript.cm-atom {
+  color: #a4eba9 !important;
+}
+.BASE .JavaScript .cm-number,
+.JavaScript .cm-m-javascript.cm-number {
+  color: #fc8889 !important;
+}
+.BASE .CSS .cm-string,
+.BASE .SCSS .cm-string,
+.BASE .LESS .cm-string,
+.BASE .CSS .cm-string-2,
+.BASE .SCSS .cm-string-2,
+.BASE .LESS .cm-string-2,
+.BASE .CSS .cm-link,
+.BASE .SCSS .cm-link,
+.BASE .LESS .cm-link,
+.BASE .CSS .cm-rangeinfo,
+.BASE .SCSS .cm-rangeinfo,
+.BASE .LESS .cm-rangeinfo,
+.CSS .cm-m-css.cm-string,
+.CSS .cm-m-css.cm-string-2,
+.CSS .cm-m-css.cm-link,
+.CSS .cm-m-css.cm-rangeinfo,
+.CSS .cm-m-css.cm-string {
+  color: #ffdc79 !important;
+}
+.BASE .CSS .cm-tag,
+.BASE .SCSS .cm-tag,
+.BASE .LESS .cm-tag,
+.CSS .cm-m-css.cm-tag {
+  color: #a4eba9 !important;
+}
+.BASE .CSS .cm-keyword,
+.BASE .SCSS .cm-keyword,
+.BASE .LESS .cm-keyword,
+.BASE .CSS .cm-atom,
+.BASE .SCSS .cm-atom,
+.BASE .LESS .cm-atom,
+.BASE .CSS .cm-hr,
+.BASE .SCSS .cm-hr,
+.BASE .LESS .cm-hr,
+.BASE .CSS .cm-variable,
+.BASE .SCSS .cm-variable,
+.BASE .LESS .cm-variable,
+.BASE .CSS .cm-number,
+.BASE .SCSS .cm-number,
+.BASE .LESS .cm-number,
+.BASE .CSS .cm-attribute,
+.BASE .SCSS .cm-attribute,
+.BASE .LESS .cm-attribute,
+.BASE .CSS .cm-plus,
+.BASE .SCSS .cm-plus,
+.BASE .LESS .cm-plus,
+.BASE .CSS .cm-error,
+.BASE .SCSS .cm-error,
+.BASE .LESS .cm-error,
+.BASE .CSS .cm-minus,
+.BASE .SCSS .cm-minus,
+.BASE .LESS .cm-minus,
+.CSS .cm-m-css.cm-variable,
+.CSS .cm-m-css.cm-attribute,
+.CSS .cm-m-css.cm-atom,
+.CSS .cm-m-css.cm-number,
+.CSS .cm-m-css.cm-hr,
+.CSS .cm-m-css.cm-plus,
+.CSS .cm-m-css.cm-minus {
+  color: #fc8889 !important;
+}
+.BASE .CSS .cm-variable-4,
+.BASE .SCSS .cm-variable-4,
+.BASE .LESS .cm-variable-4 {
+  color: #ffae5e !important !important;
+}
+.BASE .CSS .cm-def,
+.BASE .SCSS .cm-def,
+.BASE .LESS .cm-def,
+.CSS .cm-m-css.cm-def {
+  color: #B28BFF !important;
+}
+.BASE .CSS .cm-meta,
+.BASE .SCSS .cm-meta,
+.BASE .LESS .cm-meta,
+.BASE .CSS .cm-property,
+.BASE .SCSS .cm-property,
+.BASE .LESS .cm-property,
+.CSS .cm-m-css.cm-meta,
+.CSS .cm-m-css.cm-property {
+  color: #ffc39c !important;
+}
+.BASE .CSS .cm-qualifier,
+.BASE .SCSS .cm-qualifier,
+.BASE .LESS .cm-qualifier,
+.BASE .CSS .cm-builtin,
+.BASE .SCSS .cm-builtin,
+.BASE .LESS .cm-builtin,
+.BASE .CSS .cm-quote,
+.BASE .SCSS .cm-quote,
+.BASE .LESS .cm-quote,
+.BASE .CSS .cm-variable-2,
+.BASE .SCSS .cm-variable-2,
+.BASE .LESS .cm-variable-2,
+.BASE .CSS .cm-variable-3,
+.BASE .SCSS .cm-variable-3,
+.BASE .LESS .cm-variable-3,
+.CSS .cm-m-css.cm-builtin,
+.CSS .cm-m-css.cm-qualifier,
+.CSS .cm-m-css.cm-variable-2 {
+  color: #99cdff !important;
+}
+.BASE .CSS .cm-operator,
+.BASE .SCSS .cm-operator,
+.BASE .LESS .cm-operator,
+.BASE .CSS .cm-bracket,
+.BASE .SCSS .cm-bracket,
+.BASE .LESS .cm-bracket,
+.CSS .cm-m-css.cm-operator,
+.CSS .cm-m-css.cm-bracket {
+  color: #e9e9e9 !important;
+}
+.BASE .JSON .cm-comment {
+  color: #e9e9e9 !important;
+  font-style: normal !important;
+}
+.BASE .CodeMirror-searching {
+  background-color: #ffe497 !important;
+  color: #222222 !important !important;
+}
+.BASE .CodeMirror-searching.searching-current-match {
+  background-color: #ffc41d !important;
+  color: #222222 !important !important;
+}
+.BASE .CodeMirror-cursor {
+  border-left: 1px solid #e9e9e9 !important;
+}
+.BASE .CodeMirror-gutters {
+  background-color: #202020 !important;
+  border-right: none !important;
+}
+.BASE .CodeMirror-linenumber {
+  color: #919191 !important;
+}
+.BASE .CodeMirror .CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.23) !important;
+  transition: all 360ms ease !important;
+}
+.BASE .CodeMirror-focused .CodeMirror-selected {
+  background: rgba(0, 149, 255, 0.6) !important;
+  color: #ffffff !important !important;
+}
+.BASE .CodeMirror .CodeMirror-selected-codefolding {
+  background: rgba(199, 199, 199, 0.3) !important;
+}
+.BASE .CodeMirror-focused .CodeMirror-selected-codefolding {
+  border: solid 1px rgba(157, 163, 180, 0.8) !important;
+  background: rgba(8, 31, 52, 0.38) !important;
+}
+.BASE .CodeMirror-matchingbracket,
+.BASE .CodeMirror-matchingtag {
+  /* Ensure visibility against gray inline editor background */
+  background-color: #00679B !important;
+  color: #fff!important !important;
+}
+.BASE .CodeMirror-overwrite .CodeMirror-cursor {
+  border-left: none !important !important;
+  border-bottom: 1px solid #fff !important;
+}
+.BASE .CodeMirror .CodeMirror {
+  background: transparent !important;
+}
+.BASE .CodeMirror .CodeMirror .CodeMirror-gutters {
+  background: transparent !important;
+  border-right: none !important;
+}
+.BASE .CodeMirror .CodeMirror .CodeMirror-activeline-background {
+  background: transparent !important;
+}
+.BASE .CodeMirror .CodeMirror .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: transparent !important;
+  color: #767676 !important;
+}
+.BASE .CodeMirror .CodeMirror-focused .CodeMirror-activeline-background {
+  background: #777 !important;
+}
+.BASE .CodeMirror .CodeMirror-focused .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: rgba(0, 0, 0, 0.2) !important;
+  color: #fff !important;
+}
+.BASE .CodeMirror-foldgutter-open:after {
+  color: #666 !important;
+}
+.BASE .CodeMirror-foldgutter-folded:after {
+  color: #aaa !important;
+}
+.BASE .CodeMirror.over-gutter .CodeMirror-foldgutter-open:after,
+.BASE .CodeMirror-activeline .CodeMirror-foldgutter-open:after {
+  color: #888 !important;
+}
+.BASE .CodeMirror-foldmarker {
+  border-color: #595b5c !important;
+  color: #bcbcbc !important;
+  background-color: #464748 !important;
+  box-shadow: inset 0px 0px 1px 0px #bcbcbc !important;
+}
+.BASE .image-view,
+.BASE .not-editor {
+  background-color: #202020 !important;
+}
+.BASE .view-pane .image-view {
+  color: #e9e9e9 !important;
+}
+.BASE .HTML {
+  /* Define some variables used in multiple places */
+  /* 1. Background color for the code view */
+  /* 2. Foreground color for the code view (Regular strings or text) */
+  /* Code Styling */
+  /* NA */
+  /* NA */
+  /* NA */
+  /* Color Theme Selectors & Color Values */
+  /* HTML Specific Code Colouring */
+  /* PHP Specific Code Colouring */
+  /* JavaScript Specific Code Colouring */
+  /* CSS, SCSS, LESS Specific Code Colouring */
+  /* Extra CSS */
+  /* sequence numbers */
+  /* drag & Select text ,change focus */
+  /* drag & Select text*/
+  /* drag & Select text ,change focus */
+  /* drag & Select text*/
+  /*
+    CodeMirror's use of descendant selectors for certain styling causes problems when editors are
+    nested because, for items in the inner editor, the left-hand clause in the selector will now
+    match either the actual containing CodeMirror instance *OR* the outer "host" CodeMirror instance.
+
+    TODO (issue #324): We'll still have problems if editors can be nested more than one level deep,
+    or if any other descendant-selector-driven CM styles can differ between inner & outer editors
+    (potential problem areas include line wrap and coloring theme: basically, anything in codemirror.css
+    that uses a descandant selector where the CSS class name to the left of the space is something
+    other than a vanilla .CodeMirror)
+ */
+  /* dropdown icon - normal */
+  /* dropdown icon - when closed */
+  /* dropdown icon - hover */
+  /* three dotted line box */
+  /* Non-editor styling */
+  /* Define some variables used in multiple places */
+  /* 1. Background color for the code view */
+  /* 2. Foreground color for the code view (Regular strings or text) */
+  /* Code Styling */
+  /* NA */
+  /* NA */
+  /* NA */
+  /* Color Theme Selectors & Color Values */
+  /* HTML Specific Code Colouring */
+  /* PHP Specific Code Colouring */
+  /* JavaScript Specific Code Colouring */
+  /* CSS, SCSS, LESS Specific Code Colouring */
+  /* Extra CSS */
+  /* sequence numbers */
+  /* drag & Select text ,change focus */
+  /* drag & Select text*/
+  /* drag & Select text ,change focus */
+  /* drag & Select text*/
+  /*
+    CodeMirror's use of descendant selectors for certain styling causes problems when editors are
+    nested because, for items in the inner editor, the left-hand clause in the selector will now
+    match either the actual containing CodeMirror instance *OR* the outer "host" CodeMirror instance.
+
+    TODO (issue #324): We'll still have problems if editors can be nested more than one level deep,
+    or if any other descendant-selector-driven CM styles can differ between inner & outer editors
+    (potential problem areas include line wrap and coloring theme: basically, anything in codemirror.css
+    that uses a descandant selector where the CSS class name to the left of the space is something
+    other than a vanilla .CodeMirror)
+ */
+  /* dropdown icon - normal */
+  /* dropdown icon - when closed */
+  /* dropdown icon - hover */
+  /* three dotted line box */
+  /* Non-editor styling */
+}
+.BASE .HTML .CodeMirror,
+.BASE .HTML .CodeMirror-scroll {
+  background-color: #202020;
+  color: #e9e9e9;
+}
+.BASE .HTML .CodeMirror-focused .CodeMirror-activeline-background {
+  background: #b7b7b7;
+}
+.BASE .HTML .show-line-padding .CodeMirror-focused .CodeMirror-activeline-background {
+  box-shadow: inset 15px 0 0 0 #000;
+}
+.BASE .HTML .CodeMirror-focused .CodeMirror-activeline {
+  /* NA */
+}
+.BASE .HTML .CodeMirror-focused .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+.BASE .HTML .CodeMirror-focused .CodeMirror-activeline .inline-widget .CodeMirror-gutter-elt {
+  color: #767676;
+}
+.BASE .HTML .cm-atom,
+.BASE .HTML .cm-string,
+.BASE .HTML .cm-string-2,
+.BASE .HTML .cm-hr,
+.HTML .cm-m-xml.cm-value,
+.HTML .cm-m-xml.cm-atom,
+.HTML .cm-m-xml.cm-string {
+  color: #ffdc79;
+}
+.BASE .HTML .cm-number,
+.BASE .HTML .cm-attribute,
+.BASE .HTML .cm-plus,
+.BASE .HTML .cm-qualifier,
+.HTML .cm-m-xml.cm-attribute,
+.HTML .cm-m-xml.cm-qualifier,
+.HTML .cm-m-xml.cm-number {
+  color: #a4eba9;
+}
+.BASE .HTML .cm-def,
+.BASE .HTML .cm-property,
+.HTML .cm-m-xml.cm-property {
+  color: #a4eba9;
+}
+.BASE .HTML .cm-variable,
+.BASE .HTML .cm-variable-2,
+.BASE .HTML .cm-variable-3,
+.BASE .HTML .cm-operator,
+.BASE .HTML .cm-meta,
+.BASE .HTML .cm-bracket,
+.HTML .cm-m-xml.cm-bracket,
+.HTML .cm-m-xml.cm-operator {
+  color: #e9e9e9;
+}
+.BASE .HTML .cm-comment {
+  color: #919191;
+}
+.BASE .HTML .cm-error,
+.BASE .HTML .cm-minus {
+  color: #fc8889;
+}
+.BASE .HTML .cm-header {
+  color: #848877;
+}
+.BASE .HTML .cm-link {
+  color: #81d5ef;
+  text-decoration: none;
+}
+.BASE .HTML .cm-rangeinfo {
+  color: #bee3ed;
+}
+.BASE .HTML .cm-keyword,
+.BASE .HTML .cm-builtin,
+.BASE .HTML .cm-tag,
+.BASE .HTML .cm-quote,
+.HTML .cm-m-xml.cm-tag,
+.HTML .cm-m-xml.cm-keyword,
+.HTML .cm-m-xml.cm-builtin,
+.HTML .cm-m-xml.cm-quote {
+  color: #99cdff;
+}
+.BASE .HTML .HTML .cm-keyword,
+.BASE .HTML .HTML .cm-qualifier,
+.BASE .HTML .HTML .cm-builtin,
+.BASE .HTML .HTML .cm-tag,
+.BASE .HTML .HTML .cm-quote {
+  color: #99cdff;
+}
+.BASE .HTML .HTML .cm-number,
+.BASE .HTML .HTML .cm-atom {
+  color: #FE8FA2;
+}
+.BASE .HTML .HTML .cm-attribute {
+  color: #e9e9e9;
+}
+.BASE .HTML .HTML .cm-string {
+  color: #ffdc79;
+}
+.BASE .HTML .HTML .cm-bracket {
+  color: #99cdff;
+}
+.BASE .HTML .HTML .cm-property {
+  color: #ffc39c;
+}
+.BASE .HTML .PHP .cm-meta {
+  color: #ab80ff;
+}
+.BASE .HTML .PHP .cm-keyword,
+.BASE .HTML .PHP .cm-builtin {
+  color: #a4eba9;
+}
+.BASE .HTML .PHP .cm-bracket,
+.BASE .HTML .PHP .cm-tag,
+.BASE .HTML .PHP .cm-def,
+.BASE .HTML .PHP .cm-variable {
+  color: #82C1FF;
+}
+.BASE .HTML .PHP .cm-string {
+  color: #ffdc79;
+}
+.BASE .HTML .PHP .cm-operator {
+  color: #e9e9e9;
+}
+.BASE .HTML .PHP .cm-variable-2 {
+  color: #FF76A4;
+}
+.BASE .HTML .PHP .cm-number {
+  color: #FF6F00;
+}
+.BASE .HTML .JavaScript .cm-variable,
+.BASE .HTML .JavaScript .cm-variable-2,
+.BASE .HTML .JavaScript .cm-string-2 {
+  color: #e9e9e9;
+}
+.BASE .HTML .JavaScript .cm-def,
+.BASE .HTML .JavaScript .cm-property {
+  color: #82C1FF;
+}
+.BASE .HTML .JavaScript .cm-string {
+  color: #ffdc79;
+}
+.BASE .HTML .JavaScript .cm-keyword,
+.BASE .HTML .JavaScript .cm-atom {
+  color: #a4eba9;
+}
+.BASE .HTML .JavaScript .cm-number {
+  color: #fc8889;
+}
+.BASE .HTML .CSS .cm-string,
+.BASE .HTML .SCSS .cm-string,
+.BASE .HTML .LESS .cm-string,
+.BASE .HTML .CSS .cm-string-2,
+.BASE .HTML .SCSS .cm-string-2,
+.BASE .HTML .LESS .cm-string-2,
+.BASE .HTML .CSS .cm-link,
+.BASE .HTML .SCSS .cm-link,
+.BASE .HTML .LESS .cm-link,
+.BASE .HTML .CSS .cm-rangeinfo,
+.BASE .HTML .SCSS .cm-rangeinfo,
+.BASE .HTML .LESS .cm-rangeinfo {
+  color: #ffdc79;
+}
+.BASE .HTML .CSS .cm-tag,
+.BASE .HTML .SCSS .cm-tag,
+.BASE .HTML .LESS .cm-tag {
+  color: #a4eba9;
+}
+.BASE .HTML .CSS .cm-keyword,
+.BASE .HTML .SCSS .cm-keyword,
+.BASE .HTML .LESS .cm-keyword,
+.BASE .HTML .CSS .cm-atom,
+.BASE .HTML .SCSS .cm-atom,
+.BASE .HTML .LESS .cm-atom,
+.BASE .HTML .CSS .cm-hr,
+.BASE .HTML .SCSS .cm-hr,
+.BASE .HTML .LESS .cm-hr,
+.BASE .HTML .CSS .cm-variable,
+.BASE .HTML .SCSS .cm-variable,
+.BASE .HTML .LESS .cm-variable,
+.BASE .HTML .CSS .cm-number,
+.BASE .HTML .SCSS .cm-number,
+.BASE .HTML .LESS .cm-number,
+.BASE .HTML .CSS .cm-attribute,
+.BASE .HTML .SCSS .cm-attribute,
+.BASE .HTML .LESS .cm-attribute,
+.BASE .HTML .CSS .cm-plus,
+.BASE .HTML .SCSS .cm-plus,
+.BASE .HTML .LESS .cm-plus,
+.BASE .HTML .CSS .cm-error,
+.BASE .HTML .SCSS .cm-error,
+.BASE .HTML .LESS .cm-error,
+.BASE .HTML .CSS .cm-minus,
+.BASE .HTML .SCSS .cm-minus,
+.BASE .HTML .LESS .cm-minus {
+  color: #fc8889;
+}
+.BASE .HTML .CSS .cm-variable-4,
+.BASE .HTML .SCSS .cm-variable-4,
+.BASE .HTML .LESS .cm-variable-4 {
+  color: #ffae5e !important;
+}
+.BASE .HTML .CSS .cm-def,
+.BASE .HTML .SCSS .cm-def,
+.BASE .HTML .LESS .cm-def {
+  color: #B28BFF;
+}
+.BASE .HTML .CSS .cm-meta,
+.BASE .HTML .SCSS .cm-meta,
+.BASE .HTML .LESS .cm-meta,
+.BASE .HTML .CSS .cm-property,
+.BASE .HTML .SCSS .cm-property,
+.BASE .HTML .LESS .cm-property {
+  color: #ffc39c;
+}
+.BASE .HTML .CSS .cm-qualifier,
+.BASE .HTML .SCSS .cm-qualifier,
+.BASE .HTML .LESS .cm-qualifier,
+.BASE .HTML .CSS .cm-builtin,
+.BASE .HTML .SCSS .cm-builtin,
+.BASE .HTML .LESS .cm-builtin,
+.BASE .HTML .CSS .cm-quote,
+.BASE .HTML .SCSS .cm-quote,
+.BASE .HTML .LESS .cm-quote,
+.BASE .HTML .CSS .cm-variable-2,
+.BASE .HTML .SCSS .cm-variable-2,
+.BASE .HTML .LESS .cm-variable-2,
+.BASE .HTML .CSS .cm-variable-3,
+.BASE .HTML .SCSS .cm-variable-3,
+.BASE .HTML .LESS .cm-variable-3 {
+  color: #99cdff;
+}
+.BASE .HTML .CSS .cm-operator,
+.BASE .HTML .SCSS .cm-operator,
+.BASE .HTML .LESS .cm-operator,
+.BASE .HTML .CSS .cm-bracket,
+.BASE .HTML .SCSS .cm-bracket,
+.BASE .HTML .LESS .cm-bracket {
+  color: #e9e9e9;
+}
+.BASE .HTML .JSON .cm-comment {
+  color: #e9e9e9;
+  font-style: normal;
+}
+.BASE .HTML .CodeMirror-searching {
+  background-color: #ffe497;
+  color: #222222 !important;
+}
+.BASE .HTML .CodeMirror-searching.searching-current-match {
+  background-color: #ffc41d;
+  color: #222222 !important;
+}
+.BASE .HTML .CodeMirror-cursor {
+  border-left: 1px solid #e9e9e9 !important;
+}
+.BASE .HTML .CodeMirror-gutters {
+  background-color: #202020;
+  border-right: none;
+}
+.BASE .HTML .CodeMirror-linenumber {
+  color: #919191;
+}
+.BASE .HTML .CodeMirror .CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.23);
+  transition: all 360ms ease;
+}
+.BASE .HTML .CodeMirror-focused .CodeMirror-selected {
+  background: rgba(0, 149, 255, 0.6);
+  color: #ffffff !important;
+}
+.BASE .HTML .CodeMirror .CodeMirror-selected-codefolding {
+  background: rgba(199, 199, 199, 0.3);
+}
+.BASE .HTML .CodeMirror-focused .CodeMirror-selected-codefolding {
+  border: solid 1px rgba(157, 163, 180, 0.8) !important;
+  background: rgba(8, 31, 52, 0.38);
+}
+.BASE .HTML .CodeMirror-matchingbracket,
+.BASE .HTML .CodeMirror-matchingtag {
+  /* Ensure visibility against gray inline editor background */
+  background-color: #00679B;
+  color: #fff!important;
+}
+.BASE .HTML .CodeMirror-overwrite .CodeMirror-cursor {
+  border-left: none !important;
+  border-bottom: 1px solid #fff;
+}
+.BASE .HTML .CodeMirror .CodeMirror {
+  background: transparent;
+}
+.BASE .HTML .CodeMirror .CodeMirror .CodeMirror-gutters {
+  background: transparent;
+  border-right: none;
+}
+.BASE .HTML .CodeMirror .CodeMirror .CodeMirror-activeline-background {
+  background: transparent;
+}
+.BASE .HTML .CodeMirror .CodeMirror .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: transparent;
+  color: #767676;
+}
+.BASE .HTML .CodeMirror .CodeMirror-focused .CodeMirror-activeline-background {
+  background: #777;
+}
+.BASE .HTML .CodeMirror .CodeMirror-focused .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+.BASE .HTML .CodeMirror-foldgutter-open:after {
+  color: #666;
+}
+.BASE .HTML .CodeMirror-foldgutter-folded:after {
+  color: #aaa;
+}
+.BASE .HTML .CodeMirror.over-gutter .CodeMirror-foldgutter-open:after,
+.BASE .HTML .CodeMirror-activeline .CodeMirror-foldgutter-open:after {
+  color: #888;
+}
+.BASE .HTML .CodeMirror-foldmarker {
+  border-color: #595b5c;
+  color: #bcbcbc;
+  background-color: #464748;
+  box-shadow: inset 0px 0px 1px 0px #bcbcbc;
+}
+.BASE .HTML .image-view,
+.BASE .HTML .not-editor {
+  background-color: #202020;
+}
+.BASE .HTML .view-pane .image-view {
+  color: #e9e9e9;
+}
+.BASE .HTML .CodeMirror,
+.BASE .HTML .CodeMirror-scroll {
+  background-color: #202020 !important;
+  color: #e9e9e9 !important;
+}
+.BASE .HTML .CodeMirror-focused .CodeMirror-activeline-background {
+  background: #b7b7b7 !important;
+}
+.BASE .HTML .show-line-padding .CodeMirror-focused .CodeMirror-activeline-background {
+  box-shadow: inset 15px 0 0 0 #000 !important;
+}
+.BASE .HTML .CodeMirror-focused .CodeMirror-activeline {
+  /* NA */
+}
+.BASE .HTML .CodeMirror-focused .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: rgba(0, 0, 0, 0.2) !important;
+  color: #fff !important;
+}
+.BASE .HTML .CodeMirror-focused .CodeMirror-activeline .inline-widget .CodeMirror-gutter-elt {
+  color: #767676 !important;
+}
+.BASE .HTML .cm-atom,
+.BASE .HTML .cm-string,
+.BASE .HTML .cm-string-2,
+.BASE .HTML .cm-hr,
+.HTML .cm-m-xml.cm-value,
+.HTML .cm-m-xml.cm-atom,
+.HTML .cm-m-xml.cm-string {
+  color: #ffdc79 !important;
+}
+.BASE .HTML .cm-number,
+.BASE .HTML .cm-attribute,
+.BASE .HTML .cm-plus,
+.BASE .HTML .cm-qualifier,
+.HTML .cm-m-xml.cm-attribute,
+.HTML .cm-m-xml.cm-qualifier,
+.HTML .cm-m-xml.cm-number {
+  color: #a4eba9 !important;
+}
+.BASE .HTML .cm-def,
+.BASE .HTML .cm-property,
+.HTML .cm-m-xml.cm-property {
+  color: #a4eba9 !important;
+}
+.BASE .HTML .cm-variable,
+.BASE .HTML .cm-variable-2,
+.BASE .HTML .cm-variable-3,
+.BASE .HTML .cm-operator,
+.BASE .HTML .cm-meta,
+.BASE .HTML .cm-bracket,
+.HTML .cm-m-xml.cm-bracket,
+.HTML .cm-m-xml.cm-operator {
+  color: #e9e9e9 !important;
+}
+.BASE .HTML .cm-comment {
+  color: #919191 !important;
+}
+.BASE .HTML .cm-error,
+.BASE .HTML .cm-minus {
+  color: #fc8889 !important;
+}
+.BASE .HTML .cm-header {
+  color: #848877 !important;
+}
+.BASE .HTML .cm-link {
+  color: #81d5ef !important;
+  text-decoration: none !important;
+}
+.BASE .HTML .cm-rangeinfo {
+  color: #bee3ed !important;
+}
+.BASE .HTML .cm-keyword,
+.BASE .HTML .cm-builtin,
+.BASE .HTML .cm-tag,
+.BASE .HTML .cm-quote,
+.HTML .cm-m-xml.cm-tag,
+.HTML .cm-m-xml.cm-keyword,
+.HTML .cm-m-xml.cm-builtin,
+.HTML .cm-m-xml.cm-quote {
+  color: #99cdff !important;
+}
+.BASE .HTML .HTML .cm-keyword,
+.BASE .HTML .HTML .cm-qualifier,
+.BASE .HTML .HTML .cm-builtin,
+.BASE .HTML .HTML .cm-tag,
+.BASE .HTML .HTML .cm-quote {
+  color: #99cdff !important;
+}
+.BASE .HTML .HTML .cm-number,
+.BASE .HTML .HTML .cm-atom {
+  color: #FE8FA2 !important;
+}
+.BASE .HTML .HTML .cm-attribute {
+  color: #e9e9e9 !important;
+}
+.BASE .HTML .HTML .cm-string {
+  color: #ffdc79 !important;
+}
+.BASE .HTML .HTML .cm-bracket {
+  color: #99cdff !important;
+}
+.BASE .HTML .HTML .cm-property {
+  color: #ffc39c !important;
+}
+.BASE .HTML .PHP .cm-meta {
+  color: #ab80ff !important;
+}
+.BASE .HTML .PHP .cm-keyword,
+.BASE .HTML .PHP .cm-builtin {
+  color: #a4eba9 !important;
+}
+.BASE .HTML .PHP .cm-bracket,
+.BASE .HTML .PHP .cm-tag,
+.BASE .HTML .PHP .cm-def,
+.BASE .HTML .PHP .cm-variable {
+  color: #82C1FF !important;
+}
+.BASE .HTML .PHP .cm-string {
+  color: #ffdc79 !important;
+}
+.BASE .HTML .PHP .cm-operator {
+  color: #e9e9e9 !important;
+}
+.BASE .HTML .PHP .cm-variable-2 {
+  color: #FF76A4 !important;
+}
+.BASE .HTML .PHP .cm-number {
+  color: #FF6F00 !important;
+}
+.BASE .HTML .JavaScript .cm-variable,
+.BASE .HTML .JavaScript .cm-variable-2,
+.BASE .HTML .JavaScript .cm-string-2 {
+  color: #e9e9e9 !important;
+}
+.BASE .HTML .JavaScript .cm-def,
+.BASE .HTML .JavaScript .cm-property {
+  color: #82C1FF !important;
+}
+.BASE .HTML .JavaScript .cm-string {
+  color: #ffdc79 !important;
+}
+.BASE .HTML .JavaScript .cm-keyword,
+.BASE .HTML .JavaScript .cm-atom {
+  color: #a4eba9 !important;
+}
+.BASE .HTML .JavaScript .cm-number {
+  color: #fc8889 !important;
+}
+.BASE .HTML .CSS .cm-string,
+.BASE .HTML .SCSS .cm-string,
+.BASE .HTML .LESS .cm-string,
+.BASE .HTML .CSS .cm-string-2,
+.BASE .HTML .SCSS .cm-string-2,
+.BASE .HTML .LESS .cm-string-2,
+.BASE .HTML .CSS .cm-link,
+.BASE .HTML .SCSS .cm-link,
+.BASE .HTML .LESS .cm-link,
+.BASE .HTML .CSS .cm-rangeinfo,
+.BASE .HTML .SCSS .cm-rangeinfo,
+.BASE .HTML .LESS .cm-rangeinfo {
+  color: #ffdc79 !important;
+}
+.BASE .HTML .CSS .cm-tag,
+.BASE .HTML .SCSS .cm-tag,
+.BASE .HTML .LESS .cm-tag {
+  color: #a4eba9 !important;
+}
+.BASE .HTML .CSS .cm-keyword,
+.BASE .HTML .SCSS .cm-keyword,
+.BASE .HTML .LESS .cm-keyword,
+.BASE .HTML .CSS .cm-atom,
+.BASE .HTML .SCSS .cm-atom,
+.BASE .HTML .LESS .cm-atom,
+.BASE .HTML .CSS .cm-hr,
+.BASE .HTML .SCSS .cm-hr,
+.BASE .HTML .LESS .cm-hr,
+.BASE .HTML .CSS .cm-variable,
+.BASE .HTML .SCSS .cm-variable,
+.BASE .HTML .LESS .cm-variable,
+.BASE .HTML .CSS .cm-number,
+.BASE .HTML .SCSS .cm-number,
+.BASE .HTML .LESS .cm-number,
+.BASE .HTML .CSS .cm-attribute,
+.BASE .HTML .SCSS .cm-attribute,
+.BASE .HTML .LESS .cm-attribute,
+.BASE .HTML .CSS .cm-plus,
+.BASE .HTML .SCSS .cm-plus,
+.BASE .HTML .LESS .cm-plus,
+.BASE .HTML .CSS .cm-error,
+.BASE .HTML .SCSS .cm-error,
+.BASE .HTML .LESS .cm-error,
+.BASE .HTML .CSS .cm-minus,
+.BASE .HTML .SCSS .cm-minus,
+.BASE .HTML .LESS .cm-minus {
+  color: #fc8889 !important;
+}
+.BASE .HTML .CSS .cm-variable-4,
+.BASE .HTML .SCSS .cm-variable-4,
+.BASE .HTML .LESS .cm-variable-4 {
+  color: #ffae5e !important !important;
+}
+.BASE .HTML .CSS .cm-def,
+.BASE .HTML .SCSS .cm-def,
+.BASE .HTML .LESS .cm-def {
+  color: #B28BFF !important;
+}
+.BASE .HTML .CSS .cm-meta,
+.BASE .HTML .SCSS .cm-meta,
+.BASE .HTML .LESS .cm-meta,
+.BASE .HTML .CSS .cm-property,
+.BASE .HTML .SCSS .cm-property,
+.BASE .HTML .LESS .cm-property {
+  color: #ffc39c !important;
+}
+.BASE .HTML .CSS .cm-qualifier,
+.BASE .HTML .SCSS .cm-qualifier,
+.BASE .HTML .LESS .cm-qualifier,
+.BASE .HTML .CSS .cm-builtin,
+.BASE .HTML .SCSS .cm-builtin,
+.BASE .HTML .LESS .cm-builtin,
+.BASE .HTML .CSS .cm-quote,
+.BASE .HTML .SCSS .cm-quote,
+.BASE .HTML .LESS .cm-quote,
+.BASE .HTML .CSS .cm-variable-2,
+.BASE .HTML .SCSS .cm-variable-2,
+.BASE .HTML .LESS .cm-variable-2,
+.BASE .HTML .CSS .cm-variable-3,
+.BASE .HTML .SCSS .cm-variable-3,
+.BASE .HTML .LESS .cm-variable-3 {
+  color: #99cdff !important;
+}
+.BASE .HTML .CSS .cm-operator,
+.BASE .HTML .SCSS .cm-operator,
+.BASE .HTML .LESS .cm-operator,
+.BASE .HTML .CSS .cm-bracket,
+.BASE .HTML .SCSS .cm-bracket,
+.BASE .HTML .LESS .cm-bracket {
+  color: #e9e9e9 !important;
+}
+.BASE .HTML .JSON .cm-comment {
+  color: #e9e9e9 !important;
+  font-style: normal !important;
+}
+.BASE .HTML .CodeMirror-searching {
+  background-color: #ffe497 !important;
+  color: #222222 !important !important;
+}
+.BASE .HTML .CodeMirror-searching.searching-current-match {
+  background-color: #ffc41d !important;
+  color: #222222 !important !important;
+}
+.BASE .HTML .CodeMirror-cursor {
+  border-left: 1px solid #e9e9e9 !important;
+}
+.BASE .HTML .CodeMirror-gutters {
+  background-color: #202020 !important;
+  border-right: none !important;
+}
+.BASE .HTML .CodeMirror-linenumber {
+  color: #919191 !important;
+}
+.BASE .HTML .CodeMirror .CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.23) !important;
+  transition: all 360ms ease !important;
+}
+.BASE .HTML .CodeMirror-focused .CodeMirror-selected {
+  background: rgba(0, 149, 255, 0.6) !important;
+  color: #ffffff !important !important;
+}
+.BASE .HTML .CodeMirror .CodeMirror-selected-codefolding {
+  background: rgba(199, 199, 199, 0.3) !important;
+}
+.BASE .HTML .CodeMirror-focused .CodeMirror-selected-codefolding {
+  border: solid 1px rgba(157, 163, 180, 0.8) !important;
+  background: rgba(8, 31, 52, 0.38) !important;
+}
+.BASE .HTML .CodeMirror-matchingbracket,
+.BASE .HTML .CodeMirror-matchingtag {
+  /* Ensure visibility against gray inline editor background */
+  background-color: #00679B !important;
+  color: #fff!important !important;
+}
+.BASE .HTML .CodeMirror-overwrite .CodeMirror-cursor {
+  border-left: none !important !important;
+  border-bottom: 1px solid #fff !important;
+}
+.BASE .HTML .CodeMirror .CodeMirror {
+  background: transparent !important;
+}
+.BASE .HTML .CodeMirror .CodeMirror .CodeMirror-gutters {
+  background: transparent !important;
+  border-right: none !important;
+}
+.BASE .HTML .CodeMirror .CodeMirror .CodeMirror-activeline-background {
+  background: transparent !important;
+}
+.BASE .HTML .CodeMirror .CodeMirror .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: transparent !important;
+  color: #767676 !important;
+}
+.BASE .HTML .CodeMirror .CodeMirror-focused .CodeMirror-activeline-background {
+  background: #777 !important;
+}
+.BASE .HTML .CodeMirror .CodeMirror-focused .CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: rgba(0, 0, 0, 0.2) !important;
+  color: #fff !important;
+}
+.BASE .HTML .CodeMirror-foldgutter-open:after {
+  color: #666 !important;
+}
+.BASE .HTML .CodeMirror-foldgutter-folded:after {
+  color: #aaa !important;
+}
+.BASE .HTML .CodeMirror.over-gutter .CodeMirror-foldgutter-open:after,
+.BASE .HTML .CodeMirror-activeline .CodeMirror-foldgutter-open:after {
+  color: #888 !important;
+}
+.BASE .HTML .CodeMirror-foldmarker {
+  border-color: #595b5c !important;
+  color: #bcbcbc !important;
+  background-color: #464748 !important;
+  box-shadow: inset 0px 0px 1px 0px #bcbcbc !important;
+}
+.BASE .HTML .image-view,
+.BASE .HTML .not-editor {
+  background-color: #202020 !important;
+}
+.BASE .HTML .view-pane .image-view {
+  color: #e9e9e9 !important;
+}
+/*_________________________________ save HTML base theme defaults _______________________________*/
+.html-background {
+  color: #e9e9e9;
+  background: #202020;
+}
+/*
+.html-activeline {
+	&.extend(.CodeMirror .CodeMirror-activeline-background)
+}
+.CodeMirror-focused .CodeMirror-activeline-background:extend(.html-activeline) {};
+
+
+.html-activeline-focus	{}
+    .CodeMirror .CodeMirror-activeline-background {
+        background: transparent;
+    }
+
+    .CodeMirror-focused .CodeMirror-activeline-background {
+        background: #777;
+    }
+*/
+/*_________________________________ JS base theme defaults ____________________________________*/
+/*
+.js-text			{color: @foreground};
+.js-comment			{.cm-comment}
+.js-error			{.cm-error}
+*/
+/*_________________________________ CSS base theme defaults ___________________________________
+
+
+_________________________________________________________________________________*/
+.css-important {
+  color: #ff0000;
+}
+.css-text {
+  color: #e9e9e9;
+}
+.css-comment {
+  color: #919191;
+}
+.css-background {
+  color: #e9e9e9;
+  background: #202020;
+}
+.css-error {
+  color: #fc8889;
+}
+.update-date-time {
+  content: "8:37 pm";
+}
+/*__________________________________________________________________________________*/
+/*                                                                                  */
+/*                       Odds and Ends for ALL FILE TYPES:                          */
+/*__________________________________________________________________________________*/
+.insert-CURSOR,
+body.dark,
+body:not(.dark) {
+  border-left-width: 2px;
+}
+body.dark {
+  border-left-color: yellow !important;
+}
+body:not(.dark) {
+  border-left-color: navy !important;
+}
+.overwrite-CURSOR {
+  width: 0.7em;
+  border-bottom-color: red  !important;
+  border-bottom-width: 3px;
+  margin-top: -2px !important;
+}
+.code-view-CURSOR {
+  visibility: visible;
+}
+.multiple-CURSORS {
+  visibility: visible;
+}
+.CodeMirror-cursor:not(:first-of-type) .source-code-CURSOR .tail-size {
+  border-width: 7.3px 0px 7px 0px;
+}
+.CodeMirror-cursor:not(:first-of-type) .source-code-CURSOR .blinking-duration {
+  transition-duration: 20s;
+}
+body.dark  .code-view-SELECTION-highlighting {
+  background: rgba(0, 149, 255, 0.4);
+}
+body:not(.dark)  .code-view-SELECTION-highlighting {
+  background: rgba(121, 215, 244, 0.7);
+}
+.source-code-SELECTION .arrows:before {
+  border-width: 5px 0px 5px 14px;
+}
+.source-code-SELECTION .arrows:after {
+  border-width: 5px 14px 5px 0px;
+}
+.source-code-SELECTION body.dark {
+  border-left-color: yellow !important;
+}
+.source-code-SELECTION body:not(.dark) {
+  border-left-color: navy !important;
+}
+body.dark .matchingbracket {
+  border-radius: 4px;
+}
+body:not(.dark) .matchingbracket {
+  background: #A0E2F6;
+  color: black !important;
+  border-radius: 4px;
+  font-weight: 400;
+  max-height: 14px;
+}
+.all-comments {
+  color: rgba(255, 192, 203, 0.9);
+  font-style: normal;
+}
+body.dark .all-comments {
+  color: rgba(255, 192, 203, 0.9);
+  font-style: normal;
+}
+body.dark .linenumbers {
+  color: #b2b2b2;
+}
+body.dark .night-BACKGROUND {
+  color: #3a3a3a;
+  background: #3a3a3a;
+}
+body:not(.dark) .all-comments {
+  color: #009900;
+}
+body:not(.dark) .night-BACKGROUND {
+  color: #3a3a3a;
+  background: #3a3a3a;
+}
+.CODE-COLORING-ICON {
+  opacity: 1;
+}
+/*___________________________________ EZtheme-merge import ___________________________________*/
+.CodeMirror-gutters:before {
+  color: orange !important;
+}
+/* multiline selection: css, js, html/xml mode unknown
+	<div style="position: relative; z-index: 1;">
+		<div class="CodeMirror-selected" style="position: absolute; ..."></div>
+		<div class="CodeMirror-selected" style="position: absolute; ..."></div>
+	</div>	
+	*/
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+                                        CSS formatting
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+/*____________________________________________________________________________________
+										CSS default values from  (base theme)
+	____________________________________________________________________________________*/
+.CSS {
+  /*____________________________________________________________________________________
+										CSS current values from main.js (user settimgs)
+		____________________________________________________________________________________*/
+}
+.CSS .css-atom,
+.CSS .css-number,
+.CSS .css-hr,
+.CSS .css-plus,
+.CSS .css-minus {
+  color: #ffdc79 !important;
+}
+.CSS .css-important {
+  color: #ff0000 !important;
+}
+.CSS .css-error {
+  color: white !important;
+  background: #ad0b0b !important;
+  border-radius: 3px !important;
+}
+.CSS .css-builtin {
+  color: #a4eba9 !important;
+}
+.CSS .css-directive {
+  color: #b28bff !important;
+}
+.CSS .css-selector {
+  color: #ffdc79 !important;
+}
+.CSS .css-property {
+  color: #ffc39c !important;
+}
+.CSS .css-keyword {
+  color: #ffc39c !important;
+}
+.CSS .css-value {
+  color: #ffdc79 !important;
+}
+.CSS .css-tag {
+  color: #a4eba9 !important;
+}
+.CSS .css-keyword {
+  color: #fc8889 !important;
+}
+.CSS .css-property {
+  color: #ffc39c !important;
+}
+.CSS .css-qualifier {
+  color: #99cdff !important;
+}
+.CSS .css-def {
+  color: #b28bff !important;
+}
+.CSS .css-string {
+  color: #ffdc79 !important;
+}
+.CSS .css-string {
+  color: #ffdc79 !important;
+}
+.CSS .css-tag {
+  color: #a4eba9 !important;
+}
+.CSS .css-meta {
+  color: #b28bff !important;
+}
+.CSS .css-meta {
+  color: #ffc39c !important;
+}
+.CSS .css-def {
+  color: #b28bff !important;
+}
+.CSS .css-variable-3 {
+  color: #99cdff !important;
+}
+.CSS .css-tag {
+  color: #a4eba9 !important;
+}
+.CSS .css-builtin {
+  color: #99cdff !important;
+}
+.CSS .css-qualifier {
+  color: #99cdff !important;
+}
+.CSS .css-variable-4 {
+  color: #ffae5e !important;
+}
+.CSS .css-property {
+  color: #ffc39c !important;
+}
+.CSS .css-attribute {
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS .css-atom {
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS .css-number {
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS .css-string-2 {
+  color: #ffdc79 !important;
+}
+.CSS .css-link {
+  color: #ffdc79 !important;
+}
+.CSS .css-rangeinfo {
+  color: #ffdc79 !important;
+}
+.CSS .css-variable {
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS .css-variable-2 {
+  color: #99cdff !important;
+}
+.CSS .css-quote {
+  color: #99cdff !important;
+}
+.CSS .css-operator {
+  color: #e9e9e9 !important;
+}
+.CSS .css-hr {
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS .css-plus {
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS .css-minus {
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS .css-bracket {
+  color: #e9e9e9 !important;
+}
+.CSS .css-important {
+  color: #ff0000 !important;
+}
+.CSS .css-error {
+  color: white !important;
+  background: #ad0b0b !important;
+  border-radius: 3px !important;
+}
+.CSS .css-text {
+  color: #e9e9e9 !important;
+}
+.CSS .css-comment {
+  color: #919191 !important;
+}
+.CSS span.cm-m-css {
+  /*
+			<span class="cm-m-css cm-property">border-right</span>
+			<span class="cm-m-css">: </span>
+			<span class="cm-m-css cm-number">2px</span>
+			<span class="cm-m-css"> </span>
+			<span class="cm-m-css cm-atom">solid</span>
+			<span class="cm-m-css"> </span>
+			<span class="cm-m-css cm-keyword">navy</span>	NOT IMPORTSNT
+			<span class="cm-m-css"> </span>
+			<span class="cm-m-css cm-keyword">!important</span>
+			<span class="cm-m-css">;</span></span>
+			*/
+  /*===========================================================================================
+			CSS merged code view styles (used by Brackets / CodeMirror)
+			==================================================================================*/
+}
+.CSS span.cm-m-css.CodeMirror-matchingbracket {
+  color: #e9e9e9 !important;
+  background: #202020 !important;
+}
+.CSS span.cm-m-css.CodeMirror-matchingbracket {
+  color: #e9e9e9 !important;
+}
+.CSS span.cm-m-css.cm-def {
+  color: #b28bff !important;
+}
+.CSS span.cm-m-css.cm-meta {
+  color: #b28bff !important;
+  color: #ffc39c !important;
+}
+.CSS span.cm-m-css.cm-tag {
+  color: #a4eba9 !important;
+}
+.CSS span.cm-m-css.cm-attribute {
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS span.cm-m-css.cm-builtin {
+  color: #a4eba9 !important;
+  color: #99cdff !important;
+}
+.CSS span.cm-m-css.cm-keyword {
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS span.cm-m-css.cm-property {
+  color: #ffc39c !important;
+}
+.CSS span.cm-m-css.cm-qualifier {
+  color: #99cdff !important;
+}
+.CSS span.cm-m-css.cm-variable {
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS span.cm-m-css.cm-variable-2 {
+  color: #99cdff !important;
+}
+.CSS span.cm-m-css.cm-variable-3 {
+  color: #99cdff !important;
+}
+.CSS span.cm-m-css.cm-variable-4 {
+  color: #ffae5e !important;
+}
+.CSS span.cm-m-css.cm-string {
+  color: #ffdc79 !important;
+}
+.CSS span.cm-m-css.cm-string-2 {
+  color: #ffdc79 !important;
+}
+.CSS span.cm-m-css.cm-link {
+  color: #ffdc79 !important;
+}
+.CSS span.cm-m-css.cm-rangeinfo {
+  color: #ffdc79 !important;
+}
+.CSS span.cm-m-css.cm-bracket {
+  color: #e9e9e9 !important;
+}
+.CSS span.cm-m-css.cm-quote {
+  color: #99cdff !important;
+}
+.CSS span.cm-m-css.cm-operator {
+  color: #e9e9e9 !important;
+}
+.CSS span.cm-m-css.cm-atom {
+  color: #ffdc79 !important;
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS span.cm-m-css.cm-hr {
+  color: #ffdc79 !important;
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS span.cm-m-css.cm-number {
+  color: #ffdc79 !important;
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS span.cm-m-css.cm-plus {
+  color: #ffdc79 !important;
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS span.cm-m-css.cm-minus {
+  color: #ffdc79 !important;
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+.CSS span.cm-m-css.cm-comment {
+  color: #919191 !important;
+}
+.CSS span.cm-m-css.cm-important {
+  color: #ff0000 !important;
+}
+.CSS span.cm-m-css.cm-error {
+  color: white !important;
+  background: #ad0b0b !important;
+  border-radius: 3px !important;
+}
+.CSS span.cm-m-css.cm-keyword,
+::shadow .CSS span.cm-m-css.cm-keyword,
+.CSS span.cm-m-css .webkit-css-keyword,
+.CSS span.cm-m-css ::shadow .webkit-css-keyword {
+  color: #ff0000 !important;
+}
+.CSS span.cm-m-css.cm-m-css.cm-number + span + .cm-atom + span + .cm-keyword,
+.CSS span.cm-m-css.cm-property + .cm-keyword,
+.CSS span.cm-m-css.cm-property + span + .cm-keyword,
+.CSS span.cm-m-css.cm-attribute + .cm-keyword,
+.CSS span.cm-m-css.cm-attribute + span + .cm-keyword {
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+::shadow .CSS span.cm-m-css.cm-property + .cm-keyword + .cm-keyword,
+::shadow .CSS span.cm-m-css.cm-property + span + .cm-keyword + .cm-keyword,
+::shadow .CSS span.cm-m-css.cm-attribute + .cm-keyword + .cm-keyword,
+::shadow .CSS span.cm-m-css.cm-attribute + span + .cm-keyword + .cm-keyword {
+  color: #ffc39c !important;
+  color: #fc8889 !important;
+}
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+                                        	JS formatting
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+.JavaScript .js-error {
+  color: white !important;
+  background: #C00 !important;
+  border-radius: 3px !important;
+}
+.JavaScript span.cm-m-javascript {
+  /*=======================================================================================
+		JS MERGED (default/current)		 	code view styles (used by Brackets / CodeMirror)
+		=======================================================================================*/
+}
+.JavaScript span.cm-m-javascript.cm-text {
+  color: #e9e9e9 !important;
+}
+.JavaScript span.cm-m-javascript.cm-error {
+  color: white !important;
+  background: #C00 !important;
+  border-radius: 3px !important;
+}
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+                                        	HTML formatting
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+.HTML {
+  /*============================================ THEME default setting
+	.html-tag 			{};		//tag color for tags not listed above
+	
+	//THEME SETTINGS	 
+	//.cm-keyword, .cm-qualifier, .cm-builtin,  .cm-tag, .cm-quote {color: #99cdff}
+	
+
+
+.HTML {
+	.cm-keyword, .cm-qualifier, .cm-builtin, .cm-tag, .cm-quote {
+	  color: #99cdff;
+	}
+	.cm-number, .cm-atom {
+	  color: #FE8FA2;
+	}
+	.cm-attribute {
+		color: #e9e9e9;
+	}
+	.cm-string {
+		color: #ffdc79;
+	}
+	.cm-bracket {
+		color: #99cdff;
+	}
+    .cm-property {
+		color: #ffc39c;
+	}
+}
+====================================================================*/
+  /*________________________________________________________________________________________________*/
+  /*=======================================================================================
+		HTML  (default/current)	MERGED		 	code view styles (used by Brackets / CodeMirror)
+		=======================================================================================*/
+}
+.HTML .html-property {
+  color: #f0874f !important;
+}
+.HTML .html-attribute {
+  color: #88aed5 !important;
+}
+.HTML .html-string {
+  color: #ebc865 !important;
+}
+.HTML .html-background {
+  background: #000000 !important;
+}
+.HTML .html-error {
+  color: white !important;
+  background: #C00 !important;
+  border-radius: 3px !important;
+}
+.HTML span.cm-m-xml:not(.cm-matchhighlight).cm-attribute {
+  color: #88aed5 !important;
+}
+.HTML span.cm-m-xml:not(.cm-matchhighlight).cm-property {
+  color: #f0874f !important;
+}
+.HTML span.cm-m-xml:not(.cm-matchhighlight).cm-string {
+  color: #ebc865 !important;
+}
+.HTML span.cm-m-xml:not(.cm-matchhighlight).cm-error,
+.HTML span.cm-m-xml:not(.cm-matchhighlight).cm-tag .error {
+  color: white !important;
+  background: #C00 !important;
+  border-radius: 3px !important;
+}
+.HTML .html .cm-m-xml.cm-tag.CodeMirror-matchingtag:not(.cm-matchhighlight).cm-bracket {
+  border-radius: 3px !important;
+  font-weight: 900 !important;
+}
+.HTML .cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag-img {
+  color: #ec02ec !important;
+}
+.HTML .cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag-a {
+  color: lime !important;
+}
+.HTML .cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag-table {
+  color: #58BF9C !important;
+  font-weight: 600 !important;
+}
+.HTML .cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag-tr,
+.HTML .cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag-th,
+.HTML .cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag-td {
+  color: #58BF9C !important;
+  font-style: italic !important;
+}
+.HTML .cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag-form {
+  color: orange !important;
+  font-weight: bold !important;
+}
+.HTML .cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag-input,
+.HTML .cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag-textarea {
+  color: orange !important;
+  font-style: italic !important;
+}
+.HTML .cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag-select {
+  color: orange !important;
+}
+.HTML .cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag-option {
+  color: #58BF9C !important;
+}
+.HTML .cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag-style,
+.HTML .cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag-link,
+.HTML .cm-m-xml:not(.cm-matchhighlight):not(.CodeMirror-matchingtag).cm-tag.cm-tag-script {
+  color: lime !important;
+}
+.html span.cm-m-xml.CodeMirror-matchingtag:not(.cm-matchhighlight) {
+  font-weight: bold !important;
+}
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+                                       ALL-FILE-TYPES -- merged
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+span.cm-comment:not(.cm-matchhighlight) {
+  color: rgba(255, 192, 203, 0.9);
+  font-style: normal;
+}
+.CSS span.cm-m-css.cm-comment,
+.JavaScript span.cm-m-js.cm-comment,
+.HTML span.cm-m-xml.cm-comment {
+  color: rgba(255, 192, 203, 0.9) !important;
+  font-style: normal !important;
+}
+.CSS span.cm-m-css.cm-comment,
+.JavaScript span.cm-m-js.cm-comment,
+.HTML span.cm-m-xml.cm-comment {
+  color: rgba(255, 192, 203, 0.9) !important;
+  font-style: normal !important;
+}
+/* 
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+ 
+                                       EXTRAS 
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+*/
+/*************************************/
+/* line numbers -- lighter for dark */
+/***********************************/
+body.dark  .CodeMirror-linenumber {
+  color: #B2B2B2;
+}
+/**********************************/
+/* DASHED BORDERS on CURSOR LINE */
+/********************************/
+.CodeMirror:not(.CodeMirror-focused) .CodeMirror-cursors {
+  visibility: visible !important;
+}
+.CodeMirror .CodeMirror-cursors .CodeMirror-cursor:before {
+  visibility: visible !important;
+}
+.CodeMirror-cursors .CodeMirror-cursor {
+  margin-top: -2px !important;
+}
+.CodeMirror .CodeMirror-cursors {
+  position: relative;
+}
+.CodeMirror .CodeMirror-cursors .CodeMirror-cursor:before {
+  content: "";
+  position: absolute;
+  height: inherit;
+  left: -2999px;
+  right: -2999px;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: dashed;
+  border-bottom-style: dashed;
+}
+.CodeMirror:not(.CodeMirror-focused).HTML .CodeMirror-selected:first-of-type:after {
+  content: "";
+  position: absolute;
+  left: -2999px;
+  right: -2999px;
+  top: -2px;
+  border-top-width: 1px;
+  border-top-style: double;
+}
+.CodeMirror:not(.CodeMirror-focused).HTML .CodeMirror-selected:last-of-type:after {
+  content: "";
+  position: absolute;
+  height: inherit;
+  left: -2999px;
+  right: -2999px;
+  border-bottom-width: 1px;
+  border-bottom-style: double;
+}
+body.dark  .CodeMirror .CodeMirror-cursor:before {
+  border-top-color: rgba(255, 255, 0, 0.7) !important;
+  border-bottom-color: rgba(255, 255, 0, 0.7) !important;
+}
+body.dark  .CodeMirror:not(.CodeMirror-focused).HTML .CodeMirror-cursor:before {
+  border-top-color: yellow !important;
+  border-bottom-color: yellow !important;
+  border-top-style: double;
+  border-bottom-style: double;
+}
+body.dark  .CodeMirror:not(.CodeMirror-focused).HTML .CodeMirror-selected:first-of-type:after {
+  border-top-color: yellow !important;
+}
+body.dark  .CodeMirror:not(.CodeMirror-focused).HTML .CodeMirror-selected:last-of-type:after {
+  border-bottom-color: yellow !important;
+}
+body.dark  .CodeMirror:not(.CodeMirror-focused).HTML .CodeMirror-cursor {
+  max-height: 10px !important;
+}
+body:not(.dark)  .CodeMirror:not(.CodeMirror-focused) .CodeMirror-cursors:before {
+  border-top-color: #333333 !important;
+  border-bottom-color: #333333 !important;
+}
+/*****************************/
+/* cursor -- wider -- color */
+/***************************/
+body.dark  .CodeMirror-cursors:not(.CodeMirror-overwrite) .CodeMirror-cursor {
+  border-left: 2px solid yellow !important;
+}
+body:not(.dark)  .CodeMirror-cursors:not(.CodeMirror-overwrite) .CodeMirror-cursor {
+  border-left: 2px solid navy !important;
+}
+.CodeMirror.CodeMirror-focused .CodeMirror-overwrite .CodeMirror-cursor,
+.CodeMirror:not(.CodeMirror-focused) .CodeMirror-overwrite .CodeMirror-cursor {
+  max-height: 11px !important;
+  border-bottom: 3px solid red !important;
+  border-left: none !important;
+}
+/*****************************/
+/* matching brackets / tags */
+/***************************/
+body:not(.dark)  span.CodeMirror-matchingbracket {
+  background: #A0E2F6;
+  color: black !important;
+  border-radius: 4px;
+  font-weight: 400;
+  max-height: 14px;
+}
+body.dark  span.CodeMirror-matchingbracket {
+  border-radius: 4px;
+}
+/******************************/
+/* matching tags white-space */
+/****************************/
+.CodeMirror-line > span > span:first-of-type:not(.cm-bracket):not(.cm-comment):not(.CodeMirror-matchingbracket) {
+  background: #202020;
+}
+.CodeMirror-line > span > zspan:first-of-type:not(.cm-bracket):not(.cm-comment):not(.CodeMirror-matchingbracket) {
+  position: relative;
+}
+.CodeMirror-line > span > zspan:first-of-type:not(.cm-bracket):not(.cm-comment):not(.CodeMirror-matchingbracket):before {
+  background: #202020;
+  position: absolute;
+  content: " ";
+  z-index: -1;
+  width: 100%;
+}
+.CodeMirror-selected {
+  z-index: 9;
+}
+/*********************************************/
+/* BG color of selected text or html tag(s) */
+/*******************************************/
+body.dark  .CodeMirror:not(.CodeMirror-focused) .CodeMirror-selected {
+  background: rgba(0, 149, 255, 0.6);
+}
+body:not(.dark)  .CodeMirror:not(.CodeMirror-focused) .CodeMirror-selected {
+  background: rgba(121, 215, 244, 0.7);
+}
+/************************************************/
+/* update icon status to completed sucessfully */
+/**********************************************/
+.CodeMirror.CodeMirror-focused .CodeMirror-gutters:before {
+  color: lime !important;
+}
+.CodeMirror:not(.CodeMirror-focused) .CodeMirror-gutters:before {
+  color: #1EC71E !important;
+}
+
+/*# sourceMappingURL=main.css.map */
