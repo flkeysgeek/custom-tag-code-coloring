@@ -1,3 +1,5 @@
+# IMPORTANT UPDATE: xml.js fixed code view render issue (span tags)
+
 # Dreamweaver Custom Tag Code Coloring (CC 2017)  
 
 Adobe Dreamweaver CC 2017 lost the ability to define custom tag Code Coloring. 
@@ -89,7 +91,7 @@ Dreamweaver extension with GUI screen for setting colors/sizes by theme.
 
 An updated xml.js must be installed -- it adds the additional cm-tag-<...> class.   
 
-- download [xml.js.zip](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/src/xml.js%20(custom-tag-colors).2017-06-20%20beta.zip)
+- download [xml.js.zip](https://github.com/flkeysgeek/DW-CC-2017-code-coloring-pref/raw/master/src/xml.js%20(custom-tag-colors).2017-07-1020%update.zip)
 - open and copy "www" into...    
 ...windows: %appdata%\Adobe\Dreamweaver CC 2017\  
 ...On Mac: ~/Library/Application Support/Adobe/Dreamweaver CC 2017/
