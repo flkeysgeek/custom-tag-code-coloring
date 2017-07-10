@@ -1,4 +1,7 @@
-# IMPORTANT UPDATE: xml.js fixed code view render issue (span tags)
+# IMPORTANT UPDATE: 
+
+- updated xml.js  -- fixes code view render issue with some span tags
+- Dreamweaver extension available by end of month
 
 # Dreamweaver Custom Tag Code Coloring (CC 2017)  
 
